@@ -1,0 +1,48 @@
+<html>
+	<head>
+		<title>GlasAanHuis</title>
+		<script type="text/javascript" src="file:///android_asset/js/jquery-1.11.0.min.js"></script>
+		<script type="text/javascript">
+			$(document).ready(function(){
+				$("#register").submit(function(){
+					var command =  new Object();
+					command.name = $("#name").val();
+					command.email = $("#email").val();
+					
+					var strJSON = JSON.stringify(command);
+					
+					$("#res").html(strJSON);
+					
+					$.post("http://local.qualitycms.nl/schoolbackend/register",{json:strJSON},function(data){
+						$("#res").html(data);
+					});
+					return false;
+				});
+			});
+		</script>
+	</head>
+	<body>
+		<div>
+			<h1>Registreren</h1>
+			<form id="register">
+				<div>
+					<label>Naam</label>
+					<input type="text" id="name" value="" />
+				</div>
+				<div>
+					<label>Email</label>
+					<input type="text" id="email" value="" />
+				</div>
+				<div>
+					<input type="submit" value="Registreren" />
+				</div>
+			</form>
+		</div>
+		<div>
+			<h1>Response</h1>
+			<div id="res">
+				
+			</div>
+		</div>
+	</body>
+</html>

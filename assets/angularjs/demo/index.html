@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+  
+  <head lang="en">
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>Angular Mobile Nav</title>
+	<link rel="stylesheet" href="ng-mobile-menu/ng-mobile-menu.min.css" />
+    <link rel="stylesheet" href="content/iui.css">
+    <link rel="stylesheet" href="content/iui/default-theme.css" type="text/css"/>
+	
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.1.4/angular.min.js"></script>
+	<script type="text/javascript" src="ng-mobile-menu/ng-mobile-menu.min.js"></script>
+	
+    <script src="content/app.js"></script>
+    <script src="mobile-nav.js"></script>
+    <link rel="stylesheet" href="mobile-nav.css">
+  </head>
+  
+  <body ng-controller="MainCtrl">
+	<div id="sp-nav">
+		<ul>
+			<li>Menu</li>
+			<li>Menu</li>
+			<li>Menu</li>
+			<li>Menu</li>
+		</ul>
+	</div>
+	<div id="sp-page">
+		<div style="height:45px;margin-bottom:-45px;z-index:99;position:relative">
+			<button ng-click="$spMenu.toggle()">Menu</button>
+		</div>
+		<mobile-view></mobile-view>
+		
+	</div>
+  </body>
+</html>
