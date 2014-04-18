@@ -6,16 +6,12 @@
   width: device-width;
 }
 
-body{
-    background:url(../../img/background.jpg);
-    background-size:100% 100%;
-    background-repeat:no-repeat;
-}
 #afui {
     background:url(../../img/background.jpg);
-    background-size:cover;
+   /* background-size:cover;*/
     background-repeat:no-repeat;
-    z-index: -99999999;
+    background-attachment:fixed;
+    background-position:center;
     /*background:white;*/
     color:#53575E;
 }
