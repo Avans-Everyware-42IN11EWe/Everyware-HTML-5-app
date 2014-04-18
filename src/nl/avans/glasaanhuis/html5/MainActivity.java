@@ -3,6 +3,7 @@ package nl.avans.glasaanhuis.html5;
 import android.os.Build;
 import android.os.Build.VERSION_CODES;
 import android.os.Bundle;
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.util.Log;
 import android.view.Menu;
@@ -12,17 +13,21 @@ import android.webkit.ConsoleMessage;
 import android.webkit.WebChromeClient;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
+import android.webkit.WebViewClient;
 
 public class MainActivity extends Activity {
 
+	@SuppressLint("SetJavaScriptEnabled")
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
 		WebView wv;
-		wv = (WebView) findViewById(R.id.webView1);
+		wv = (WebView) findViewById(R.id.WebView);
 		
 		
+		wv.addJavascriptInterface(new Logging(),"Logging");
+		wv.setWebViewClient(new CustomWebViewclient(this));
 		wv.setWebChromeClient(new WebChromeClient() {
 			public boolean onConsoleMessage(ConsoleMessage cm) {
 				Log.d("GlasAanHuisHTML5",
