@@ -3,14 +3,30 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MainActivity" >
+	
+	<GridLayout
+	    android:layout_width="match_parent"
+    	android:layout_height="match_parent"
+	    >
 
+		<ImageView
+		    android:id="@+id/LoadImg"
+		    android:layout_gravity="left"
+		    android:src="@drawable/ic_launcher"
+		    android:layout_width="match_parent"
+    		android:layout_height="match_parent"
+		     />
+	    
+	</GridLayout>
+	
     <WebView
-        android:id="@+id/webView1"
+        android:id="@+id/WebView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_alignParentBottom="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentRight="true"
-        android:layout_alignParentTop="true" />
+        android:layout_alignParentTop="true"
+        android:visibility="invisible" />
 
 </RelativeLayout>
