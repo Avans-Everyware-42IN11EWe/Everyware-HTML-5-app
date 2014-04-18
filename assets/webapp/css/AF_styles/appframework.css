@@ -6,15 +6,24 @@
   width: device-width;
 }
 
+body{
+    background:url(../../img/background.jpg);
+    background-size:100% 100%;
+    background-repeat:no-repeat;
+}
 #afui {
-    background:white;
+    background:url(../../img/background.jpg);
+    background-size:cover;
+    background-repeat:no-repeat;
+    z-index: -99999999;
+    /*background:white;*/
     color:#53575E;
 }
 
 #afui .header{
-    background:#000;
+   /* background:#000;*/
     border:none;
-    border-bottom:1px solid #000;
+    /*border-bottom:1px solid #000;*/
     color:white;
 }
 
@@ -118,7 +127,7 @@
     background:inherit;
 }
 
-#afui .panel h2 { color:#0088D1;}
+#afui .panel h2 { color:#FFFFFF;}
 
 #afui .collapsed:after {border-top: 6px solid;}
 #afui .collapsed:before {border:2px solid;}
@@ -165,9 +174,9 @@
 
 #afui > #aside_menu,
 #afui > #menu.tabletMenu {
-    color:white;
-    background:#00AEEF;
-    border-right:1px solid #006BA4;
+    border-right: 1px solid rgba(128,128,128,0.5);
+color: #fff;
+background: #000;
 }
 
 #afui #aside_menu .list li,#afui #aside_menu .list .divider,#afui #aside_menu .list li:last-child,
@@ -177,7 +186,7 @@
 
 #afui #aside_menu .list .divider,
 #afui #menu .list .divider {
-    background:#0088D1;
+    background:#000;
     color:inherit;
     font-size: 1em;
 }

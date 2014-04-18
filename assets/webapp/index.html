@@ -51,7 +51,7 @@
         <script type="text/javascript" charset="utf-8" src="js/appframework.js"></script>
         <!-- include af.desktopBrowsers.js on desktop browsers only -->
         <script>
-
+/*
             function loadedPanel(what) {
                 //We are going to set the badge as the number of li elements inside the target
                 $.ui.updateBadge("#aflink", $("#af").find("li").length);
@@ -68,7 +68,7 @@
                 var tag = $("head").append(script);
                 //$.os.desktop=true;
             }
-
+*/
           //  $.feat.nativeTouchScroll=true;
           
         </script>        
@@ -95,20 +95,23 @@
         <script type="text/javascript">
             /* This function runs once the page is loaded, but intel.xdk is not yet active */
             //$.ui.animateHeaders=false;
-             var search=document.location.search.toLowerCase().replace("?","");
+           /*  var search=document.location.search.toLowerCase().replace("?","");
              //if(!search)
             $.ui.useOSThemes=true;
             if(search.length>0) //Android fix has too many buggy issues on iOS - can't preview with $.os.android
             {
 
-               $.ui.useOSThemes=true;
+               $.ui.useOSThemes=false;
                 if(search=="win8")
                     $.os.ie=true;
                 $.ui.ready(function(){
                     $("#afui").get(0).className=search;
                 });
-            }
-            
+            }*/
+            $.ui.ready(
+            function(){
+            $.ui.removeFooterMenu();}); //Toggle the footer menu on load
+
             var webRoot = "./";
             // $.os.android=true;
             //$.ui.autoLaunch = false;
@@ -144,7 +147,7 @@
 
             }
 
-
+/*
             if($.os.android||$.os.ie||search=="android"){
                 $.ui.ready(function(){
                     $("#main .list").append("<li><a id='toggleAndroidTheme'>Toggle Theme Color</a></li>");
@@ -156,42 +159,53 @@
                             $el.addClass("light");
                     });
                 });
-            }                        
+            }    */                  
         </script>
 
 </head>
-    <body>
-        <nav>
-                <ul class="list">
-                    <li class="divider" class="icon home">onderwerp</li>
-                    <li>
-                        <a href="#linken">categorie</a>
-                    </li>
-                 <li class="divider">onderwerp2</li>
-                    <li>
-                        <a href="#link">categorie2</a>
-                    </li>
 
-                </ul>
-            </nav>
-		<div id="wrapper">
-			<div id="sub_wrap">
+    <body>
+        <div id="afui">	
+            	
 				<div id="header">
 				     <a id='menubadge' onclick='af.ui.toggleSideMenu()' class='menuButton'></a>     
-					Fiberfindung s
 				</div>
 				
 				<div id="content">
-					<h1>Welkom</h1>
-					This is html version of this app. Lorem ipsum. Proin gravida nibh vbel valit acutor atulet. Acenen soluudcutin, lorem quid bibendum acutor. Nisi elit consqeut impsum. nex sagittis sem nigh id eli. Duis sed odia sit amet bij vulupupat cursar sit amet mauros.
+				    <!-- die panels(views)specificeren. Let op je linkt naar het id en vergeet niet class="panel op te geven"-->
+				<div class="panel" title="Fiberfunding" id="panel2"  selected="false">
+				    <p>tekst panel 2</p>
 				</div>
-			</div>
-			<div id="hover_top" style="width:100%;position:fixed;top:0;z-index:-1"></div>
-			<div id="hover_bottom" style="width:100%;position:fixed;z-index:-1"></div>
-			<div style="position:fixed;top:0;left:0;z-index:-2" id="background-image"><img src="img/background.jpg" width=100%/></div>
+		
+		<div class="panel" title="Fiberfunding" id="panel3" selected="false">
+                    <p>tekst panel 3</p>
+                </div>
+                
+                <div class="panel" title='Fiberfunding' id="main" selected="true">
+                    <h2>Welkom</h2>
+                    <p>This is html version of this app. Lorem ipsum. Proin gravida nibh vbel valit acutor atulet. Acenen soluudcutin, lorem quid bibendum acutor. Nisi elit consqeut impsum. nex sagittis sem nigh id eli. Duis sed odia sit amet bij vulupupat cursar sit amet mauros.</p>
+                </div>
+			
 		</div>
+		<!--sidebar menu-->
+		<!-- met # link je naar t id van t panel-->
+		<nav>
+                <ul class="list">
+                    <li class="divider" class="icon home">onderwerp</li>
+                    <li>
+                        <a href="#linknaarnietsvia_id">linkvoorbeeld</a>
+                    </li>
+                 <li class="divider">onderwerp2</li>
+                    <li>
+                        <a href="#panel2">panel2</a>
+                    </li>
+                     <li>
+                        <a href="#panel3">panel3</a>
+                    </li>
+                </ul>
+            </nav>
 		
 		
-    </script>
+
     </body>
 </html>
