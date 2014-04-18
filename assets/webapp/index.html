@@ -1,20 +1,186 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <meta charset="utf-8" />
-        <meta name="format-detection" content="telephone=no" />
-        <!-- WARNING: for iOS 7, remove the width=device-width and height=device-height attributes. See https://issues.apache.org/jira/browse/CB-4323 -->
-        <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
-        <link rel="stylesheet" type="text/css" href="css/index.css" />
-        <title>Hello World</title>
-		
-    </head>
+        <script>
+        (function() {
+    if ("-ms-user-select" in document.documentElement.style && navigator.userAgent.match(/IEMobile\/10\.0/)) {
+        var msViewportStyle = document.createElement("style");
+        msViewportStyle.appendChild(
+            document.createTextNode("@-ms-viewport{width:auto!important}")
+        );
+        document.getElementsByTagName("head")[0].appendChild(msViewportStyle);
+    }
+})();
+</script>
+
+        <title>Fiber Funding</title>
+        <meta http-equiv="Content-type" content="text/html; charset=utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=0">
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <META HTTP-EQUIV="Pragma" CONTENT="no-cache">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <link rel="stylesheet" type="text/css" href="css/AF_styles/icons.css" />    
+ 
+       <!--   
+     <link rel="stylesheet" type="text/css" href="css/AF_styles/af.ui.css" title="default" />
+  -->
+      <link rel="stylesheet" type="text/css" href="css/AF_styles/main.css"  />
+      <link rel="stylesheet" type="text/css" href="css/AF_styles/appframework.css"  />
+      <link rel="stylesheet" type="text/css" href="css/AF_styles/lists.css"  />
+      <link rel="stylesheet" type="text/css" href="css/AF_styles/forms.css"  />
+      <link rel="stylesheet" type="text/css" href="css/AF_styles/buttons.css"  />        
+      <link rel="stylesheet" type="text/css" href="css/AF_styles/badges.css"  />        
+      <link rel="stylesheet" type="text/css" href="css/AF_styles/grid.css"  />
+
+      <link rel="stylesheet" type="text/css" href="css/AF_styles/android.css"  />
+      <link rel="stylesheet" type="text/css" href="css/AF_styles/win8.css"  />
+      <link rel="stylesheet" type="text/css" href="css/AF_styles/bb.css"  />
+      <link rel="stylesheet" type="text/css" href="css/AF_styles/ios.css"  />
+      <link rel="stylesheet" type="text/css" href="css/AF_styles/ios7.css"  />
+      <link rel="stylesheet" type="text/css" href="css/AF_styles/tizen.css"  />
+        
+      <link rel="stylesheet" type="text/css" href="js/plugins/css/af.actionsheet.css"  />
+      <link rel="stylesheet" type="text/css" href="js/plugins/css/af.popup.css"  />
+      <link rel="stylesheet" type="text/css" href="js/plugins/css/af.scroller.css"  />
+      <link rel="stylesheet" type="text/css" href="js/plugins/css/af.selectBox.css"  />        
+        
+        <!-- uncomment for intel.xdk apps 
+        <script type="text/javascript" charset="utf-8" src="intelxdk.js"></script>
+        <script type="text/javascript" charset="utf-8" src="xhr.js"></script>
+        -->
+        <script type="text/javascript" charset="utf-8" src="js/appframework.js"></script>
+        <!-- include af.desktopBrowsers.js on desktop browsers only -->
+        <script>
+
+            function loadedPanel(what) {
+                //We are going to set the badge as the number of li elements inside the target
+                $.ui.updateBadge("#aflink", $("#af").find("li").length);
+            }
+
+
+            function unloadedPanel(what) {
+                console.log("unloaded " + what.id);
+            }
+
+            if (!((window.DocumentTouch && document instanceof DocumentTouch) || 'ontouchstart' in window)) {
+                var script = document.createElement("script");
+                script.src = "js/plugins/af.desktopBrowsers.js";
+                var tag = $("head").append(script);
+                //$.os.desktop=true;
+            }
+
+          //  $.feat.nativeTouchScroll=true;
+          
+        </script>        
+        <script type="text/javascript" charset="utf-8" src="js/plugins/af.actionsheet.js"></script>
+        <script type="text/javascript" charset="utf-8" src="js/plugins/af.css3animate.js"></script>
+        <script type="text/javascript" charset="utf-8" src="js/plugins/af.passwordBox.js"></script>          
+        <script type="text/javascript" charset="utf-8" src="js/plugins/af.scroller.js"></script>
+        <script type="text/javascript" charset="utf-8" src="js/plugins/af.selectBox.js"></script>
+        <script type="text/javascript" charset="utf-8" src="js/plugins/af.touchEvents.js"></script>
+        <script type="text/javascript" charset="utf-8" src="js/plugins/af.touchLayer.js"></script>
+        <script type="text/javascript" charset="utf-8" src="js/plugins/af.popup.js"></script>
+
+        <script type="text/javascript" charset="utf-8" src="js/ui/appframework.ui.js"></script>
+        <!-- <script type="text/javascript" charset="utf-8" src="js/ui/transitions/all.js"></script> -->
+        <script type="text/javascript" charset="utf-8" src="js/ui/transitions/fade.js"></script>
+        <script type="text/javascript" charset="utf-8" src="js/ui/transitions/flip.js"></script>
+        <script type="text/javascript" charset="utf-8" src="js/ui/transitions/pop.js"></script>
+        <script type="text/javascript" charset="utf-8" src="js/ui/transitions/slide.js"></script>
+        <script type="text/javascript" charset="utf-8" src="js/ui/transitions/slideDown.js"></script>
+        <script type="text/javascript" charset="utf-8" src="js/ui/transitions/slideUp.js"></script>
+        <script type="text/javascript" charset="utf-8" src="js/plugins/af.slidemenu.js"></script>
+        
+
+        <script type="text/javascript">
+            /* This function runs once the page is loaded, but intel.xdk is not yet active */
+            //$.ui.animateHeaders=false;
+             var search=document.location.search.toLowerCase().replace("?","");
+             //if(!search)
+            $.ui.useOSThemes=true;
+            if(search.length>0) //Android fix has too many buggy issues on iOS - can't preview with $.os.android
+            {
+
+               $.ui.useOSThemes=true;
+                if(search=="win8")
+                    $.os.ie=true;
+                $.ui.ready(function(){
+                    $("#afui").get(0).className=search;
+                });
+            }
+            
+            var webRoot = "./";
+            // $.os.android=true;
+            //$.ui.autoLaunch = false;
+            $.ui.openLinksNewTab = false;
+            $.ui.splitview=false;
+            
+
+            $(document).ready(function(){
+                  // $.ui.launch();
+
+            });
+            
+            /* This code is used to run as soon as intel.xdk activates */
+            var onDeviceReady = function () {
+                intel.xdk.device.setRotateOrientation("portrait");
+                intel.xdk.device.setAutoRotate(false);
+                webRoot = intel.xdk.webRoot + "";
+                //hide splash screen
+                intel.xdk.device.hideSplashScreen();
+                $.ui.blockPageScroll(); //block the page from scrolling at the header/footer
+            };
+            document.addEventListener("intel.xdk.device.ready", onDeviceReady, false);
+
+            function showHide(obj, objToHide) {
+                var el = $("#" + objToHide)[0];
+
+                if (obj.className == "expanded") {
+                    obj.className = "collapsed";
+                } else {
+                    obj.className = "expanded";
+                }
+                $(el).toggle();
+
+            }
+
+
+            if($.os.android||$.os.ie||search=="android"){
+                $.ui.ready(function(){
+                    $("#main .list").append("<li><a id='toggleAndroidTheme'>Toggle Theme Color</a></li>");
+                    var $el=$("#afui");
+                    $("#toggleAndroidTheme").bind("click",function(e){
+                        if($el.hasClass("light"))
+                            $el.removeClass("light");
+                        else
+                            $el.addClass("light");
+                    });
+                });
+            }                        
+        </script>
+
+</head>
     <body>
+        <nav>
+                <ul class="list">
+                    <li class="divider" class="icon home">onderwerp</li>
+                    <li>
+                        <a href="#linken">categorie</a>
+                    </li>
+                 <li class="divider">onderwerp2</li>
+                    <li>
+                        <a href="#link">categorie2</a>
+                    </li>
+
+                </ul>
+            </nav>
 		<div id="wrapper">
 			<div id="sub_wrap">
 				<div id="header">
+				     <a id='menubadge' onclick='af.ui.toggleSideMenu()' class='menuButton'></a>     
 					Fiberfindung s
 				</div>
+				
 				<div id="content">
 					<h1>Welkom</h1>
 					This is html version of this app. Lorem ipsum. Proin gravida nibh vbel valit acutor atulet. Acenen soluudcutin, lorem quid bibendum acutor. Nisi elit consqeut impsum. nex sagittis sem nigh id eli. Duis sed odia sit amet bij vulupupat cursar sit amet mauros.
@@ -25,42 +191,7 @@
 			<div style="position:fixed;top:0;left:0;z-index:-2" id="background-image"><img src="img/background.jpg" width=100%/></div>
 		</div>
 		
-		<script type="text/javascript" src="js/jquery-1.11.0.min.js"></script>
-		<script type="text/javascript" charset="utf-8">
-
-		$(document).ready(function(){
-			$("#getUserProfile").click(function(){
-				showLoad();
-				$.post("http://wuppr.local.qualitycms.nl/ajax",{cmd:"userprofile"},function(data){
-					writeToResponse(data);
-				});
-			});
-			
-			
-			$("#login").click(function(){
-				showLoad();
-				$.post("http://wuppr.local.qualitycms.nl/ajax",{cmd:"login",json:'{"strEmail":"test@test.nl","strPassword":"098f6bcd4621d373cade4e832627b4f6"}'},function(data){
-					writeToResponse(data);
-				});
-			});
-			
-			
-			$("#logout").click(function(){
-				showLoad();
-				$.post("http://wuppr.local.qualitycms.nl/ajax",{cmd:"logout"},function(data){
-					writeToResponse(data);
-				});
-			});
-		});
 		
-		function writeToResponse(text){
-			$(".response").html(text);
-		}
-		
-		function showLoad(){
-			$(".response").html("<img src='img/ajax-loader.gif' />");
-		}
-	
     </script>
     </body>
 </html>
