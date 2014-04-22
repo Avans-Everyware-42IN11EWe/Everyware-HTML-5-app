@@ -512,7 +512,7 @@ body {
     height: 36px;
     width: 36px;
     z-index:2;
-    float:right;
+    float:left!important;
 }
 
 
