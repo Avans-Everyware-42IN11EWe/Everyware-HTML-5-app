@@ -7,13 +7,14 @@
 }
 
 #afui {
-    background:url(../../img/background.jpg);
+    background-image:url('file:///android_asset/webapp/img/background.jpg');
    /* background-size:cover;*/
     background-repeat:no-repeat;
     background-attachment:fixed;
     background-position:center;
     /*background:white;*/
-    color:#53575E;
+    /*color:#53575E;*/
+    color: #FFFFFF;
 }
 
 #afui .header{

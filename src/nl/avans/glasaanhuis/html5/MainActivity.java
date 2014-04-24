@@ -17,7 +17,7 @@ import android.webkit.WebViewClient;
 
 public class MainActivity extends Activity {
 
-	@SuppressLint("SetJavaScriptEnabled")
+	@SuppressLint({ "SetJavaScriptEnabled", "JavascriptInterface" })
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -28,6 +28,7 @@ public class MainActivity extends Activity {
 		
 		wv.addJavascriptInterface(new Logging(),"Logging");
 		wv.setWebViewClient(new CustomWebViewclient(this));
+		wv.loadUrl("file:///android_asset/webapp/index.html");
 		wv.setWebChromeClient(new WebChromeClient() {
 			public boolean onConsoleMessage(ConsoleMessage cm) {
 				Log.d("GlasAanHuisHTML5",
@@ -42,8 +43,8 @@ public class MainActivity extends Activity {
 			wv.getSettings().setAllowUniversalAccessFromFileURLs(true);
 		}
 		webSettings.setJavaScriptEnabled(true);
-
-		wv.loadUrl("file:///android_asset/webapp/index.html");
+			
+		
 	}
 
 }

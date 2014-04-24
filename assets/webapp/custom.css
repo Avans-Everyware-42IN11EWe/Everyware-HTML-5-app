@@ -1,0 +1,35 @@
+a.mijnWijk {
+	padding:5px 15px; background:#E5E5E5; border:0 none;
+    cursor:pointer;
+    -webkit-border-radius: 2px;
+    border-radius: 5px; 
+    color: blue;
+    text-decoration: none;
+}
+
+a.andereWijk {
+	padding:5px 15px; background:#898989; border:0 none;
+    cursor:pointer;
+    -webkit-border-radius: 2px;
+    border-radius: 5px; 
+    color: white;
+    text-decoration: none;
+}
+
+#information {
+	position: relative;
+	float: left;
+}
+
+#buttons {
+	position: relative;
+	float: left;
+	clear: left;
+}
+
+#afui {
+	background-image: url('background.jpg');
+	background-repeat:no-repeat;
+	background-attachment:fixed;
+	background-color: transparent;
+}
