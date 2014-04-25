@@ -92,8 +92,20 @@
         <script type="text/javascript" charset="utf-8" src="js/ui/transitions/slideUp.js"></script>
         <script type="text/javascript" charset="utf-8" src="js/plugins/af.slidemenu.js"></script>
         
-
+		<script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
+		<script src="js/blur.js"></script>
         <script type="text/javascript">
+        
+			        $(document).ready( function() {
+			    $('.bg').blurjs({
+			        source: 'body',
+			        radius: 90,
+			        overlay: 'rgba(0, 0, 0, .2)'
+			        
+			    });
+			    console.log("ready");
+			});
+
             /* This function runs once the page is loaded, but intel.xdk is not yet active */
             //$.ui.animateHeaders=false;
            /*  var search=document.location.search.toLowerCase().replace("?","");
@@ -149,6 +161,14 @@
 
             }
 
+$(window).scroll(function() {
+    // Get scroll position
+    var s = $(window).scrollTop(),
+    // scroll value and opacity
+    opacityVal = (s / 150.0);
+    // opacity value 0% to 100%
+    $('.bg').css('opacity', opacityVal);
+});
 /*
             if($.os.android||$.os.ie||search=="android"){
                 $.ui.ready(function(){
@@ -167,7 +187,12 @@
 </head>
 
     <body>
-        <div id="afui">	
+    
+	
+		<!-- -->
+		<script src="js/script.js"></script>
+		
+        <div class="bg" id="afui">	
             	
 				<div id="header">
 				     <a id='menubadge' onclick='af.ui.toggleSideMenu()' class='menuButton'></a>     
@@ -234,7 +259,7 @@
       <p>tekst panedgasl 3</p>
     </div>
                 
-    <div class="panel" title='Fiberfunding' id="main" selected="true">
+    <div class="panel" title='Fiberfunding' id="main" selected="true" js-scrolling="true">
 
       <span style="font-size: 50px;">Welkom</span>
       <p style="font-size: 20px;">This is html version of this app. Lorem ipsum. Proin gravida nibh vbel valit acutor atulet. Acenen soluudcutin, lorem quid bibendum acutor. Nisi elit consqeut impsum. nex sagittis sem nigh id eli. Duis sed odia sit amet bij vulupupat cursar sit amet mauros.</p>
