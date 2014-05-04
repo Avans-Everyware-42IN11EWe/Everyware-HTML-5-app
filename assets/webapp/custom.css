@@ -1,19 +1,44 @@
 a.mijnWijk {
-	padding:5px 15px; background:#E5E5E5; border:0 none;
-    cursor:pointer;
-    -webkit-border-radius: 2px;
-    border-radius: 5px; 
+    background:#E5E5E5; 
     color: blue;
-    text-decoration: none;
 }
 
 a.andereWijk {
-	padding:5px 15px; background:#898989; border:0 none;
+    background:#898989; 
+    color: white;
+}
+
+a.customButton {
+    background:#DEDFE0; 
+    padding:5px 15px; 
+    color: gray;
+    border:0 none;
     cursor:pointer;
     -webkit-border-radius: 2px;
     border-radius: 5px; 
-    color: white;
     text-decoration: none;
+}
+
+a.regLinks {
+    margin-left: auto;
+    margin-right: auto;
+    border: 1px gray solid;
+    padding: 10px;
+    position: relative;
+    display: inline-block;
+}
+
+div.regButtons {
+    text-align: center; 
+    margin: 20px;
+}
+
+div#registration {
+    margin: 10px;
+    background: rgba(232, 233, 234, .75);
+    height: 100%;
+    -webkit-border-radius: 5px;
+    padding: 10px;
 }
 
 #information {
@@ -27,6 +52,13 @@ a.andereWijk {
 	clear: left;
 }
 
+.btnFacebook {
+    background: -webkit-linear-gradient(red, blue); /* For Safari 5.1 to 6.0 */
+    background: -o-linear-gradient(red, blue); /* For Opera 11.1 to 12.0 */
+    background: -moz-linear-gradient(red, blue); /* For Firefox 3.6 to 15 */
+    background: linear-gradient(red, blue); /* Standard syntax (must be last) */
+}
+
 #afui {
 	background-repeat:no-repeat;
 	background-attachment:fixed;
@@ -37,7 +69,6 @@ body {
     background-image: url('background.jpg');
 }
 
-
 .bg {
     position: absolute;
     top: 0;
@@ -47,6 +78,9 @@ body {
     z-index: -2;
     background: #FFF;
 	opacity: 0;
-    background-size: cover !important;
-	
+    background-size: cover !important;	
+}
+
+form#registration input[type=text] {
+   /* background-color: #DEDFE0;*/
 }

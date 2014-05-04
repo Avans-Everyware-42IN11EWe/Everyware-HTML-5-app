@@ -28,7 +28,8 @@ public class MainActivity extends Activity {
 		
 		wv.addJavascriptInterface(new Logging(),"Logging");
 		wv.setWebViewClient(new CustomWebViewclient(this));
-		wv.loadUrl("file:///android_asset/webapp/index.html");
+		//wv.loadUrl("file:///android_asset/webapp/index.html");
+		wv.loadUrl("file:///android_asset/webapp/register.html");
 		wv.setWebChromeClient(new WebChromeClient() {
 			public boolean onConsoleMessage(ConsoleMessage cm) {
 				Log.d("GlasAanHuisHTML5",
