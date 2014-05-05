@@ -65,8 +65,13 @@ div#registration {
 	background-color: transparent;
 }
 
+#inputs {
+	text-align:center;
+}
+
 body {
     background-image: url('background.jpg');
+	background-attachment:fixed;
 }
 
 .bg {
