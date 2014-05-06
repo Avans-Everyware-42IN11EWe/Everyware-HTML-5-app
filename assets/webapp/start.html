@@ -2,18 +2,40 @@
 <html>
 	<head>	
 		<script type="text/javascript" charset="utf-8" src="js/jquery/jquery-2.1.1.min.js"></script> 
-		
+		<script type="text/javascript" charset="UTF-8" src="js/jquery/jquery-ui-1.10.4.custom.min.js"></script>
 		<script defer src="js/swiper/idangerous.swiper.min.js"></script>
 
 		<link rel="stylesheet" href="css/idangerous.swiper.css">
 		<link rel="stylesheet" type="text/css" href="custom.css" />
-		
+		<link rel="stylesheet" type="text/css" href="css/jquery-ui-1.10.4.custom.css" />
 		<link rel="stylesheet" type="text/css" href="custom.css" />
 		
 		<script>
 			//$.ui.useOSThemes=false;
 			
 			$( document ).ready(function() {
+			    
+			    var bewonersVerzamelen = 22;
+			    var inschrijven = 9;
+			    var providerSelecteren = 2;
+			    var glasvezelAandeel = 0;
+			    var glasvezelAanleggen = 0;
+			    var overstappenNaarGlasvezel = 0;
+			    /******* text****/
+			    $('#bewonersVerzamelentxt').append(bewonersVerzamelen+"%");
+			    $('#inschrijventxt').append(inschrijven+"%");
+			    $('#providerSelecterentxt').append(providerSelecteren+"%");
+			    $('#glasvezelAandeeltxt').append(glasvezelAandeel+"%");
+			    $('#glasvezelAanleggentxt').append(glasvezelAanleggen+"%");
+			    $('#overstappenNaarGlasvezeltxt').append(overstappenNaarGlasvezel+"%");
+			    
+			    /******progressbars****/
+			    $( "#bewonersVerzamelen" ).progressbar({value: bewonersVerzamelen});			      
+			    $( "#inschrijven" ).progressbar({value: inschrijven});			      
+			    $( "#providerSelecteren" ).progressbar({value: providerSelecteren});			       
+			    $( "#glasvezelAandeel" ).progressbar({value: glasvezelAandeel});			        
+			    $( "#glasvezelAanleggen" ).progressbar({value: glasvezelAanleggen});			         
+			    $( "#overstappenNaarGlasvezel" ).progressbar({value: overstappenNaarGlasvezel});
 				
 				$height = $( window ).height();
 				
@@ -124,6 +146,49 @@
                         </div>
                     </div>
                   </div>
+				  <!--Vierde Slide-->
+				  <div class="swiper-slide">
+				      <p style="font-size: 23px;">stappen</p>
+				      <ul class="status">
+				         <li>
+				          <p id=bewonersVerzamelentxt>1.&nbsp; Bewoners verzamelen&nbsp;</p>
+				        <div id="bewonersVerzamelen"></div> 
+				        </li> 
+				        <li>
+				         <p id="inschrijventxt">2.&nbsp; Inschrijven&nbsp;</p>
+				        <div id="inschrijven"></div> 
+				        </li>
+				        <li>
+				            <p id="providerSelecterentxt">3.&nbsp; Provider selecteren&nbsp;</p>
+				        <div id="providerSelecteren"></div> 
+				        </li>
+				        <li>
+				            <p id="glasvezelAandeeltxt">4.&nbsp; Glasvezel aandeel&nbsp;</p>
+				        <div id="glasvezelAandeel"></div>
+				        </li>
+				        <li> 
+				            <p id="glasvezelAanleggentxt">5.&nbsp; Glasvezel aanleggen&nbsp;</p>
+				        <div id="glasvezelAanleggen"></div> 
+				        </li>
+				        <li>
+				           <p id="overstappenNaarGlasvezeltxt">6.&nbsp; Overstappen naar glasvezel&nbsp;</p>
+				        <div id="overstappenNaarGlasvezel"></div> 
+				        </li>
+				          
+				      </ul>
+				      
+				                               <div id="information" style="position: relative; margin-top: 20px;">
+                            <span style="float: left; font-size: 40px; font-weight: bold;">Martijn's glasvezel buurt</span>
+                            <span style="float: right; clear: left;">Aawijk-noord</span>
+                            <table style="float: left; position: relative;">
+                              <tr>
+                                <td><span style="font-size: 50px; clear: left; line-height: 50px;">106&nbsp;</span></td>
+                                <td style="position: relative;"><span style="font-size: 30px; position: absolute; bottom: 0px;">deelnemers</span></td>
+                              </tr>
+                            </table>
+                            <span style="float: left; font-size: 80px; clear: left;">22%</span>
+                          </div>
+				  </div>
 				  
 			</div>
 	</div>

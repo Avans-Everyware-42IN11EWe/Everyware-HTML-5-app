@@ -94,3 +94,17 @@ body {
 form#registration input[type=text] {
    /* background-color: #DEDFE0;*/
 }
+
+.status{
+    background: rgba(000, 000, 000, .75);
+    list-style:none;
+    border: 3px outset #C0C0C0;
+    margin: 10px;
+}
+.status li:last-child{
+ padding-bottom: 20px;
+}
+.status li:first-child{
+    padding-top:10px;
+}
+
