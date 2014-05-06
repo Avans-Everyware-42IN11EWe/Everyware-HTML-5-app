@@ -75,7 +75,7 @@ div#registration {
 }
 
 body {
-    background-image: url('background.jpg');
+   /* background-image: url('background.jpg');*/
 	/*background-attachment:fixed;*/
 }
 
@@ -107,4 +107,13 @@ form#registration input[type=text] {
 .status li:first-child{
     padding-top:10px;
 }
-
+.vague{
+width: 100%;
+height: 100%;
+background-image: url('background.jpg');
+/*background: url(background.jpg) no-repeat center center;*/
+position: absolute;
+}
+figure {
+margin: 0;
+}

@@ -5,6 +5,7 @@
         <script type="text/javascript" charset="UTF-8" src="js/jquery/jquery-ui-1.10.4.custom.min.js"></script>
         <script type="text/javascript" charset="utf-8" src="js/blur.js"></script>
         <script defer src="js/swiper/idangerous.swiper.min.js"></script>
+        <script type="text/javascript" charset="UTF-8" src="js/vague.js"></script>
 
         <link rel="stylesheet" href="css/idangerous.swiper.css">
         <link rel="stylesheet" type="text/css" href="custom.css" />
@@ -40,20 +41,54 @@
                 
                 $height = $( window ).height();
 
-                $('#bg').blurjs({
+                var vague = $('.vague').Vague({
+
+                 intensity:      0,      // Blur Intensity
+               forceSVGUrl:    false,   // Force absolute path to the SVG filter,
+                 // default animation options
+               animationOptions: {
+               duration: 1000,
+               easing: 'linear' // here you can use also custom jQuery easing functions
+                                     }
+                    });
+
+        vague.blur();
+        var vaag = 0;
+        $("#blur").scroll(function(e) {
+            if(vaag < 10){
+            vaag=vaag+2;
+            }
+            console.log(vaag);
+                   vague.animate(vaag),{
+                duration:500
+            };
+                });
+                
+                /*
+                $('.btn input').on('keyup blur',function(e){
+            vague.animate(+$(e.currentTarget).val(),{
+                duration:800
+            }).done(function(){
+                if (window.console)
+                    console.log('Animation Complete!');
+            });*/
+                
+                
+              /*  $('#bg').blurjs({
                     source: 'body',
                     radius: 30,
                     overlay: 'rgba(0, 0, 0, 0.2)'
                 });
 
-                $(window).scroll(function(e) {
+                $("#blur").scroll(function(e) {
                     $clImg = $('#bg');
-                    var opacityVal = ($(".swiper-container").scrollTop() / 240)
+                    var opacityVal = ($(".swiper-container").scrollTop() / 240);
 
                     $clImg.css('opacity', opacityVal);
+                   
                 });
-
-                $(".swiper-container").css("height", $height-20 + "px")
+*/
+                $(".swiper-container").css("height", $height-20 + "px");
                 
                   var mySwiper = new Swiper('.swiper-container',{
                     //Your options here:
@@ -62,9 +97,11 @@
                     loop: false,
                     //etc..
                   });  
-               
+ 
                $("#intro").bind('ended', function(){
-                mySwiper.swipeNext();
+                if(mySwiper.activeIndex == 0){
+                   mySwiper.swipeNext();
+                }
                 });
                 
                 $( "#mijnWijk" ).click(function() {
@@ -105,6 +142,7 @@
     </head>
     <body>
     
+    <figure class="vague"></figure>
     <div class="swiper-container">
               <div class="swiper-wrapper">
                   <!--First Slide-->
@@ -118,7 +156,7 @@
                   </div>
                   
                   <!--Second Slide-->
-                <div class="swiper-slide">
+                <div class="swiper-slide" id="blur">
                        <div class="panel" title='Fiberfunding' id="main" selected="true" js-scrolling="true">
 
                           <span style="font-size: 50px;">Welkom</span>
@@ -151,7 +189,7 @@
                   </div>
                   
                   <!--Third Slide-->
-              <div class="swiper-slide noSwiping"> 
+              <div class="swiper-slide noSwiping" id="blur"> 
                 <div class="panel" selected="true">
                     <div id="registration">
                         <span style="font-size: 50px; color: gray;">Registratie</span>
@@ -175,7 +213,7 @@
                 
               </div>
                   <!--Vierde Slide-->
-                  <div class="swiper-slide">
+                  <div class="swiper-slide" id="blur">
                       <p style="font-size: 23px;">stappen</p>
                       <ul class="status">
                          <li>
