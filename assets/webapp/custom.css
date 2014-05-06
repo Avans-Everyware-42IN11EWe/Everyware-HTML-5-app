@@ -71,10 +71,10 @@ div#registration {
 
 body {
     background-image: url('background.jpg');
-	background-attachment:fixed;
+	/*background-attachment:fixed;*/
 }
 
-.bg {
+#bg {
     position: absolute;
     top: 0;
     left: 0;

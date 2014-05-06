@@ -2,12 +2,10 @@
 <html>
 	<head>	
 		<script type="text/javascript" charset="utf-8" src="js/jquery/jquery-2.1.1.min.js"></script> 
-		
+		<script type="text/javascript" charset="utf-8" src="js/blur.js"></script>
 		<script defer src="js/swiper/idangerous.swiper.min.js"></script>
 
 		<link rel="stylesheet" href="css/idangerous.swiper.css">
-		<link rel="stylesheet" type="text/css" href="custom.css" />
-		
 		<link rel="stylesheet" type="text/css" href="custom.css" />
 		
 		<script>
@@ -16,8 +14,20 @@
 			$( document ).ready(function() {
 				
 				$height = $( window ).height();
-				
-				
+
+				$('#bg').blurjs({
+			        source: 'body',
+			        radius: 30,
+			        overlay: 'rgba(0, 0, 0, 0.2)'
+			    });
+
+				$(window).scroll(function(e) {
+		            $clImg = $('#bg');
+		            var opacityVal = ($(".swiper-container").scrollTop() / 240)
+
+			        $clImg.css('opacity', opacityVal);
+			    });
+
 				$(".swiper-container").css("height", $height-20 + "px")
 				
 				  var mySwiper = new Swiper('.swiper-container',{
@@ -28,10 +38,23 @@
 					//etc..
 				  });  
 				
-				$( "#register" ).click(function() {
-				
-				// TODO - create and login
-					mySwiper.swipeNext();
+				$( "#register" ).click(function (event) {
+					var Name = $("#txtName").val();
+					var Email = $("#txtEmail").val();
+					$.ajax({
+						url: "http://glas.mycel.nl/register",
+						type: "POST",
+						data: { "email" : Email, "name" : Name, "latlong": [1.233, 4.222], "district_id": 5 },
+						dataType: "json",
+						success: function (data) {
+							alert("Success");
+							mySwiper.swipeNext();
+						},
+						error: function(jqXHR, textStatus, errorThrown) {
+							alert("ERROR! -- textStatus")
+						  console.log(textStatus, errorThrown);
+						}
+					});
 				});
 				
 				$( "#register-facebook" ).click(function() {
@@ -39,73 +62,75 @@
 				// TODO - create and login
 					mySwiper.swipeNext();
 				});
+
 				
 			});
 					
 		</script>
 	</head>
 	<body>
-	
-	<div class="swiper-container">
-			  <div class="swiper-wrapper">
-				  <!--First Slide-->
-				  <div class="swiper-slide noSwiping"> 
-					<div class="panel" selected="true">
-						<div id="registration">
-							<span style="font-size: 50px; color: gray;">Registratie</span>
-							<form id="registration">
-							<div id="inputs">
-							  <input id="txtName" placeholder="Naam" type="text">
-							  <input id="txtEmail" placeholder="E-mail adres" type="text">
-							  </div>
-							</form>
-							<div class="regButtons">
-								<a class="customButton regLinks" style="color: blue;" href="#">Leuke foto toevoegen</a>
-							</div>
-							<div class="regButtons">
-								<a id="register" class="customButton regLinks" style="padding-left: 40px; padding-right: 40px;" href="#">Registratie afronden</a>
-							</div>
-							<div class="regButtons">
-								<a id="register-facebook" class="customButton regLink btnFacebook" style="color: white;" href="#">Log in met Facebook</a>
-							</div>
+		<div id="bg"></div>
+		<div class="swiper-container">
+		  <div class="swiper-wrapper">
+			  <!--First Slide-->
+			  <div class="swiper-slide noSwiping"> 
+				<div class="panel" selected="true">
+					<div id="registration">
+						<span style="font-size: 50px; color: gray;">Registratie</span>
+						<form id="registration">
+						<div id="inputs">
+						  <input id="txtName" placeholder="Naam" type="text">
+						  <input id="txtEmail" placeholder="E-mail adres" type="text">
+						  </div>
+						</form>
+						<div class="regButtons">
+							<a class="customButton regLinks" style="color: blue;" href="#">Leuke foto toevoegen</a>
+						</div>
+						<div class="regButtons">
+							<a id="register" class="customButton regLinks" style="padding-left: 40px; padding-right: 40px;" href="#">Registratie afronden</a>
+						</div>
+						<div class="regButtons">
+							<a id="register-facebook" class="customButton regLink btnFacebook" style="color: white;" href="#">Log in met Facebook</a>
 						</div>
 					</div>
-					
-				  </div>
-				  
-				  <!--Second Slide-->
-				  <div class="swiper-slide">
-					   <div class="panel" title='Fiberfunding' id="main" selected="true" js-scrolling="true">
+				</div>
+				
+			  </div>
+			  
+			  <!--Second Slide-->
+			  <div class="swiper-slide">
+				   <div class="panel" title='Fiberfunding' id="main" selected="true" js-scrolling="true">
 
-						  <span style="font-size: 50px;">Welkom</span>
-						  <p style="font-size: 20px;">This is html version of this app. Lorem ipsum. Proin gravida nibh vbel valit acutor atulet. Acenen soluudcutin, lorem quid bibendum acutor. Nisi elit consqeut impsum. nex sagittis sem nigh id eli. Duis sed odia sit amet bij vulupupat cursar sit amet mauros.</p>
-						  <p style="font-size: 20px;">This is html version of this app. Lorem ipsum. Proin gravida nibh vbel valit acutor atulet. Acenen soluudcutin, lorem quid bibendum acutor. Nisi elit consqeut impsum. nex sagittis sem nigh id eli. Duis sed odia sit amet bij vulupupat cursar sit amet mauros.</p>
-						  <p style="font-size: 20px;">This is html version of this app. Lorem ipsum. Proin gravida nibh vbel valit acutor atulet. Acenen soluudcutin, lorem quid bibendum acutor. Nisi elit consqeut impsum. nex sagittis sem nigh id eli. Duis sed odia sit amet bij vulupupat cursar sit amet mauros.</p>
-						  <p style="font-size: 20px;">This is html version of this app. Lorem ipsum. Proin gravida nibh vbel valit acutor atulet. Acenen soluudcutin, lorem quid bibendum acutor. Nisi elit consqeut impsum. nex sagittis sem nigh id eli. Duis sed odia sit amet bij vulupupat cursar sit amet mauros.</p><p style="font-size: 20px;">This is html version of this app. Lorem ipsum. Proin gravida nibh vbel valit acutor atulet. Acenen soluudcutin, lorem quid bibendum acutor. Nisi elit consqeut impsum. nex sagittis sem nigh id eli. Duis sed odia sit amet bij vulupupat cursar sit amet mauros.</p>
-						  <p style="font-size: 20px;">This is html version of this app. Lorem ipsum. Proin gravida nibh vbel valit acutor atulet. Acenen soluudcutin, lorem quid bibendum acutor. Nisi elit consqeut impsum. nex sagittis sem nigh id eli. Duis sed odia sit amet bij vulupupat cursar sit amet mauros.</p>
-						  <p style="font-size: 20px;">This is html version of this app. Lorem ipsum. Proin gravida nibh vbel valit acutor atulet. Acenen soluudcutin, lorem quid bibendum acutor. Nisi elit consqeut impsum. nex sagittis sem nigh id eli. Duis sed odia sit amet bij vulupupat cursar sit amet mauros.</p>
-						  <p style="font-size: 20px;">This is html version of this app. Lorem ipsum. Proin gravida nibh vbel valit acutor atulet. Acenen soluudcutin, lorem quid bibendum acutor. Nisi elit consqeut impsum. nex sagittis sem nigh id eli. Duis sed odia sit amet bij vulupupat cursar sit amet mauros.</p>
-						  <p style="font-size: 20px;">This is html version of this app. Lorem ipsum. Proin gravida nibh vbel valit acutor atulet. Acenen soluudcutin, lorem quid bibendum acutor. Nisi elit consqeut impsum. nex sagittis sem nigh id eli. Duis sed odia sit amet bij vulupupat cursar sit amet mauros.</p>
-						  <p style="font-size: 20px;">This is html version of this app. Lorem ipsum. Proin gravida nibh vbel valit acutor atulet. Acenen soluudcutin, lorem quid bibendum acutor. Nisi elit consqeut impsum. nex sagittis sem nigh id eli. Duis sed odia sit amet bij vulupupat cursar sit amet mauros.</p>
-						  <div id="information" style="position: relative; margin-top: 20px;">
-							<span style="float: left; font-size: 40px; font-weight: bold;">Martijn's glasvezel buurt</span>
-							<span style="float: right; clear: left;">Aawijk-noord</span>
-							<table style="float: left; position: relative;">
-							  <tr>
-								<td><span style="font-size: 50px; clear: left; line-height: 50px;">106&nbsp;</span></td>
-								<td style="position: relative;"><span style="font-size: 30px; position: absolute; bottom: 0px;">deelnemers</span></td>
-							  </tr>
-							</table>
-							<span style="float: left; font-size: 80px; clear: left;">22%</span>
-						  </div>
+					  <span style="font-size: 50px;">Welkom</span>
+					  <p style="font-size: 20px;">This is html version of this app. Lorem ipsum. Proin gravida nibh vbel valit acutor atulet. Acenen soluudcutin, lorem quid bibendum acutor. Nisi elit consqeut impsum. nex sagittis sem nigh id eli. Duis sed odia sit amet bij vulupupat cursar sit amet mauros.</p>
+					  <p style="font-size: 20px;">This is html version of this app. Lorem ipsum. Proin gravida nibh vbel valit acutor atulet. Acenen soluudcutin, lorem quid bibendum acutor. Nisi elit consqeut impsum. nex sagittis sem nigh id eli. Duis sed odia sit amet bij vulupupat cursar sit amet mauros.</p>
+					  <p style="font-size: 20px;">This is html version of this app. Lorem ipsum. Proin gravida nibh vbel valit acutor atulet. Acenen soluudcutin, lorem quid bibendum acutor. Nisi elit consqeut impsum. nex sagittis sem nigh id eli. Duis sed odia sit amet bij vulupupat cursar sit amet mauros.</p>
+					  <p style="font-size: 20px;">This is html version of this app. Lorem ipsum. Proin gravida nibh vbel valit acutor atulet. Acenen soluudcutin, lorem quid bibendum acutor. Nisi elit consqeut impsum. nex sagittis sem nigh id eli. Duis sed odia sit amet bij vulupupat cursar sit amet mauros.</p>
+					  <p style="font-size: 20px;">This is html version of this app. Lorem ipsum. Proin gravida nibh vbel valit acutor atulet. Acenen soluudcutin, lorem quid bibendum acutor. Nisi elit consqeut impsum. nex sagittis sem nigh id eli. Duis sed odia sit amet bij vulupupat cursar sit amet mauros.</p>
+					  <p style="font-size: 20px;">This is html version of this app. Lorem ipsum. Proin gravida nibh vbel valit acutor atulet. Acenen soluudcutin, lorem quid bibendum acutor. Nisi elit consqeut impsum. nex sagittis sem nigh id eli. Duis sed odia sit amet bij vulupupat cursar sit amet mauros.</p>
+					  <p style="font-size: 20px;">This is html version of this app. Lorem ipsum. Proin gravida nibh vbel valit acutor atulet. Acenen soluudcutin, lorem quid bibendum acutor. Nisi elit consqeut impsum. nex sagittis sem nigh id eli. Duis sed odia sit amet bij vulupupat cursar sit amet mauros.</p>
+					  <p style="font-size: 20px;">This is html version of this app. Lorem ipsum. Proin gravida nibh vbel valit acutor atulet. Acenen soluudcutin, lorem quid bibendum acutor. Nisi elit consqeut impsum. nex sagittis sem nigh id eli. Duis sed odia sit amet bij vulupupat cursar sit amet mauros.</p>
+					  <p style="font-size: 20px;">This is html version of this app. Lorem ipsum. Proin gravida nibh vbel valit acutor atulet. Acenen soluudcutin, lorem quid bibendum acutor. Nisi elit consqeut impsum. nex sagittis sem nigh id eli. Duis sed odia sit amet bij vulupupat cursar sit amet mauros.</p>
+					  <p style="font-size: 20px;">This is html version of this app. Lorem ipsum. Proin gravida nibh vbel valit acutor atulet. Acenen soluudcutin, lorem quid bibendum acutor. Nisi elit consqeut impsum. nex sagittis sem nigh id eli. Duis sed odia sit amet bij vulupupat cursar sit amet mauros.</p>
+					  <div id="information" style="position: relative; margin-top: 20px;">
+						<span style="float: left; font-size: 40px; font-weight: bold;">Martijn's glasvezel buurt</span>
+						<span style="float: right; clear: left;">Aawijk-noord</span>
+						<table style="float: left; position: relative;">
+						  <tr>
+							<td><span style="font-size: 50px; clear: left; line-height: 50px;">106&nbsp;</span></td>
+							<td style="position: relative;"><span style="font-size: 30px; position: absolute; bottom: 0px;">deelnemers</span></td>
+						  </tr>
+						</table>
+						<span style="float: left; font-size: 80px; clear: left;">22%</span>
+					  </div>
 
-						  <div id="buttons">
-							<a class="customButton mijnWijk" href="#">Dit is mijn wijk!</a>
-							<a class="customButton andereWijk" href="#">Andere wijk</a>
-						  </div>
-						</div>
-				  </div>
+					  <div id="buttons">
+						<a class="customButton mijnWijk" href="#">Dit is mijn wijk!</a>
+						<a class="customButton andereWijk" href="#">Andere wijk</a>
+					  </div>
+					</div>
+			  </div>
 			</div>
-	</div>
+		</div>
 	</body>
 </html>
