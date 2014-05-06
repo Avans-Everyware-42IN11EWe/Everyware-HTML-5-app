@@ -1,136 +1,223 @@
 <!DOCTYPE html>
 <html>
-	<head>	
-		<script type="text/javascript" charset="utf-8" src="js/jquery/jquery-2.1.1.min.js"></script> 
-		<script type="text/javascript" charset="utf-8" src="js/blur.js"></script>
-		<script defer src="js/swiper/idangerous.swiper.min.js"></script>
+    <head>  
+        <script type="text/javascript" charset="utf-8" src="js/jquery/jquery-2.1.1.min.js"></script> 
+        <script type="text/javascript" charset="UTF-8" src="js/jquery/jquery-ui-1.10.4.custom.min.js"></script>
+        <script type="text/javascript" charset="utf-8" src="js/blur.js"></script>
+        <script defer src="js/swiper/idangerous.swiper.min.js"></script>
 
-		<link rel="stylesheet" href="css/idangerous.swiper.css">
-		<link rel="stylesheet" type="text/css" href="custom.css" />
-		
-		<script>
-			//$.ui.useOSThemes=false;
-			
-			$( document ).ready(function() {
-				
-				$height = $( window ).height();
+        <link rel="stylesheet" href="css/idangerous.swiper.css">
+        <link rel="stylesheet" type="text/css" href="custom.css" />
+        <link rel="stylesheet" type="text/css" href="css/jquery-ui-1.10.4.custom.css" />
 
-				$('#bg').blurjs({
-			        source: 'body',
-			        radius: 30,
-			        overlay: 'rgba(0, 0, 0, 0.2)'
-			    });
+        
+        <script>
+            //$.ui.useOSThemes=false;
+            
+            $( document ).ready(function() {
+                
+                var bewonersVerzamelen = 22;
+                var inschrijven = 9;
+                var providerSelecteren = 2;
+                var glasvezelAandeel = 0;
+                var glasvezelAanleggen = 0;
+                var overstappenNaarGlasvezel = 0;
+                /******* text****/
+                $('#bewonersVerzamelentxt').append(bewonersVerzamelen+"%");
+                $('#inschrijventxt').append(inschrijven+"%");
+                $('#providerSelecterentxt').append(providerSelecteren+"%");
+                $('#glasvezelAandeeltxt').append(glasvezelAandeel+"%");
+                $('#glasvezelAanleggentxt').append(glasvezelAanleggen+"%");
+                $('#overstappenNaarGlasvezeltxt').append(overstappenNaarGlasvezel+"%");
+                
+                /******progressbars****/
+                $( "#bewonersVerzamelen" ).progressbar({value: bewonersVerzamelen});                  
+                $( "#inschrijven" ).progressbar({value: inschrijven});                
+                $( "#providerSelecteren" ).progressbar({value: providerSelecteren});                   
+                $( "#glasvezelAandeel" ).progressbar({value: glasvezelAandeel});                    
+                $( "#glasvezelAanleggen" ).progressbar({value: glasvezelAanleggen});                     
+                $( "#overstappenNaarGlasvezel" ).progressbar({value: overstappenNaarGlasvezel});
+                
+                $height = $( window ).height();
 
-				$(window).scroll(function(e) {
-		            $clImg = $('#bg');
-		            var opacityVal = ($(".swiper-container").scrollTop() / 240)
+                $('#bg').blurjs({
+                    source: 'body',
+                    radius: 30,
+                    overlay: 'rgba(0, 0, 0, 0.2)'
+                });
 
-			        $clImg.css('opacity', opacityVal);
-			    });
+                $(window).scroll(function(e) {
+                    $clImg = $('#bg');
+                    var opacityVal = ($(".swiper-container").scrollTop() / 240)
 
-				$(".swiper-container").css("height", $height-20 + "px")
-				
-				  var mySwiper = new Swiper('.swiper-container',{
-					//Your options here:
-					mode:'horizontal',
-					noSwiping: true,
-					loop: false,
-					//etc..
-				  });  
-				
-				$( "#register" ).click(function (event) {
-					var Name = $("#txtName").val();
-					var Email = $("#txtEmail").val();
-					$.ajax({
-						url: "http://glas.mycel.nl/register",
-						type: "POST",
-						data: { "email" : Email, "name" : Name, "latlong": [1.233, 4.222], "district_id": 5 },
-						dataType: "json",
-						success: function (data) {
-							alert("Success");
-							mySwiper.swipeNext();
-						},
-						error: function(jqXHR, textStatus, errorThrown) {
-							alert("ERROR! -- textStatus")
-						  console.log(textStatus, errorThrown);
-						}
-					});
-				});
-				
-				$( "#register-facebook" ).click(function() {
-				
-				// TODO - create and login
-					mySwiper.swipeNext();
-				});
+                    $clImg.css('opacity', opacityVal);
+                });
 
-				
-			});
-					
-		</script>
-	</head>
-	<body>
-		<div id="bg"></div>
-		<div class="swiper-container">
-		  <div class="swiper-wrapper">
-			  <!--First Slide-->
-			  <div class="swiper-slide noSwiping"> 
-				<div class="panel" selected="true">
-					<div id="registration">
-						<span style="font-size: 50px; color: gray;">Registratie</span>
-						<form id="registration">
-						<div id="inputs">
-						  <input id="txtName" placeholder="Naam" type="text">
-						  <input id="txtEmail" placeholder="E-mail adres" type="text">
-						  </div>
-						</form>
-						<div class="regButtons">
-							<a class="customButton regLinks" style="color: blue;" href="#">Leuke foto toevoegen</a>
-						</div>
-						<div class="regButtons">
-							<a id="register" class="customButton regLinks" style="padding-left: 40px; padding-right: 40px;" href="#">Registratie afronden</a>
-						</div>
-						<div class="regButtons">
-							<a id="register-facebook" class="customButton regLink btnFacebook" style="color: white;" href="#">Log in met Facebook</a>
-						</div>
-					</div>
-				</div>
-				
-			  </div>
-			  
-			  <!--Second Slide-->
-			  <div class="swiper-slide">
-				   <div class="panel" title='Fiberfunding' id="main" selected="true" js-scrolling="true">
+                $(".swiper-container").css("height", $height-20 + "px")
+                
+                  var mySwiper = new Swiper('.swiper-container',{
+                    //Your options here:
+                    mode:'horizontal',
+                    noSwiping: true,
+                    loop: false,
+                    //etc..
+                  });  
+               
+               $("#intro").bind('ended', function(){
+                mySwiper.swipeNext();
+                });
+                
+                $( "#mijnWijk" ).click(function() {
+                
+                // TODO - create and login
+                    mySwiper.swipeNext();
+                });
+                
+                $( "#register" ).click(function (event) {
+                    var Name = $("#txtName").val();
+                    var Email = $("#txtEmail").val();
+                    $.ajax({
+                        url: "http://glas.mycel.nl/register",
+                        type: "POST",
+                        data: { "email" : Email, "name" : Name, "latlong": [1.233, 4.222], "district_id": 5 },
+                        dataType: "json",
+                        success: function (data) {
+                            alert("Success");
+                            mySwiper.swipeNext();
+                        },
+                        error: function(jqXHR, textStatus, errorThrown) {
+                            alert("ERROR! -- textStatus")
+                          console.log(textStatus, errorThrown);
+                        }
+                    });
+                });
+                
+                $( "#register-facebook" ).click(function() {
+                
+                // TODO - create and login
+                    mySwiper.swipeNext();
+                });
 
-					  <span style="font-size: 50px;">Welkom</span>
-					  <p style="font-size: 20px;">This is html version of this app. Lorem ipsum. Proin gravida nibh vbel valit acutor atulet. Acenen soluudcutin, lorem quid bibendum acutor. Nisi elit consqeut impsum. nex sagittis sem nigh id eli. Duis sed odia sit amet bij vulupupat cursar sit amet mauros.</p>
-					  <p style="font-size: 20px;">This is html version of this app. Lorem ipsum. Proin gravida nibh vbel valit acutor atulet. Acenen soluudcutin, lorem quid bibendum acutor. Nisi elit consqeut impsum. nex sagittis sem nigh id eli. Duis sed odia sit amet bij vulupupat cursar sit amet mauros.</p>
-					  <p style="font-size: 20px;">This is html version of this app. Lorem ipsum. Proin gravida nibh vbel valit acutor atulet. Acenen soluudcutin, lorem quid bibendum acutor. Nisi elit consqeut impsum. nex sagittis sem nigh id eli. Duis sed odia sit amet bij vulupupat cursar sit amet mauros.</p>
-					  <p style="font-size: 20px;">This is html version of this app. Lorem ipsum. Proin gravida nibh vbel valit acutor atulet. Acenen soluudcutin, lorem quid bibendum acutor. Nisi elit consqeut impsum. nex sagittis sem nigh id eli. Duis sed odia sit amet bij vulupupat cursar sit amet mauros.</p>
-					  <p style="font-size: 20px;">This is html version of this app. Lorem ipsum. Proin gravida nibh vbel valit acutor atulet. Acenen soluudcutin, lorem quid bibendum acutor. Nisi elit consqeut impsum. nex sagittis sem nigh id eli. Duis sed odia sit amet bij vulupupat cursar sit amet mauros.</p>
-					  <p style="font-size: 20px;">This is html version of this app. Lorem ipsum. Proin gravida nibh vbel valit acutor atulet. Acenen soluudcutin, lorem quid bibendum acutor. Nisi elit consqeut impsum. nex sagittis sem nigh id eli. Duis sed odia sit amet bij vulupupat cursar sit amet mauros.</p>
-					  <p style="font-size: 20px;">This is html version of this app. Lorem ipsum. Proin gravida nibh vbel valit acutor atulet. Acenen soluudcutin, lorem quid bibendum acutor. Nisi elit consqeut impsum. nex sagittis sem nigh id eli. Duis sed odia sit amet bij vulupupat cursar sit amet mauros.</p>
-					  <p style="font-size: 20px;">This is html version of this app. Lorem ipsum. Proin gravida nibh vbel valit acutor atulet. Acenen soluudcutin, lorem quid bibendum acutor. Nisi elit consqeut impsum. nex sagittis sem nigh id eli. Duis sed odia sit amet bij vulupupat cursar sit amet mauros.</p>
-					  <p style="font-size: 20px;">This is html version of this app. Lorem ipsum. Proin gravida nibh vbel valit acutor atulet. Acenen soluudcutin, lorem quid bibendum acutor. Nisi elit consqeut impsum. nex sagittis sem nigh id eli. Duis sed odia sit amet bij vulupupat cursar sit amet mauros.</p>
-					  <p style="font-size: 20px;">This is html version of this app. Lorem ipsum. Proin gravida nibh vbel valit acutor atulet. Acenen soluudcutin, lorem quid bibendum acutor. Nisi elit consqeut impsum. nex sagittis sem nigh id eli. Duis sed odia sit amet bij vulupupat cursar sit amet mauros.</p>
-					  <div id="information" style="position: relative; margin-top: 20px;">
-						<span style="float: left; font-size: 40px; font-weight: bold;">Martijn's glasvezel buurt</span>
-						<span style="float: right; clear: left;">Aawijk-noord</span>
-						<table style="float: left; position: relative;">
-						  <tr>
-							<td><span style="font-size: 50px; clear: left; line-height: 50px;">106&nbsp;</span></td>
-							<td style="position: relative;"><span style="font-size: 30px; position: absolute; bottom: 0px;">deelnemers</span></td>
-						  </tr>
-						</table>
-						<span style="float: left; font-size: 80px; clear: left;">22%</span>
-					  </div>
+                
+            });
+                    
+        </script>
+    </head>
+    <body>
+    
+    <div class="swiper-container">
+              <div class="swiper-wrapper">
+                  <!--First Slide-->
+                  <div class="swiper-slide">
+                    <video id="intro" width="100%" height="100%" controls autoplay>
+                    <source src="https://dl.dropboxusercontent.com/u/20756116/Comp2.mp4" type="video/mp4">
+                   <!-- <source src="movie.ogg" type="video/ogg">--></source>
+                    <p>Fout! klik <a href="#">hier</a> om verder te gaan</p>
+                    </video>
 
-					  <div id="buttons">
-						<a class="customButton mijnWijk" href="#">Dit is mijn wijk!</a>
-						<a class="customButton andereWijk" href="#">Andere wijk</a>
-					  </div>
-					</div>
-			  </div>
-			</div>
-		</div>
-	</body>
+                  </div>
+                  
+                  <!--Second Slide-->
+                <div class="swiper-slide">
+                       <div class="panel" title='Fiberfunding' id="main" selected="true" js-scrolling="true">
+
+                          <span style="font-size: 50px;">Welkom</span>
+                          <p style="font-size: 20px;">This is html version of this app. Lorem ipsum. Proin gravida nibh vbel valit acutor atulet. Acenen soluudcutin, lorem quid bibendum acutor. Nisi elit consqeut impsum. nex sagittis sem nigh id eli. Duis sed odia sit amet bij vulupupat cursar sit amet mauros.</p>
+                          <p style="font-size: 20px;">This is html version of this app. Lorem ipsum. Proin gravida nibh vbel valit acutor atulet. Acenen soluudcutin, lorem quid bibendum acutor. Nisi elit consqeut impsum. nex sagittis sem nigh id eli. Duis sed odia sit amet bij vulupupat cursar sit amet mauros.</p>
+                          <p style="font-size: 20px;">This is html version of this app. Lorem ipsum. Proin gravida nibh vbel valit acutor atulet. Acenen soluudcutin, lorem quid bibendum acutor. Nisi elit consqeut impsum. nex sagittis sem nigh id eli. Duis sed odia sit amet bij vulupupat cursar sit amet mauros.</p>
+                          <p style="font-size: 20px;">This is html version of this app. Lorem ipsum. Proin gravida nibh vbel valit acutor atulet. Acenen soluudcutin, lorem quid bibendum acutor. Nisi elit consqeut impsum. nex sagittis sem nigh id eli. Duis sed odia sit amet bij vulupupat cursar sit amet mauros.</p><p style="font-size: 20px;">This is html version of this app. Lorem ipsum. Proin gravida nibh vbel valit acutor atulet. Acenen soluudcutin, lorem quid bibendum acutor. Nisi elit consqeut impsum. nex sagittis sem nigh id eli. Duis sed odia sit amet bij vulupupat cursar sit amet mauros.</p>
+                          <p style="font-size: 20px;">This is html version of this app. Lorem ipsum. Proin gravida nibh vbel valit acutor atulet. Acenen soluudcutin, lorem quid bibendum acutor. Nisi elit consqeut impsum. nex sagittis sem nigh id eli. Duis sed odia sit amet bij vulupupat cursar sit amet mauros.</p>
+                          <p style="font-size: 20px;">This is html version of this app. Lorem ipsum. Proin gravida nibh vbel valit acutor atulet. Acenen soluudcutin, lorem quid bibendum acutor. Nisi elit consqeut impsum. nex sagittis sem nigh id eli. Duis sed odia sit amet bij vulupupat cursar sit amet mauros.</p>
+                          <p style="font-size: 20px;">This is html version of this app. Lorem ipsum. Proin gravida nibh vbel valit acutor atulet. Acenen soluudcutin, lorem quid bibendum acutor. Nisi elit consqeut impsum. nex sagittis sem nigh id eli. Duis sed odia sit amet bij vulupupat cursar sit amet mauros.</p>
+                          <p style="font-size: 20px;">This is html version of this app. Lorem ipsum. Proin gravida nibh vbel valit acutor atulet. Acenen soluudcutin, lorem quid bibendum acutor. Nisi elit consqeut impsum. nex sagittis sem nigh id eli. Duis sed odia sit amet bij vulupupat cursar sit amet mauros.</p>
+                          <p style="font-size: 20px;">This is html version of this app. Lorem ipsum. Proin gravida nibh vbel valit acutor atulet. Acenen soluudcutin, lorem quid bibendum acutor. Nisi elit consqeut impsum. nex sagittis sem nigh id eli. Duis sed odia sit amet bij vulupupat cursar sit amet mauros.</p>
+                          <div id="information" style="position: relative; margin-top: 20px;">
+                            <span style="float: left; font-size: 40px; font-weight: bold;">Martijn's glasvezel buurt</span>
+                            <span style="float: right; clear: left;">Aawijk-noord</span>
+                            <table style="float: left; position: relative;">
+                              <tr>
+                                <td><span style="font-size: 50px; clear: left; line-height: 50px;">106&nbsp;</span></td>
+                                <td style="position: relative;"><span style="font-size: 30px; position: absolute; bottom: 0px;">deelnemers</span></td>
+                              </tr>
+                            </table>
+                            <span style="float: left; font-size: 80px; clear: left;">22%</span>
+                          </div>
+
+                          <div id="buttons">
+                            <a id="mijnWijk" class="customButton mijnWijk" href="#">Dit is mijn wijk!</a>
+                            <a id="andereWijk" class="customButton andereWijk" href="#">Andere wijk</a>
+                          </div>
+                        </div>
+                  </div>
+                  
+                  <!--Third Slide-->
+              <div class="swiper-slide noSwiping"> 
+                <div class="panel" selected="true">
+                    <div id="registration">
+                        <span style="font-size: 50px; color: gray;">Registratie</span>
+                        <form id="registration">
+                        <div id="inputs">
+                          <input id="txtName" placeholder="Naam" type="text">
+                          <input id="txtEmail" placeholder="E-mail adres" type="text">
+                          </div>
+                        </form>
+                        <div class="regButtons">
+                            <a class="customButton regLinks" style="color: blue;" href="#">Leuke foto toevoegen</a>
+                        </div>
+                        <div class="regButtons">
+                            <a id="register" class="customButton regLinks" style="padding-left: 40px; padding-right: 40px;" href="#">Registratie afronden</a>
+                        </div>
+                        <div class="regButtons">
+                            <a id="register-facebook" class="customButton regLink btnFacebook" style="color: white;" href="#">Log in met Facebook</a>
+                        </div>
+                    </div>
+                </div>
+                
+              </div>
+                  <!--Vierde Slide-->
+                  <div class="swiper-slide">
+                      <p style="font-size: 23px;">stappen</p>
+                      <ul class="status">
+                         <li>
+                          <p id=bewonersVerzamelentxt>1.&nbsp; Bewoners verzamelen&nbsp;</p>
+                        <div id="bewonersVerzamelen"></div> 
+                        </li> 
+                        <li>
+                         <p id="inschrijventxt">2.&nbsp; Inschrijven&nbsp;</p>
+                        <div id="inschrijven"></div> 
+                        </li>
+                        <li>
+                            <p id="providerSelecterentxt">3.&nbsp; Provider selecteren&nbsp;</p>
+                        <div id="providerSelecteren"></div> 
+                        </li>
+                        <li>
+                            <p id="glasvezelAandeeltxt">4.&nbsp; Glasvezel aandeel&nbsp;</p>
+                        <div id="glasvezelAandeel"></div>
+                        </li>
+                        <li> 
+                            <p id="glasvezelAanleggentxt">5.&nbsp; Glasvezel aanleggen&nbsp;</p>
+                        <div id="glasvezelAanleggen"></div> 
+                        </li>
+                        <li>
+                           <p id="overstappenNaarGlasvezeltxt">6.&nbsp; Overstappen naar glasvezel&nbsp;</p>
+                        <div id="overstappenNaarGlasvezel"></div> 
+                        </li>
+                          
+                      </ul>
+                      
+                                               <div id="information" style="position: relative; margin-top: 20px;">
+                            <span style="float: left; font-size: 40px; font-weight: bold;">Martijn's glasvezel buurt</span>
+                            <span style="float: right; clear: left;">Aawijk-noord</span>
+                            <table style="float: left; position: relative;">
+                              <tr>
+                                <td><span style="font-size: 50px; clear: left; line-height: 50px;">106&nbsp;</span></td>
+                                <td style="position: relative;"><span style="font-size: 30px; position: absolute; bottom: 0px;">deelnemers</span></td>
+                              </tr>
+                            </table>
+                            <span style="float: left; font-size: 80px; clear: left;">22%</span>
+                          </div>
+                  </div>
+                </div>
+        </div>
+    </body>
 </html>
