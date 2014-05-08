@@ -5,7 +5,7 @@ $( document ).ready(function() {
   {					
     $.get( "file:///android_asset/webapp/"+$page, function( pageData ) {					
       $element.html( pageData );	
-  	  alert(pageData);						
+  	  //alert(pageData);						
   	});											
   }
 
