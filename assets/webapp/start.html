@@ -1,25 +1,15 @@
 <!DOCTYPE html>
 <html>
     <head>  
-        <script type="text/javascript" charset="utf-8" src="js/jquery/jquery-2.1.1.min.js"></script> 
-        <script type="text/javascript" charset="UTF-8" src="js/jquery/jquery-ui-1.10.4.custom.min.js"></script>
-        
-        <script type="text/javascript" charset="utf-8" src="js/pageloader.js"></script>
-        
-        <script type="text/javascript" charset="utf-8" src="js/blur.js"></script>
-        <script defer src="js/swiper/idangerous.swiper.min.js"></script>
-        <script type="text/javascript" charset="UTF-8" src="js/vague.js"></script>
-
+        <script type="text/javascript" charset="UTF-8" src="js/jsLoad.js"></script>
         <link rel="stylesheet" href="css/idangerous.swiper.css">
         <link rel="stylesheet" type="text/css" href="custom.css" />
         <link rel="stylesheet" type="text/css" href="css/jquery-ui-1.10.4.custom.css" />
 
         
-        <script>
-            //$.ui.useOSThemes=false;
-			
+        <script>		
 			// create intro page
-			$eIntro = $("<div id='ip'></div>");
+			$eIntro = $("<div></div>");
 				
 			$eIntro.css("backgroundColor", "black");
 			$eIntro.css("height", "100%");
@@ -47,129 +37,7 @@
 
 				// Append and show the intro video
 				$("#overlay_container").append($eIntro);							
-				$("#overlay_container").show();
-				
-				
-                var bewonersVerzamelen = 22;
-                var inschrijven = 9;
-                var providerSelecteren = 2;
-                var glasvezelAandeel = 0;
-                var glasvezelAanleggen = 0;
-                var overstappenNaarGlasvezel = 0;
-                /******* text****/
-                $('#bewonersVerzamelentxt').append(bewonersVerzamelen+"%");
-                $('#inschrijventxt').append(inschrijven+"%");
-                $('#providerSelecterentxt').append(providerSelecteren+"%");
-                $('#glasvezelAandeeltxt').append(glasvezelAandeel+"%");
-                $('#glasvezelAanleggentxt').append(glasvezelAanleggen+"%");
-                $('#overstappenNaarGlasvezeltxt').append(overstappenNaarGlasvezel+"%");
-                
-                /******progressbars****/
-                $( "#bewonersVerzamelen" ).progressbar({value: bewonersVerzamelen});                  
-                $( "#inschrijven" ).progressbar({value: inschrijven});                
-                $( "#providerSelecteren" ).progressbar({value: providerSelecteren});                   
-                $( "#glasvezelAandeel" ).progressbar({value: glasvezelAandeel});                    
-                $( "#glasvezelAanleggen" ).progressbar({value: glasvezelAanleggen});                     
-                $( "#overstappenNaarGlasvezel" ).progressbar({value: overstappenNaarGlasvezel});
-                
-                
-                var vague = $('.vague').Vague({
-
-                 intensity:      0,      // Blur Intensity
-               forceSVGUrl:    false,   // Force absolute path to the SVG filter,
-                 // default animation options
-               animationOptions: {
-               duration: 1000,
-               easing: 'linear' // here you can use also custom jQuery easing functions
-                                     }
-                    });
-
-        vague.blur();
-        var vaag = 0;
-        $("#blur").scroll(function(e) {
-            if(vaag < 10){
-            vaag=vaag+2;
-            }
-            console.log(vaag);
-                   vague.animate(vaag),{
-                duration:500
-            };
-                });
-                
-                /*
-                $('.btn input').on('keyup blur',function(e){
-            vague.animate(+$(e.currentTarget).val(),{
-                duration:800
-            }).done(function(){
-                if (window.console)
-                    console.log('Animation Complete!');
-            });*/
-                
-                
-              /*  $('#bg').blurjs({
-                    source: 'body',
-                    radius: 30,
-                    overlay: 'rgba(0, 0, 0, 0.2)'
-                });
-
-                $("#blur").scroll(function(e) {
-                    $clImg = $('#bg');
-                    var opacityVal = ($(".swiper-container").scrollTop() / 240);
-
-                    $clImg.css('opacity', opacityVal);
-                   
-                });
-*/
-                
-                
-                  var mySwiper = new Swiper('.swiper-container',{
-                    //Your options here:
-                    mode:'horizontal',
-                    noSwiping: true,
-                    loop: false,
-                    //etc..
-                  });  
- 
-               $("#intro").bind('ended', function(){
-                if(mySwiper.activeIndex == 0){
-                   mySwiper.swipeNext();
-                }
-                });
-                
-                $( "#mijnWijk" ).click(function() {
-                
-                // TODO - create and login
-                    mySwiper.swipeNext();
-                });
-                
-                $( "#register" ).click(function (event) {
-                    var Name = $("#txtName").val();
-                    var Email = $("#txtEmail").val();
-                    $.ajax({
-                        url: "http://glas.mycel.nl/register",
-                        type: "POST",
-                        data: { "email" : Email, "name" : Name, "latlong": [1.233, 4.222], "district_id": 5 },
-                        dataType: "json",
-                        success: function (data) {
-                            alert("Success");
-                            mySwiper.swipeNext();
-                        },
-                        error: function(jqXHR, textStatus, errorThrown) {
-                            alert("ERROR! -- textStatus")
-                          console.log(textStatus, errorThrown);
-                        }
-                    });
-                });
-                
-                $( "#register-facebook" ).click(function() {
-                
-                // TODO - create and login
-                    mySwiper.swipeNext();
-                });
-
-                
-            });
-                    
+				$("#overlay_container").show();						   
         </script>
     </head>
     <body>
