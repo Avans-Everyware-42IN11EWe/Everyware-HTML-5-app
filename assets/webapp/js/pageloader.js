@@ -1,5 +1,3 @@
-$( document ).ready(function() {
- 
   // Function to load html pages 
   function LoadHtmlPage($page, $element)
   {					
@@ -9,10 +7,11 @@ $( document ).ready(function() {
   	});											
   }
 
+$( document ).ready(function() {
   // Call
   //LoadHtmlPage("test.html", $("#intro_video"));
 
-  LoadHtmlPage("pages/intro_video.html", $("#intro_video"));
+  //LoadHtmlPage("pages/intro_video.html", $("#intro_video"));
   LoadHtmlPage("pages/district.html", $("#blur"));
   
   LoadHtmlPage("pages/register.html", $("#register"));
