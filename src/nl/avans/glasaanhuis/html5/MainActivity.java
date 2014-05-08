@@ -5,6 +5,7 @@ import android.os.Build.VERSION_CODES;
 import android.os.Bundle;
 import android.annotation.SuppressLint;
 import android.app.Activity;
+import android.content.Context;
 import android.util.Log;
 import android.view.Menu;
 import android.view.Window;
@@ -17,6 +18,8 @@ import android.webkit.WebViewClient;
 
 public class MainActivity extends Activity {
 
+	public static Context _context;
+	
 	@SuppressLint({ "SetJavaScriptEnabled", "JavascriptInterface" })
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -25,13 +28,20 @@ public class MainActivity extends Activity {
 		WebView wv;
 		wv = (WebView) findViewById(R.id.WebView);
 		
+		_context = getApplicationContext();
 		
 		wv.addJavascriptInterface(new Logging(),"Logging");
 		wv.setWebViewClient(new CustomWebViewclient(this));
 		//wv.loadUrl("file:///android_asset/webapp/index.html");
 		
+		// Javascript handler
+		wv.addJavascriptInterface(new IJavascriptHandler(), "JHandler");		
+		
 		wv.loadUrl("file:///android_asset/webapp/start.html");
 	
+		
+		
+		
 		// Waarom werkt dit niet
 		wv.setWebChromeClient(new WebChromeClient() {
 			public boolean onConsoleMessage(ConsoleMessage cm) {
