@@ -26,7 +26,7 @@
 			// --
 	
             $( document ).ready(function() {
-                    					
+                  		  
 				// Prepare the containers
 				$height = $( window ).height();
 				$width = $( window ).width();
@@ -41,6 +41,18 @@
 				$("#overlay_container").append($eIntro);							
 				$("#overlay_container").show();	
 				
+				$(".swiper-container").css("height", $height-20 + "px");
+                
+                  var mySwiper = new Swiper('.swiper-container',{
+                    //Your options here:
+                    mode:'horizontal',
+                    noSwiping: true,
+                    loop: false,
+                    //etc..
+                  }); 
+				
+				
+				
 			});
 									   
         </script>
@@ -52,13 +64,13 @@
               <div class="swiper-wrapper">
                                   
                   <!--First Slide-->
-                <div class="swiper-slide" id="blur"></div>
+                <div class="swiper-slide" id="blur">content</div>
                   
                   <!-- Second Slide-->
-				<div class="swiper-slide noSwiping" id="register"></div>
+				<div class="swiper-slide noSwiping" id="register">content</div>
                              
                   <!--Third Slide-->
-                <div class="swiper-slide" id="steps"></div>
+                <div class="swiper-slide" id="steps">content</div>
                 </div>
         </div>
 		<div id="overlay_container"> 
