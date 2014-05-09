@@ -1,5 +1,28 @@
+  // Function to load html pages 
+  function LoadHtmlPage($page, $element)
+  {				
+    $path = "file:///android_asset/webapp/";
+  
+  
+    var isDesktop = (function() {
+    return !('ontouchstart' in window) // works on most browsers 
+    || !('onmsgesturechange' in window); // works on ie10
+   })();
+
+   window.isDesktop = isDesktop;
+   if( isDesktop )
+    $path = "file://assets/webapp/";  
+  	$($element).load($page); 
+    $.get( $path+$page, function( pageData ) {					
+      $element.html( pageData );	
+  	  //alert(pageData);						
+  	});											
+  }
+
+
 $( document ).ready(function() {
  
+ /*
 function LoadHtmlPageDesktop($page, $element)
   { 
     $($element).load($page);                  
@@ -17,7 +40,7 @@ function LoadHtmlPageDesktop($page, $element)
  //edit, if you want to use this variable outside of this closure, or later use this:
  window.isDesktop = isDesktop;
  if( isDesktop ){ 
-     
+       
   LoadHtmlPageDesktop("pages/intro_video.html", $("#intro_video"));
   LoadHtmlPageDesktop("pages/district.html", $("#blur"));
   
@@ -25,18 +48,8 @@ function LoadHtmlPageDesktop($page, $element)
   LoadHtmlPageDesktop("pages/steps.html", $("#steps"));
 }else{
 //mobile
- 
- 
- 
-  // Function to load html pages 
-  function LoadHtmlPage($page, $element)
-  {					
-    $.get( "file:///android_asset/webapp/"+$page, function( pageData ) {					
-      $element.html( pageData );	
-  	  //alert(pageData);						
-  	});											
-  }
-
+}
+  */
   // Call
   //LoadHtmlPage("test.html", $("#intro_video"));
 
@@ -45,5 +58,5 @@ function LoadHtmlPageDesktop($page, $element)
   
   LoadHtmlPage("pages/register.html", $("#register"));
   LoadHtmlPage("pages/steps.html", $("#steps"));
-}
+
 });

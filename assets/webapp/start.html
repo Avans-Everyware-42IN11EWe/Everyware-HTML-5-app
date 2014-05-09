@@ -20,6 +20,7 @@
 			
 			// Hide the intro video
 				$(document).on( "click", "#skip_intro", function() {
+					$('#intro')[0].pause(); 
 					$("#overlay_container").hide();
 				});				
 			// --
