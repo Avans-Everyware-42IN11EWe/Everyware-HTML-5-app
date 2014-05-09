@@ -1,11 +1,4 @@
-  $( document ).ready(function() {
-       var mySwiper = new Swiper('.swiper-container',{
-                    //Your options here:
-                    mode:'horizontal',
-                    noSwiping: true,
-                    loop: false,
-                    //etc..
-                  });  
+  $( document ).ready(function() { 
  $( "#mijnWijk" ).click(function() {
                 
                 // TODO - create and login
