@@ -13,10 +13,13 @@
    if( isDesktop )
     $path = "file://assets/webapp/";  
   	$($element).load($page); 
+	
+	/*
     $.get( $path+$page, function( pageData ) {					
       $element.html( pageData );	
   	  //alert(pageData);						
-  	});											
+  	});	
+*/	
   }
 
 
