@@ -2,30 +2,66 @@
 <html>
     <head>  
         <script type="text/javascript" charset="UTF-8" src="js/jsLoad.js"></script>
+		
         <link rel="stylesheet" href="css/idangerous.swiper.css">
         <link rel="stylesheet" type="text/css" href="custom.css" />
         <link rel="stylesheet" type="text/css" href="css/jquery-ui-1.10.4.custom.css" />
 
-       
+        
+        <script>		
+			// create intro page
+			$eIntro = $("<div></div>");
+				
+			$eIntro.css("backgroundColor", "black");
+			$eIntro.css("height", "100%");
+			$eIntro.css("width", "100%");
+				
+			LoadHtmlPage("pages/intro_video.html", $eIntro);
+			
+			// Hide the intro video
+				$(document).on( "click", "#skip_intro", function() {
+					$("#overlay_container").hide();
+				});				
+			// --
+	
+            $( document ).ready(function() {
+                    					
+				// Prepare the containers
+				$height = $( window ).height();
+				$width = $( window ).width();
+				$(".swiper-container").css("height", $height + "px");
+
+				$("#overlay_container").css("height", $height + "px");
+				$("#overlay_container").css("width", $width + "px");
+				$("#overlay_container").hide();
+				// --
+
+				// Append and show the intro video
+				$("#overlay_container").append($eIntro);							
+				$("#overlay_container").show();	
+				
+			});
+									   
+        </script>
     </head>
     <body>
   	
     <figure class="vague"></figure>
     <div class="swiper-container">
               <div class="swiper-wrapper">
-                  
+                                  
                   <!--First Slide-->
-                  <div id="intro_video" class="swiper-slide"></div>
-                  
-                  <!--Second Slide-->
                 <div class="swiper-slide" id="blur"></div>
                   
-                  <!--Third Slide-->
+                  <!-- Second Slide-->
 				<div class="swiper-slide noSwiping" id="register"></div>
                              
-                  <!--Vierde Slide-->
+                  <!--Third Slide-->
                 <div class="swiper-slide" id="steps"></div>
                 </div>
         </div>
+		<div id="overlay_container"> 
+		
+		</div>
     </body>
 </html>
