@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 $( document ).ready(function() {
  
 function LoadHtmlPageDesktop($page, $element)
@@ -29,8 +28,6 @@ function LoadHtmlPageDesktop($page, $element)
  
  
  
-=======
->>>>>>> 8048ae32be4b30475ea40e6b6ba85dc709263a88
   // Function to load html pages 
   function LoadHtmlPage($page, $element)
   {					
@@ -40,11 +37,10 @@ function LoadHtmlPageDesktop($page, $element)
   	});											
   }
 
-$( document ).ready(function() {
   // Call
   //LoadHtmlPage("test.html", $("#intro_video"));
 
-  //LoadHtmlPage("pages/intro_video.html", $("#intro_video"));
+  LoadHtmlPage("pages/intro_video.html", $("#intro_video"));
   LoadHtmlPage("pages/district.html", $("#blur"));
   
   LoadHtmlPage("pages/register.html", $("#register"));
