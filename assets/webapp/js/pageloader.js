@@ -22,6 +22,7 @@
 
 $( document ).ready(function() {
  
+<<<<<<< HEAD
  /*
 function LoadHtmlPageDesktop($page, $element)
   { 
@@ -33,6 +34,8 @@ function LoadHtmlPageDesktop($page, $element)
   }
 
 
+=======
+>>>>>>> 3f6302f8d874fca5bdfadd4f3f86971b3c60d321
  var isDesktop = (function() {
   return !('ontouchstart' in window) // works on most browsers 
   || !('onmsgesturechange' in window); // works on ie10
@@ -48,8 +51,11 @@ function LoadHtmlPageDesktop($page, $element)
   LoadHtmlPageDesktop("pages/steps.html", $("#steps"));
 }else{
 //mobile
+<<<<<<< HEAD
 }
   */
+=======
+>>>>>>> 3f6302f8d874fca5bdfadd4f3f86971b3c60d321
   // Call
   //LoadHtmlPage("test.html", $("#intro_video"));
 
@@ -58,5 +64,29 @@ function LoadHtmlPageDesktop($page, $element)
   
   LoadHtmlPage("pages/register.html", $("#register"));
   LoadHtmlPage("pages/steps.html", $("#steps"));
+<<<<<<< HEAD
 
 });
+=======
+}
+});
+
+function LoadHtmlPageDesktop($page, $element)
+  { 
+    $($element).load($page);                  
+    $.get( "file://assets/webapp/"+$page, function( pageData ) {                    
+      $element.html( pageData );    
+      //alert(pageData);                        
+    });                                         
+  }
+
+
+  // Function to load html pages 
+  function LoadHtmlPage($page, $element)
+  {                 
+    $.get( "file:///android_asset/webapp/"+$page, function( pageData ) {                    
+      $element.html( pageData );    
+      //alert(pageData);                        
+    });                                         
+  }
+>>>>>>> 3f6302f8d874fca5bdfadd4f3f86971b3c60d321
