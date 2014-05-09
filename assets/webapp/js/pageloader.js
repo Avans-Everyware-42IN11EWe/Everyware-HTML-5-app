@@ -1,15 +1,5 @@
 $( document ).ready(function() {
  
-function LoadHtmlPageDesktop($page, $element)
-  { 
-    $($element).load($page);                  
-    $.get( "file://assets/webapp/"+$page, function( pageData ) {                    
-      $element.html( pageData );    
-      //alert(pageData);                        
-    });                                         
-  }
-
-
  var isDesktop = (function() {
   return !('ontouchstart' in window) // works on most browsers 
   || !('onmsgesturechange' in window); // works on ie10
@@ -25,18 +15,6 @@ function LoadHtmlPageDesktop($page, $element)
   LoadHtmlPageDesktop("pages/steps.html", $("#steps"));
 }else{
 //mobile
- 
- 
- 
-  // Function to load html pages 
-  function LoadHtmlPage($page, $element)
-  {					
-    $.get( "file:///android_asset/webapp/"+$page, function( pageData ) {					
-      $element.html( pageData );	
-  	  //alert(pageData);						
-  	});											
-  }
-
   // Call
   //LoadHtmlPage("test.html", $("#intro_video"));
 
@@ -47,3 +25,22 @@ function LoadHtmlPageDesktop($page, $element)
   LoadHtmlPage("pages/steps.html", $("#steps"));
 }
 });
+
+function LoadHtmlPageDesktop($page, $element)
+  { 
+    $($element).load($page);                  
+    $.get( "file://assets/webapp/"+$page, function( pageData ) {                    
+      $element.html( pageData );    
+      //alert(pageData);                        
+    });                                         
+  }
+
+
+  // Function to load html pages 
+  function LoadHtmlPage($page, $element)
+  {                 
+    $.get( "file:///android_asset/webapp/"+$page, function( pageData ) {                    
+      $element.html( pageData );    
+      //alert(pageData);                        
+    });                                         
+  }
