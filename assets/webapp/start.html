@@ -24,7 +24,7 @@
 					$("#overlay_container").hide();
 				});				
 			// --
-	
+	        var mySwiper;
             $( document ).ready(function() {
                   		  
 				// Prepare the containers
@@ -43,7 +43,7 @@
 				
 				$(".swiper-container").css("height", $height-20 + "px");
                 
-                  var mySwiper = new Swiper('.swiper-container',{
+                  mySwiper  = new Swiper('.swiper-container',{
                     //Your options here:
                     mode:'horizontal',
                     noSwiping: true,
