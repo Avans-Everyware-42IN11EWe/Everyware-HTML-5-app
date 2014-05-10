@@ -1,5 +1,5 @@
  $( document ).ready(function() {
-$( "#register" ).click(function (event) {
+$( "#registerbtn" ).click(function (event) {
                     var Name = $("#txtName").val();
                     var Email = $("#txtEmail").val();
                     $.ajax({
