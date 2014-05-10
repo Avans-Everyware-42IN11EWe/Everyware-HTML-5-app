@@ -1,34 +1,34 @@
 /**
- *
- * Version: 0.0.5
- * Author: Gianluca Guarini
- * Contact: gianluca.guarini@gmail.com
- * Website: http://www.gianlucaguarini.com/
- * Twitter: @gianlucaguarini
- *
- * Copyright (c) Gianluca Guarini
- *
- * Permission is hereby granted, free of charge, to any person
- * obtaining a copy of this software and associated documentation
- * files (the "Software"), to deal in the Software without
- * restriction, including without limitation the rights to use,
- * copy, modify, merge, publish, distribute, sublicense, and/or sell
- * copies of the Software, and to permit persons to whom the
- * Software is furnished to do so, subject to the following
- * conditions:
- *
- * The above copyright notice and this permission notice shall be
- * included in all copies or substantial portions of the Software.
- *
- * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
- * EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES
- * OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
- * NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT
- * HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
- * WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
- * FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
- * OTHER DEALINGS IN THE SOFTWARE.
- **/
+*
+* Version: 0.0.5
+* Author: Gianluca Guarini
+* Contact: gianluca.guarini@gmail.com
+* Website: http://www.gianlucaguarini.com/
+* Twitter: @gianlucaguarini
+*
+* Copyright (c) Gianluca Guarini
+*
+* Permission is hereby granted, free of charge, to any person
+* obtaining a copy of this software and associated documentation
+* files (the "Software"), to deal in the Software without
+* restriction, including without limitation the rights to use,
+* copy, modify, merge, publish, distribute, sublicense, and/or sell
+* copies of the Software, and to permit persons to whom the
+* Software is furnished to do so, subject to the following
+* conditions:
+*
+* The above copyright notice and this permission notice shall be
+* included in all copies or substantial portions of the Software.
+*
+* THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+* EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES
+* OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+* NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT
+* HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
+* WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+* FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
+* OTHER DEALINGS IN THE SOFTWARE.
+**/
 
 
 (function(window, document, $) {
@@ -45,7 +45,7 @@
     // Default options
     var defaultOptions = {
       intensity: 5,
-      forceSVGUrl: false,
+      forceSVGUrl: true,
       animationOptions: {
         duration: 1000,
         easing: 'linear'
@@ -55,10 +55,10 @@
       options = $.extend(defaultOptions, customOptions),
 
       /*
-       *
-       * Helpers
-       *
-       */
+*
+* Helpers
+*
+*/
 
       _browserPrefixes = ' -webkit- -moz- -o- -ms- '.split(' '),
       _cssPrefixString = {},
@@ -94,10 +94,10 @@
       },
 
       /*
-       *
-       * PRIVATE VARS
-       *
-       */
+*
+* PRIVATE VARS
+*
+*/
 
       _blurred = false,
       // cache the right prefixed css filter property
@@ -108,27 +108,27 @@
       _animation,
 
       /*
-       *
-       * PRIVATE METHODS
-       *
-       */
+*
+* PRIVATE METHODS
+*
+*/
 
       /**
-       * Create any svg element
-       * @param  { String } tagName: svg tag name
-       * @return { SVG Node }
-       */
+* Create any svg element
+* @param { String } tagName: svg tag name
+* @return { SVG Node }
+*/
 
       _createSvgElement = function(tagName) {
         return document.createElementNS('http://www.w3.org/2000/svg', tagName);
       },
 
       /**
-       *
-       * Inject the svg tag into the DOM
-       * we will use it only if the css filters are not supported
-       *
-       */
+*
+* Inject the svg tag into the DOM
+* we will use it only if the css filters are not supported
+*
+*/
 
       _appendSVGFilter = function() {
         // create the svg and the filter tags
@@ -155,26 +155,26 @@
       };
 
     /*
-     *
-     * PUBLIC VARS
-     *
-     */
+*
+* PUBLIC VARS
+*
+*/
 
     // cache the DOM element to blur
     this.$elm = elm instanceof $ ? elm : $(elm);
 
 
     /*
-     *
-     * PUBLIC METHODS
-     *
-     */
+*
+* PUBLIC METHODS
+*
+*/
 
     /**
-     *
-     * Initialize the plugin creating a new svg if necessary
-     *
-     */
+*
+* Initialize the plugin creating a new svg if necessary
+*
+*/
 
     this.init = function() {
       // checking the css filter feature
@@ -191,10 +191,10 @@
     };
 
     /**
-     *
-     * Blur the DOM element selected
-     *
-     */
+*
+* Blur the DOM element selected
+*
+*/
 
     this.blur = function() {
 
@@ -226,10 +226,10 @@
 
 
     /**
-     * Animate the blur intensity
-     * @param  { Int } newIntensity: new blur intensity value
-     * @param  { Object } customAnimationOptions: default jQuery animate options
-     */
+* Animate the blur intensity
+* @param { Int } newIntensity: new blur intensity value
+* @param { Object } customAnimationOptions: default jQuery animate options
+*/
 
     this.animate = function(newIntensity, customAnimationOptions) {
       // control the new blur intensity checking if it's a valid value
@@ -258,10 +258,10 @@
     };
 
     /**
-     *
-     * Unblur the DOM element
-     *
-     */
+*
+* Unblur the DOM element
+*
+*/
     this.unblur = function() {
       // set the DOM filter property to none
       this.$elm.css(_cssFilterProp, 'none');
@@ -270,10 +270,10 @@
     };
 
     /**
-     *
-     * Trigger alternatively the @blur and @unblur methods
-     *
-     */
+*
+* Trigger alternatively the @blur and @unblur methods
+*
+*/
 
     this.toggleblur = function() {
       if (_blurred) {
@@ -284,8 +284,8 @@
       return this;
     };
     /**
-     * Destroy the Vague.js instance removing also the svg filter injected into the DOM
-     */
+* Destroy the Vague.js instance removing also the svg filter injected into the DOM
+*/
     this.destroy = function() {
       // do we need to remove the svg filter?
       if (_support.svgfilters) {

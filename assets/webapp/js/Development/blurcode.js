@@ -1,14 +1,7 @@
  $( document ).ready(function() {
-var vague = $('.vague').Vague({
-
-                 intensity:      0,      // Blur Intensity
-               forceSVGUrl:    false,   // Force absolute path to the SVG filter,
-                 // default animation options
-               animationOptions: {
-               duration: 500,
-               easing: 'linear' // here you can use also custom jQuery easing functions
-                                     }
-                    });
+     
+    
+var vague = $('.vague').Vague({intensity:0});
 
         vague.blur();
         var vaag = 0;
