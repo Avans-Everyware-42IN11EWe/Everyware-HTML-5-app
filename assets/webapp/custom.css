@@ -1,5 +1,4 @@
-
-body{
+body {
     position:absolute;
     color:#fff;
     margin:0;
@@ -7,11 +6,12 @@ body{
     width: 100%;
     height: 100%;
     background-image: url('background.jpg');
+    font-family: 'Helvetica Neue',Helvetica,Arial,sans-serif;
 }
 
 a.mijnWijk {
-    background:#E5E5E5; 
-    color: blue;
+    background:#ECECEC; 
+    color: #2D8AF9;   
 }
 
 a.andereWijk {
@@ -20,20 +20,21 @@ a.andereWijk {
 }
 
 a.customButton {
-    background:#DEDFE0; 
+    background:#ECECEC; 
     padding:5px 15px; 
     color: gray;
     border:0 none;
     cursor:pointer;
     -webkit-border-radius: 2px;
-    border-radius: 5px; 
+    border-radius: 2px; 
     text-decoration: none;
+    display: inline-block;
 }
 
 a.regLinks {
     margin-left: auto;
     margin-right: auto;
-    border: 1px gray solid;
+    border: 1px #DBDBDB solid;
     padding: 10px;
     position: relative;
     display: inline-block;
@@ -46,10 +47,11 @@ div.regButtons {
 
 div#registration {
     margin: 10px;
-    background: rgba(232, 233, 234, .75);
+    background: rgba(255, 255, 255, .90);
     height: 100%;
-    -webkit-border-radius: 5px;
+    border-radius: 5px;
     padding: 10px;
+    -moz-box-sizing: border-box;
 }
 
 #information {
@@ -91,8 +93,24 @@ div#registration {
    /* background-size: cover !important;*/
 }
 
+form#registration {
+    position: relative;
+    margin: 0;
+    padding: 0;
+}
+
 form#registration input[type=text] {
-   /* background-color: #DEDFE0;*/
+    border: 1px solid #DBDBDB;
+    background-color: #ECECEC;
+    border-radius: 2px;
+    font-size: 14px;
+    font-weight: normal;
+    margin-bottom: 10px;
+    padding: 10px;
+    width: 100%;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
 }
 
 .status{
