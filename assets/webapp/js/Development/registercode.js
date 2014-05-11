@@ -1,5 +1,7 @@
  $( document ).ready(function() {
 $( "#registerbtn" ).click(function (event) {
+    //standaard blur uitzetten
+                 $("#bg").css("opacity","0");
                     var Name = $("#txtName").val();
                     var Email = $("#txtEmail").val();
                     $.ajax({

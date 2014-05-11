@@ -6,7 +6,6 @@
         <link rel="stylesheet" href="css/idangerous.swiper.css">
         <link rel="stylesheet" type="text/css" href="custom.css" />
         <link rel="stylesheet" type="text/css" href="css/jquery-ui-1.10.4.custom.css" />
-
         
         <script>		
 			// create intro page
@@ -50,7 +49,30 @@
                     loop: false,
                     //etc..
                   }); 
-				
+                  
+                 
+                $('#bg').blurjs({
+                    source: 'body',
+                    radius: 60,
+                    overlay: 'rgba(0, 0, 0, .2)'
+                });
+                 $("#bg").css("opacity","0");
+
+				 $(".blur").scroll(function(e) {
+            var elem = $(".blur");
+            var maxScrollTop = elem[0].scrollHeight - elem.outerHeight();
+            var vaagheid = 1/maxScrollTop;
+            var blurHoeveelheid =$(".blur").scrollTop()*vaagheid;
+            
+           
+            //grootte window
+            console.log("blur per pixel: "+vaagheid);
+            console.log("scrolltop waarde "+$(".blur").scrollTop());
+            console.log(blurHoeveelheid);
+            $("#bg").css("opacity",blurHoeveelheid);
+                 
+                });
+                
 				
 				
 			});
@@ -59,7 +81,8 @@
     </head>
     <body>
   	
-    <figure class="vague"></figure>
+    <!--<figure class="vague"></figure>-->
+    <div id="bg"></div>
     <div class="swiper-container">
               <div class="swiper-wrapper">
                                   
