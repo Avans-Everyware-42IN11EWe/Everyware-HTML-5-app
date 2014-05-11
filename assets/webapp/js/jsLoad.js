@@ -16,4 +16,5 @@ document.write('<script type="text/javascript" charset="utf-8" src="js/developme
 document.write('<script type="text/javascript" charset="utf-8" src="js/development/swipercode.js"></script>');
 document.write('<script type="text/javascript" charset="utf-8" src="js/development/voortgangsoverzicht.js"></script>');
 document.write('<script type="text/javascript" charset="utf-8" src="js/pageloader.js"></script>');
+document.write('<script type="text/javascript" charset="utf-8" src="js/development/mijnWijk.js"></script>');
 //document.write('<script type="text/javascript" charset="utf-8" src="js/development/zoekpostcode.js"></script>');

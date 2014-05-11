@@ -1,5 +1,5 @@
 <div class="panel" title='Fiberfunding' id="main" selected="true" js-scrolling="true">
-
+    <figure class="container"></figure>
                           <span style="font-size: 50px;">Welkom</span>
                           <p style="font-size: 20px;">This is html version of this app. Lorem ipsum. Proin gravida nibh vbel valit acutor atulet. Acenen soluudcutin, lorem quid bibendum acutor. Nisi elit consqeut impsum. nex sagittis sem nigh id eli. Duis sed odia sit amet bij vulupupat cursar sit amet mauros.</p>
 
@@ -16,7 +16,30 @@
                           </div>
 
                           <div id="buttons">
-                            <a id="mijnWijk" class="customButton mijnWijk" href="#">Dit is mijn wijk!</a>
+                            <a id="mijnWijk" class="customButton mijnWijk" href="#mijnWijk">Dit is mijn wijk!</a>
                             <a id="andereWijk" class="customButton andereWijk" href="#">Andere wijk</a>
                           </div>
+                          <script src="http://code.jquery.com/jquery-1.8.2.min.js"></script>
+    <script src="../js/Vague.js"></script>
+    <script>
+    	
+    	var s = $(window).scrollTop(),
+    	// scroll value and opacity
+    	opacityVal = (s / 150.0);
+        var vague = $(".container").Vague({intensity:01});
+        vague.blur();
+		
+		$(window).scroll(function() {
+			// Get scroll position
+			var s = $(window).scrollTop(),
+			// scroll value and opacity
+			opacityVal = (s / 150.0);
+			vague.animate(opacityVal,{
+                duration:800
+            }).done(function(){
+                if (window.console)
+                    console.log('Animation Complete!');
+            });
+		});
+    </script>
 </div>
