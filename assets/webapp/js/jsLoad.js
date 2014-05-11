@@ -12,7 +12,7 @@ document.write('<script type="text/javascript" charset="UTF-8" src="js/blur.js">
 //document.write('<script type="text/javascript" charset="utf-8" src="js/development/blurcode.js"></script>');
 //document.write('<script type="text/javascript" charset="utf-8" src="js/development/hoofdpagina.js"></script>');
 document.write('<script type="text/javascript" charset="utf-8" src="js/development/introvideo.js"></script>');
-//document.write('<script type="text/javascript" charset="utf-8" src="js/development/registercode.js"></script>');
+document.write('<script type="text/javascript" charset="utf-8" src="js/development/registercode.js"></script>');
 document.write('<script type="text/javascript" charset="utf-8" src="js/development/swipercode.js"></script>');
 //document.write('<script type="text/javascript" charset="utf-8" src="js/development/voortgangsoverzicht.js"></script>');
 document.write('<script type="text/javascript" charset="utf-8" src="js/pageloader.js"></script>');

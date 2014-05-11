@@ -31,7 +31,7 @@ $( document ).ready(function() {
   LoadHtmlPage("pages/register.html", $("#register"));
   LoadHtmlPage("pages/steps.html", $("#steps"));
   LoadHtmlPage("pages/postcode.html",$("#postcode"));
-
+  LoadHtmlPage("pages/mijnWijk.html",$("#Wijk"));
 });
 
 
