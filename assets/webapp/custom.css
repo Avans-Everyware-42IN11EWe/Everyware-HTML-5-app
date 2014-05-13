@@ -28,7 +28,7 @@ input[type=checkbox].customBox + label.customBoxLabel {
     background-repeat:no-repeat;
     background-position: 0 -15px;
     font-size:15px;
-    vertical-align:middle;
+   /* vertical-align:middle;*/
     cursor:pointer;
 }
 
@@ -39,7 +39,43 @@ input[type=checkbox].customBox:checked + label.customBoxLabel {
 .customBoxLabel{
     background-image:url(img/check-box.png);
 }
-/******** end custom checkbox****/                        
+/******** end custom checkbox****/ 
+
+/*******Custom radio style********/
+input[type=radio].customRadio {
+    position: absolute; 
+    overflow: hidden; 
+    clip: rect(0 0 0 0); 
+    height:1px; 
+    width:1px; 
+    margin:-1px; 
+    padding:0;
+    border:0;
+}
+
+input[type=radio].customRadio + label.customRadioLabel {
+    border: 2px solid #A1A1A1;
+    border-radius: 57px;
+    color: #000000;
+    cursor: pointer;
+    font-size: 10px;
+    height: 10px;
+    line-height: 10px;
+    padding-left: 13px;
+    text-align: center;
+    text-decoration: none;
+    width: 10px;
+    margin-right: 7px;
+}
+
+input[type=radio].customRadio:checked + label.customRadioLabel {
+    background:#99ffcc
+}
+
+
+
+
+/*******end Custom radio style********/                       
 .closebutton{
     border: 2px solid #A1A1A1;
     border-radius: 50px;
@@ -48,7 +84,6 @@ input[type=checkbox].customBox:checked + label.customBoxLabel {
     font-size: 16px;
     height: 25px;
     line-height: 25px;
-    opacity: inherit;
     text-align: center;
     text-decoration: none;
     width: 25px;
@@ -75,7 +110,8 @@ a.customButton {
     color: gray;
     border:0 none;
     cursor:pointer;
-    -webkit-border-radius: 2px;
+    border-radius: 2px;
+    border: 1px solid #DBDBDB;
     border-radius: 2px; 
     text-decoration: none;
     display: inline-block;
@@ -221,11 +257,8 @@ div#postcode input[type=text]{
     border-style: none; 
 }
 a.postbutton{
-    margin-left: auto;
-    margin-right: auto;
-    border: 1px gray solid;
+    border: 1px solid #DBDBDB;
     padding: 10px;
-    position: relative;
     display: inline-block;
 }
 #zoek{
@@ -241,4 +274,35 @@ div#postlink{
 }
 input[type=checkbox]{
     background:#F00;
+}
+div.overlayparent{
+    position:relative;
+}
+div.overlay{
+    list-style-type:none;
+     list-style:none;
+    position:absolute;
+    background: rgba(255, 255, 255, .90);
+    color: #808080;
+    left:10px;
+    right:10px;
+    top:10px;
+    bottom:10px;
+    border-radius: 5px;
+    padding: 10px;
+    -moz-box-sizing: border-box;
+
+}
+div.overlaymargin{
+    margin-left:15px;
+    margin-right:15px;
+}
+div.overlay a.closebutton{
+    position: absolute;
+    right: 15px;
+    top: 15px;
+}
+div.overlay ul{
+    list-style:none;
+    padding-left: 0;
 }
