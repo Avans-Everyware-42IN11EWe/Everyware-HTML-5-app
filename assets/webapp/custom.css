@@ -8,7 +8,57 @@ body {
     background-image: url('background.jpg');
     font-family: 'Helvetica Neue',Helvetica,Arial,sans-serif;
 }
+/*******Custom checkbox style*****/
+input[type=checkbox].customBox {
+    position: absolute; 
+    overflow: hidden; 
+    clip: rect(0 0 0 0); 
+    height:1px; 
+    width:1px; 
+    margin:-1px; 
+    padding:0;
+    border:0;
+}
 
+input[type=checkbox].customBox + label.customBoxLabel {
+    padding-left:20px;
+    height:15px; 
+    display:inline-block;
+    line-height:15px;
+    background-repeat:no-repeat;
+    background-position: 0 0;
+    font-size:15px;
+    vertical-align:middle;
+    cursor:pointer;
+}
+
+input[type=checkbox].customBox:checked + label.customBoxLabel {
+    background-position: 0 -15px;
+}
+
+.customBoxLabel{
+    background-image:url(img/check-box.png);
+}
+/******** end custom checkbox****/                        
+.closebutton{
+    border: 2px solid #A1A1A1;
+    border-radius: 50px;
+    color: #000000;
+    display: block;
+    font-size: 16px;
+    height: 25px;
+    line-height: 25px;
+    opacity: inherit;
+    text-align: center;
+    text-decoration: none;
+    width: 25px;
+    cursor:pointer;
+}
+.righttop{
+    position:absolute;
+    right:15px;
+    top: 15px;
+}
 a.mijnWijk {
     background:#ECECEC; 
     color: #2D8AF9;   
@@ -120,7 +170,7 @@ form#registration input[type=text] {
 }
 
 .status{
-    background: rgba(000, 000, 000, .75);
+    background: rgba(000, 000, 000, .55);
     list-style:none;
     border: 3px outset #C0C0C0;
     margin: 10px;
@@ -188,4 +238,7 @@ div#postlink{
 }
 #results{
     color: gray;
+}
+input[type=checkbox]{
+    background:#F00;
 }
