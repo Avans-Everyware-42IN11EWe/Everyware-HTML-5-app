@@ -595,6 +595,7 @@ button.ui-button::-moz-focus-inner {
 	height: 0.1em;
 	text-align: left;
 	overflow: hidden;
+	margin-right: 15px;
 }
 .ui-progressbar .ui-progressbar-value {
 	margin: -1px;

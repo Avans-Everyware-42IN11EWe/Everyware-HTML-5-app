@@ -90,9 +90,9 @@ input[type=radio].customRadio:checked + label.customRadioLabel {
     cursor:pointer;
 }
 .righttop{
-    position:absolute;
-    right:15px;
-    top: 15px;
+     position: absolute;
+    right: 5px;
+    top: 5px;
 }
 a.mijnWijk {
     background:#ECECEC; 
@@ -298,8 +298,8 @@ div.overlaymargin{
 }
 div.overlay a.closebutton{
     position: absolute;
-    right: 15px;
-    top: 15px;
+    right: 5px;
+    top: 5px;
 }
 div.overlay ul{
     list-style:none;
@@ -307,4 +307,8 @@ div.overlay ul{
 }
 a.bordered{
     border: 1px solid #DBDBDB;
+}
+#buurtVideo{
+    position: relative;
+    top:15px;
 }
