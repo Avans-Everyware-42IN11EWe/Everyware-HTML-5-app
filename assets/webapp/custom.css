@@ -111,7 +111,6 @@ a.customButton {
     border:0 none;
     cursor:pointer;
     border-radius: 2px;
-    border: 1px solid #DBDBDB;
     border-radius: 2px; 
     text-decoration: none;
     display: inline-block;
@@ -305,4 +304,7 @@ div.overlay a.closebutton{
 div.overlay ul{
     list-style:none;
     padding-left: 0;
+}
+a.bordered{
+    border: 1px solid #DBDBDB;
 }
