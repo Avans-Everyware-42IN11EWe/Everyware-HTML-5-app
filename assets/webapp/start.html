@@ -50,7 +50,6 @@
                     //etc..
                   }); 
                   
-                 
                 $('#bg').blurjs({
                     source: 'body',
                     radius: 60,
@@ -60,6 +59,7 @@
                 //standaard blur uitzetten
                  $("#bg").css("opacity","0");
 
+                 //$("#first").on("scroll",".blur",function(){
 				 $(".blur").scroll(function(e) {
             var elem = $(".blur");
             var maxScrollTop = elem[0].scrollHeight - elem.outerHeight();
@@ -68,9 +68,9 @@
             
            
             //grootte window
-            console.log("blur per pixel: "+vaagheid);
-            console.log("scrolltop waarde "+$(".blur").scrollTop());
-            console.log(blurHoeveelheid);
+            //console.log("blur per pixel: "+vaagheid);
+            //console.log("scrolltop waarde "+$(".blur").scrollTop());
+            console.log("opacityval: "+blurHoeveelheid);
             $("#bg").css("opacity",blurHoeveelheid);
                  
                 });

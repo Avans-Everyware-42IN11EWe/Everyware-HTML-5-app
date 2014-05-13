@@ -58,6 +58,7 @@
             'Thanks for logging in, ' + response.name + '!';
         });
     }
+    /*is al gedaan
 		var mySwiper = new Swiper('.swiper-container',
 		{
 			//Your options here:
@@ -65,7 +66,7 @@
 			noSwiping: true,
 			loop: false,
 			//etc..
-		});
+		});*/
 		// kijken of er al een bestandje met de inlog gegevens bestaat, zo ja, gelijk doorgaan
 	$result = window.JHandler.GetSavedData("login.bin");		
 	if($result !=null)
@@ -119,7 +120,7 @@
 			},
 			error: function (jqXHR, textStatus, errorThrown)
 			{
-				alert("ERROR! -- textStatus")
+				alert("ERROR! -- textStatus");
 				console.log(textStatus, errorThrown);
 			}
 		});

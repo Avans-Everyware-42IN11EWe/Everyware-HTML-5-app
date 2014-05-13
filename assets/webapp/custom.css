@@ -44,11 +44,18 @@ div.regButtons {
     text-align: center; 
     margin: 20px;
 }
-
+#register{
+    position:relative;
+}
 div#registration {
-    margin: 10px;
+    position:absolute;
+   /* margin: 10px;*/
     background: rgba(255, 255, 255, .90);
-    height: 100%;
+   /* height: 100%;*/
+    left:10px;
+    right:10px;
+    top:10px;
+    bottom:10px;
     border-radius: 5px;
     padding: 10px;
     -moz-box-sizing: border-box;
@@ -92,7 +99,6 @@ div#registration {
     background: #FFF;
    /* background-size: cover !important;*/
 }
-
 form#registration {
     position: relative;
     margin: 0;
@@ -142,12 +148,21 @@ margin: 0;
 	top:0;
 	left:0;
 }
-div#postcode  .postcodezoeken{
+#postcode{
     position:relative;
+}
+div#postcode  .postcodezoeken{
+    position:absolute;
     background: rgba(255, 255, 255, .90);
     list-style:none;
-    margin: 10px;
-    height:90%;
+    /*margin: 10px;*/
+    left:10px;
+    right:10px;
+    top:10px;
+    bottom:10px;
+    
+    /*height:90%;*/
+    border-radius:5px;
 }
 div#postcode input[type=text]{
     background-color:#CFCFCF;
