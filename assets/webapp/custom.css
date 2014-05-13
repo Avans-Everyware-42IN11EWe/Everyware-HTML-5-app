@@ -26,14 +26,14 @@ input[type=checkbox].customBox + label.customBoxLabel {
     display:inline-block;
     line-height:15px;
     background-repeat:no-repeat;
-    background-position: 0 0;
+    background-position: 0 -15;
     font-size:15px;
     vertical-align:middle;
     cursor:pointer;
 }
 
 input[type=checkbox].customBox:checked + label.customBoxLabel {
-    background-position: 0 -15px;
+    background-position: 0 0px;
 }
 
 .customBoxLabel{
