@@ -1,12 +1,14 @@
                     <script>
                           $( document ).ready(function() {
- var bewonersVerzamelen = 22;
+                var goedeDoel = 3;
+                var bewonersVerzamelen = 22;
                 var inschrijven = 9;
                 var providerSelecteren = 2;
                 var glasvezelAandeel = 0;
                 var glasvezelAanleggen = 0;
                 var overstappenNaarGlasvezel = 0;
                 /******* text****/
+                $('#goedeDoeltxt').append(goedeDoel+"%");
                 $('#bewonersVerzamelentxt').append(bewonersVerzamelen+"%");
                 $('#inschrijventxt').append(inschrijven+"%");
                 $('#providerSelecterentxt').append(providerSelecteren+"%");
@@ -15,6 +17,7 @@
                 $('#overstappenNaarGlasvezeltxt').append(overstappenNaarGlasvezel+"%");
                 
                 /******progressbars****/
+                $('#goedeDoelVoortgang').progressbar({value: goedeDoel});
                 $( "#bewonersVerzamelen" ).progressbar({value: bewonersVerzamelen});                  
                 $( "#inschrijven" ).progressbar({value: inschrijven});                
                 $( "#providerSelecteren" ).progressbar({value: providerSelecteren});                   

@@ -312,3 +312,6 @@ a.bordered{
     position: relative;
     top:15px;
 }
+.images img:first-child{
+  margin-left:192px;  
+}
