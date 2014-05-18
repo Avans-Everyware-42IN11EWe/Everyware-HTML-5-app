@@ -8,12 +8,17 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.util.Log;
 import android.webkit.JavascriptInterface;
 import android.widget.Toast;
 
 final class IJavascriptHandler {
-	   IJavascriptHandler() {
+	Context context;
+	SharedPreferences prefs;
+	   IJavascriptHandler(Context context) {
+		   this.context = context;
+		   prefs = context.getSharedPreferences("GlasAanHuis", Context.MODE_PRIVATE);
 	   }
 
 	   @JavascriptInterface
@@ -29,6 +34,7 @@ final class IJavascriptHandler {
 		   FileOutputStream fos;
 		try {
 			fos = MainActivity._context.openFileOutput(fName, Context.MODE_PRIVATE);
+			prefs.edit().putString("userId", data);
 			
 			ObjectOutputStream os = new ObjectOutputStream(fos);
 			os.writeObject(data);

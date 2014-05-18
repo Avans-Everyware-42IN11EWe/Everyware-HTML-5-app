@@ -18,10 +18,10 @@
 			LoadHtmlPage("pages/intro_video.html", $eIntro);
 			
 			// Hide the intro video
-				$(document).on( "click", "#skip_intro", function() {
-					$('#intro')[0].pause(); 
-					$("#overlay_container").hide();
-				});				
+            $(document).on( "click", "#skip_intro", function() {
+                $('#intro')[0].pause();
+                $("#overlay_container").hide();
+            });
 			// --
 	        var mySwiper;
             $( document ).ready(function() {
@@ -42,13 +42,13 @@
 				
 				$(".swiper-container").css("height", $height-20 + "px");
                 
-                  mySwiper  = new Swiper('.swiper-container',{
+                mySwiper  = new Swiper('.swiper-container',{
                     //Your options here:
                     mode:'horizontal',
                     noSwiping: true,
                     loop: false,
                     //etc..
-                  }); 
+                });
                   
                 $('#bg').blurjs({
                     source: 'body',
@@ -61,24 +61,20 @@
 
                  //$("#first").on("scroll",".blur",function(){
 				 $(".blur").scroll(function(e) {
-            var elem = $(".blur");
-            var maxScrollTop = elem[0].scrollHeight - elem.outerHeight();
-            var vaagheid = 1/maxScrollTop;
-            var blurHoeveelheid =$(".blur").scrollTop()*vaagheid;
+                 var elem = $(".blur");
+                 var maxScrollTop = elem[0].scrollHeight - elem.outerHeight();
+                 var vaagheid = 1/maxScrollTop;
+                 var blurHoeveelheid =$(".blur").scrollTop()*vaagheid;
             
            
-            //grootte window
-            //console.log("blur per pixel: "+vaagheid);
-            //console.log("scrolltop waarde "+$(".blur").scrollTop());
-            console.log("opacityval: "+blurHoeveelheid);
-            $("#bg").css("opacity",blurHoeveelheid);
+                 //grootte window
+                 //console.log("blur per pixel: "+vaagheid);
+                 //console.log("scrolltop waarde "+$(".blur").scrollTop());
+                 console.log("opacityval: "+blurHoeveelheid);
+                 $("#bg").css("opacity",blurHoeveelheid);
                  
                 });
-                
-				
-				
 			});
-									   
         </script>
     </head>
     <body>
