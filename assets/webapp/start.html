@@ -7,7 +7,21 @@
         <link rel="stylesheet" type="text/css" href="custom.css" />
         <link rel="stylesheet" type="text/css" href="css/jquery-ui-1.10.4.custom.css" />
         
-        <script>		
+        <script>	
+
+			// Create postcode page
+			$ePostcode = $("<div></div>");
+			$ePostcode.css("height", "100%");
+			$ePostcode.css("width", "100%");
+			LoadHtmlPage("pages/postcode.html", $ePostcode);
+		
+			// create login page
+			$eLogin = $("<div></div>");
+			$eLogin.css("height", "100%");
+			$eLogin.css("width", "100%");
+			LoadHtmlPage("pages/register.html", $eLogin);
+
+		
 			// create intro page
 			$eIntro = $("<div></div>");
 				
@@ -22,10 +36,31 @@
                 $('#intro')[0].pause();
                 $("#overlay_container").hide();
             });
+			
+			$(document).on( "click", ".closebutton", function() {
+                $("#overlay_container").hide();
+            });			
+			
 			// --
 	        var mySwiper;
             $( document ).ready(function() {
-                  		  
+                  	
+					
+				$(document).on( "click", "#mijnWijk", function() {	
+					$("#bg").css("opacity","0");
+                
+					// Go to login overlay
+                    $("#overlay_container").html($eLogin);							
+					$("#overlay_container").show();
+                });
+				$(document).on( "click", "#andereWijk", function() {	
+					$("#bg").css("opacity","0");
+                
+					// Go to postcode zoek overlay
+                    $("#overlay_container").html($ePostcode);							
+					$("#overlay_container").show();
+                });
+				
 				// Prepare the containers
 				$height = $( window ).height();
 				$width = $( window ).width();
@@ -85,18 +120,8 @@
               <div class="swiper-wrapper">
 
                   <!--First Slide-->
-                <div class="swiper-slide blur" id="first" >content</div>
-                  
-                  <!-- Second Slide-->
-				<div class="swiper-slide noSwiping blur" id="register">content</div>
-				
-				
-                <!-- Third Slide-->
-                <div class="swiper-slide blur" id="Wijk">content</div>
-                  <!--4th Slide-->
-                <div class="swiper-slide blur" id="steps">content</div>
-                
-                
+                <div class="swiper-slide blur" id="first" >content</div>                				
+				                              
                 <!--5th Slide-->
                 <div class="swiper-slide noSwiping" id="postcode">content</div>
             

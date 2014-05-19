@@ -28,9 +28,8 @@ $( document ).ready(function() {
   LoadHtmlPage("pages/intro_video.html", $("#intro_video"));
   LoadHtmlPage("pages/district.html", $("#first"));
   
-  LoadHtmlPage("pages/register.html", $("#register"));
   LoadHtmlPage("pages/steps.html", $("#steps"));
-  LoadHtmlPage("pages/postcode.html",$("#postcode"));
+  //LoadHtmlPage("pages/postcode.html",$("#postcode"));
   LoadHtmlPage("pages/mijnWijk.html",$("#Wijk"));
   LoadHtmlPage("pages/provider.html",$("#provider"));
 });
