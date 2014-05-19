@@ -6,7 +6,9 @@
         <link rel="stylesheet" href="css/idangerous.swiper.css">
         <link rel="stylesheet" type="text/css" href="custom.css" />
         <link rel="stylesheet" type="text/css" href="css/jquery-ui-1.10.4.custom.css" />
-        
+        <script src="js/Bootstrap.js"></script>
+        <script src="js/underscore-min.js"></script>
+        <script src='js/mapbox.js'></script>
         <script>	
 
 			// Create postcode page
@@ -87,7 +89,7 @@
                   
                 $('#bg').blurjs({
                     source: 'body',
-                    radius: 60,
+                    radius: 35,
                     overlay: 'rgba(0, 0, 0, .2)'
                 });
                 
@@ -98,7 +100,7 @@
 				 $(".blur").scroll(function(e) {
                  var elem = $(".blur");
                  var maxScrollTop = elem[0].scrollHeight - elem.outerHeight();
-                 var vaagheid = 1/maxScrollTop;
+                 var vaagheid = 6/maxScrollTop;
                  var blurHoeveelheid =$(".blur").scrollTop()*vaagheid;
             
            
@@ -128,6 +130,10 @@
                
                 <!--6th Slide-->
                 <div class="swiper-slide noSwiping overlayparent" id="provider">content</div>
+                
+                <!--7th Slide-->
+                <div class="swiper-slide noSwiping overlayparent" id="maps">content</div>
+               
                
                
                </div><!-- end swiper container-->

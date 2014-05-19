@@ -32,6 +32,7 @@ $( document ).ready(function() {
   //LoadHtmlPage("pages/postcode.html",$("#postcode"));
   LoadHtmlPage("pages/mijnWijk.html",$("#Wijk"));
   LoadHtmlPage("pages/provider.html",$("#provider"));
+    LoadHtmlPage("pages/map.html",$("#maps"));
 });
 
 
