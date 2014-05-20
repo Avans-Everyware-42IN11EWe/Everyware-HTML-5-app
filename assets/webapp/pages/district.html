@@ -1,4 +1,32 @@
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<script>
+$(document).ready(function() 
+{
+	getDistrictInfo(1);   
+});    
 
+
+// Functie om de data van de server op te halen
+function getDistrictInfo(id)
+{
+	
+	$.getJSON('http://glas.mycel.nl/district?id=' + id + '', function (data) 
+	{
+		// Zet alle benodigde data in variabelen
+		var buurtNaam = data.name;
+		var percentage = (100 * data.percentage) + "%";
+		var participants = data.participants;
+	    
+	    // Zet de variabelen op de goede plek in de html
+		document.getElementById("buurtNaam").innerHTML = buurtNaam;  
+		document.getElementById("percentage").innerHTML = percentage; 
+		document.getElementById("participants").innerHTML = participants; 
+		document.getElementById("percentage2").innerHTML = percentage; 
+		document.getElementById("participants2").innerHTML = participants;               
+	});
+}
+
+</script>
                           <span style="font-size: 50px;">Welkom</span>
                           <p style="font-size: 20px;">This is html version of this app. Lorem ipsum. Proin gravida nibh vbel valit acutor atulet. Acenen soluudcutin, lorem quid bibendum acutor. Nisi elit consqeut impsum. nex sagittis sem nigh id eli. Duis sed odia sit amet bij vulupupat cursar sit amet mauros.</p>
 
