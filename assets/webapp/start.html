@@ -22,6 +22,11 @@
 			$eLogin.css("width", "100%");
 			LoadHtmlPage("pages/register.html", $eLogin);
 
+      // create UploadPicture page
+      $eLogin = $("<div></div>");
+      $eLogin.css("height", "100%");
+      $eLogin.css("width", "100%");
+      LoadHtmlPage("pages/UploadPicture.html", $eUploadPicture);
 		
 			// create intro page
 			$eIntro = $("<div></div>");
@@ -51,16 +56,23 @@
 					$("#bg").css("opacity","0");
                 
 					// Go to login overlay
-                    $("#overlay_container").html($eLogin);							
+          $("#overlay_container").html($eLogin);							
 					$("#overlay_container").show();
-                });
+        });
+
 				$(document).on( "click", "#andereWijk", function() {	
 					$("#bg").css("opacity","0");
                 
-					// Go to postcode zoek overlay
-                    $("#overlay_container").html($ePostcode);							
-					$("#overlay_container").show();
-                });
+	        // Go to postcode zoek overlay
+          $("#overlay_container").html($ePostcode);							
+			    $("#overlay_container").show();
+        });
+
+        $(document).on( "click", "#uploadPicture", function() {  
+          $("#bg").css("opacity","0");
+          $("#overlay_container").html($eUploadPicture);             
+          $("#overlay_container").show();
+        });
 				
 				// Prepare the containers
 				$height = $( window ).height();

@@ -132,7 +132,7 @@ div.regButtons {
 #register{
     position:relative;
 }
-div#registration {
+div#overlay {
     position:absolute;
    /* margin: 10px;*/
     background: rgba(255, 255, 255, .90);
