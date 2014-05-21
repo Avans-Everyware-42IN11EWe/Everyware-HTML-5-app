@@ -8,17 +8,19 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
+import android.sax.StartElementListener;
 import android.util.Log;
 import android.webkit.JavascriptInterface;
 import android.widget.Toast;
 
 final class IJavascriptHandler {
-	Context context;
-	SharedPreferences prefs;
-	   IJavascriptHandler(Context context) {
-		   this.context = context;
-		   prefs = context.getSharedPreferences("GlasAanHuis", Context.MODE_PRIVATE);
+
+	   SharedPreferences prefs;
+	   
+	   IJavascriptHandler() {
+		   prefs = MainActivity._context.getSharedPreferences("GlasAanHuis", Context.MODE_PRIVATE);
 	   }
 
 	   @JavascriptInterface
@@ -29,21 +31,29 @@ final class IJavascriptHandler {
 	   }
 	   
 	   @JavascriptInterface
+	   public void LoginFacebook()
+	   {
+		   Intent intent = new Intent(MainActivity._context, LoginActivity.class);
+		   intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+		   MainActivity._context.startActivity(intent);
+	   }
+	   
+	   @JavascriptInterface
 	   public void SaveToFile(String fName, String data)
 	   {
-		   FileOutputStream fos;
-		try {
-			fos = MainActivity._context.openFileOutput(fName, Context.MODE_PRIVATE);
-			prefs.edit().putString("userId", data);
-			
-			ObjectOutputStream os = new ObjectOutputStream(fos);
-			os.writeObject(data);
-			os.close();
-						
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		   	FileOutputStream fos;
+			try {
+				fos = MainActivity._context.openFileOutput(fName, Context.MODE_PRIVATE);
+				prefs.edit().putString("userId", data).commit();
+				
+				ObjectOutputStream os = new ObjectOutputStream(fos);
+				os.writeObject(data);
+				os.close();
+							
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 			
 	   }
 	   
