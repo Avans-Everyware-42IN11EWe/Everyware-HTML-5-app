@@ -3,7 +3,6 @@
 document.write('<script type="text/javascript" charset="utf-8" src="js/jquery/jquery-2.1.1.min.js"></script> ');
 document.write('<script type="text/javascript" charset="UTF-8" src="js/jquery/jquery-ui-1.10.4.custom.min.js"></script>');
 document.write('<script type="text/javascript" src="js/swiper/idangerous.swiper.min.js"></script>');
-//document.write('<script type="text/javascript" charset="UTF-8" src="js/vague.js"></script>');
 document.write('<script type="text/javascript" charset="UTF-8" src="js/blur.js"></script>');
 
 

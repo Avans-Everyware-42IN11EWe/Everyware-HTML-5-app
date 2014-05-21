@@ -1,4 +1,3 @@
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 <script>
 
 	$(document).ready(function ()
@@ -12,14 +11,14 @@
 	{
 		$.get("http://glas.mycel.nl/district?id=" + id + "",function(data, status)
 		{
-	    	console.log("Data: " + data + "\nStatus: " + status);
-	    	console.log("Name: " + JSON.stringify(data.name));
+	    	//console.log("Data: " + data + "\nStatus: " + status);
+	    	//console.log("Name: " + JSON.stringify(data.name));
 	    	
 	    	// Zet alle benodigde data in variabelen
 			var buurtNaam = data.name;
 			var percentage = (100 * data.percentage) + "%";
 			var participants = data.participants;
-			console.error("hello");
+			//console.error("hello");
 			
 			
 			// Zet de variabelen op de goede plek in de html
@@ -37,7 +36,7 @@
     			document.getElementById('userImages').appendChild(img);
 				if(i % 5 == 0 && i != 0)
 				{
-					console.log(i);
+					//console.log(i);
 					var br = document.createElement("br");
     				document.getElementById('userImages').appendChild(br);
 				}  
@@ -78,8 +77,7 @@
 	<br />
 
 	<p style="font-size:30px;">buurt kaart</p>
-	<iframe style="18em; height:18em; margin:10px;" src="http://glas.mycel.nl/geo.html">
-	</iframe>
+	<div style="width:20em; height:20em; margin:10px;" id="map"></div>
 	<br />
 	<br />
 

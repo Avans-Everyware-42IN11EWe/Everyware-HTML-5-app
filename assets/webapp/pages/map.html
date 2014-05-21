@@ -1,11 +1,14 @@
-    <link href="//netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css" rel="stylesheet">
     <link href='https://api.tiles.mapbox.com/mapbox.js/v1.6.1/mapbox.css' rel='stylesheet' />
-    <style>body { margin:0; padding:0; }#map { position:absolute; top:0; bottom:0; width:100%; }</style>
+    <script src="js/underscore-min.js"></script>
+    <script src='js/mapbox.js'></script>
+    <style>
+    #map { width:100%; margin:10px; height:300px; }</style>
     <script>
       $( document ).ready(function() {
             //$(function() {
                 var map = L.mapbox.map('map', 'nanne.i84f0he3');
-                $.get('/geo', function(data){map.setView(data.centroid.reverse(), 14);
+                $.get('http://glas.mycel.nl/geo', function(data){
+                    map.setView(data.centroid.reverse(), 14);
                     for (var i = 0; i < data.wijken.length; i++) {
                         var wijk = data.wijken[i];var p = wijk.percentage;
                         var red = Math.ceil((100 - Math.max(50, p)) * (255/50));
@@ -22,6 +25,5 @@
             });
 
         </script>
-        <meta name="viewport" content="initial-scale = 1.0,maximum-scale = 1.0" />
 
-   <div id="container"><div id="map"></div></div></body></html>
+   <div id="map"></div>
