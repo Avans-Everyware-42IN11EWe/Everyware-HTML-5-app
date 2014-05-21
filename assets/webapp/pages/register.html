@@ -1,6 +1,6 @@
 <script>
 
-  $("#registerbtn").click(function (event) {
+  $(document).on('click', '#registerbtn', function (event) {
         var Name = $("#txtName").val();
         var Email = $("#txtEmail").val();
 
@@ -33,11 +33,8 @@
             });
         }
     });
-
-    $("#register-facebook").click(function () {
-
-        // TODO - create and login
-        mySwiper.swipeNext();
+    $(document).on('click', '#register-facebook', function (event) {
+        window.JHandler.LoginFacebook();
     });
 </script>
 
@@ -60,7 +57,7 @@
         </div>
         <hr />
         <div class="regButtons" style="bottom: 20px;">
-            <a href="#" ><img src="btnLoginFacebook.png" /></a>
+            <a id="register-facebook" href="#" ><img src="btnLoginFacebook.png" /></a>
         </div>
     </div>
 </div>

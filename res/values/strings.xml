@@ -4,5 +4,7 @@
     <string name="app_name">GlasAanHuis</string>
     <string name="action_settings">Settings</string>
     <string name="hello_world">Hello world!</string>
+    <string name="app_id">718137888230563</string>
+    <string name="title_activity_login">LoginActivity</string>
 
 </resources>
