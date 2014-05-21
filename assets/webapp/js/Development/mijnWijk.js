@@ -1,17 +1,26 @@
 // functie die aangeroepen wordt zodra de pagina word geladen
-window.onload = function showPosition(position)
+$(document).ready(function ()
 {
-	// Zodra de pagina wordt geladen zal er een locatie worden bepaald
 	if (navigator.geolocation)
-	{
-		// Is het niet mogelijk een locatie te bepapelen zal er een error (toast) getoont worden
-	  	navigator.geolocation.getCurrentPosition(showPosition, showError);
-	}
+    {
+		navigator.geolocation.getCurrentPosition(showPosition, showError);
+    }
 	else
 	{
 		// Zodra er geen locatie bepaald kan worden zal er een melding komen
 		window.JHandler.Toast("Geolocation is not supported by this browser.");
 	}
+});
+	
+	
+function showPosition(position)
+{
+	// Zodra de pagina wordt geladen zal er een locatie worden bepaald
+	/*if (navigator.geolocation)
+	{
+		// Is het niet mogelijk een locatie te bepapelen zal er een error (toast) getoont worden
+	  	navigator.geolocation.getCurrentPosition(showPosition, showError);
+	}*/
 	
 	// De latitude en Longitude zal worden bepaald en in een variablen worden gezet
 	var latlon=position.coords.latitude+","+position.coords.longitude;
@@ -20,7 +29,7 @@ window.onload = function showPosition(position)
 	var img_url="http://maps.googleapis.com/maps/api/staticmap?center="
 				+latlon+"&zoom=14&size=400x300&sensor=false";
 	// Deze img zal in de div "mapholder" worden geplaatst.
-	document.getElementById("mapholder").innerHTML="<img src='"+img_url+"'>";
+	// document.getElementById("mapholder").innerHTML="<img src='"+img_url+"'>";
 }
 
 // Dit zijn verschillende errors die er voor kunnen komen.

@@ -31,7 +31,7 @@
 $( document ).ready(function() {
  
   LoadHtmlPage("pages/intro_video.html", $("#intro_video"));
-  LoadHtmlPage("pages/district.html", $("#first"), '<script type="text/javascript" charset="utf-8" src="js/Development/voortgangsoverzicht.js"></script>');
+  LoadHtmlPage("pages/district.html", $("#first"), '<script type="text/javascript" charset="utf-8" src="js/Development/district.js"></script>');
   
   LoadHtmlPage("pages/steps.html", $("#steps"));
   //LoadHtmlPage("pages/postcode.html",$("#postcode"));

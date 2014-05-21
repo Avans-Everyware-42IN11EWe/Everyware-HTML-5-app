@@ -1,50 +1,6 @@
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<!-- <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 <script>
-
-	$(document).ready(function ()
-	{
-		getDistrictInfo(1)
-	});
-
-
-	// Functie om de data van de server op te halen
-	function getDistrictInfo(id)
-	{
-		$.get("http://glas.mycel.nl/district?id=" + id + "",function(data, status)
-		{
-	    	console.log("Data: " + data + "\nStatus: " + status);
-	    	console.log("Name: " + JSON.stringify(data.name));
-	    	
-	    	// Zet alle benodigde data in variabelen
-			var buurtNaam = data.name;
-			var percentage = (100 * data.percentage) + "%";
-			var participants = data.participants;
-			console.error("hello");
-			
-			
-			// Zet de variabelen op de goede plek in de html
-			document.getElementById("buurtNaam").innerHTML = buurtNaam;
-			document.getElementById("percentage").innerHTML = percentage;
-			document.getElementById("participants").innerHTML = participants;
-			document.getElementById("percentage2").innerHTML = percentage;
-			document.getElementById("participants2").innerHTML = participants;
-			
-			
-			for (var i = 0; i < data.plaatjes.length; i++)
-			{
-				var img = document.createElement("IMG");
-			    img.src = data.plaatjes[i].plaatje;
-    			document.getElementById('userImages').appendChild(img);
-				if(i % 5 == 0 && i != 0)
-				{
-					console.log(i);
-					var br = document.createElement("br");
-    				document.getElementById('userImages').appendChild(br);
-				}  
-      		}
-		});
-	}
-</script>
+</script>-->
 <div class="swiper-slide">
 	<span style="font-size: 50px;">Welkom</span>
 	<p style="font-size: 20px;">This is html version of this app. Lorem ipsum. Proin gravida nibh vbel valit acutor atulet. Acenen soluudcutin, lorem quid bibendum acutor. Nisi elit consqeut impsum. nex sagittis sem nigh id eli. Duis sed odia sit amet bij vulupupat cursar sit amet mauros.</p>
