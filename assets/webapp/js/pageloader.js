@@ -1,5 +1,5 @@
   // Function to load html pages 
-  function LoadHtmlPage($page, $element)
+  function LoadHtmlPage($page, $element, $script)
   {				
     $path = "file:///android_asset/webapp/";
   
@@ -12,7 +12,12 @@
    window.isDesktop = isDesktop;
    if( isDesktop )
     $path = "file://assets/webapp/";  
-  	$($element).load($page); 
+  	//$($element).load($page); 
+  	$($element).load( $page, function() {
+  	    if($script!=null){
+    $('head').append($script);
+  }
+});
 	
 	/*
     $.get( $path+$page, function( pageData ) {					
@@ -26,7 +31,7 @@
 $( document ).ready(function() {
  
   LoadHtmlPage("pages/intro_video.html", $("#intro_video"));
-  LoadHtmlPage("pages/district.html", $("#first"));
+  LoadHtmlPage("pages/district.html", $("#first"), '<script type="text/javascript" charset="utf-8" src="js/Development/voortgangsoverzicht.js"></script>');
   
   LoadHtmlPage("pages/steps.html", $("#steps"));
   //LoadHtmlPage("pages/postcode.html",$("#postcode"));
