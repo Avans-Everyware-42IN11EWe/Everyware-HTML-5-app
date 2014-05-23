@@ -64,6 +64,7 @@
 			{
 				var img = document.createElement("IMG");
 			    img.src = data.plaatjes[i].plaatje;
+			    img.setAttribute('width', 75);
     			document.getElementById('userImages').appendChild(img);
 				/*if(i % 5 == 0 && i != 0)
 				{

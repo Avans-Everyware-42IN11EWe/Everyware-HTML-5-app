@@ -31,7 +31,8 @@
         </activity>
         <activity
             android:name="nl.avans.glasaanhuis.html5.LoginActivity"
-            android:label="FACEBOOK" >
+            android:label="FACEBOOK"
+            android:screenOrientation="portrait" >
                         <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
