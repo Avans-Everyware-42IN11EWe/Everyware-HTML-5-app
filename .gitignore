@@ -28,3 +28,16 @@ bin/AndroidManifest.xml
 bin/classes/nl/avans/glasaanhuis/html5/IJavascriptHandler.class
 bin/dexedLibs/android-support-v4-6950ca8940be4886cb26211985628c57.jar
 gen/nl/avans/glasaanhuis/html5/BuildConfig.java
+bin/classes/nl/avans/glasaanhuis/html5/CustomWebViewclient.class
+bin/classes/nl/avans/glasaanhuis/html5/LoginActivity.class
+bin/classes/nl/avans/glasaanhuis/html5/MainActivity.class
+bin/classes/nl/avans/glasaanhuis/html5/R$attr.class
+bin/classes/nl/avans/glasaanhuis/html5/R$dimen.class
+bin/classes/nl/avans/glasaanhuis/html5/R$drawable.class
+bin/classes/nl/avans/glasaanhuis/html5/R$id.class
+bin/classes/nl/avans/glasaanhuis/html5/R$layout.class
+bin/classes/nl/avans/glasaanhuis/html5/R$menu.class
+bin/classes/nl/avans/glasaanhuis/html5/R$string.class
+bin/classes/nl/avans/glasaanhuis/html5/R$style.class
+bin/classes/nl/avans/glasaanhuis/html5/R.class
+gen/nl/avans/glasaanhuis/html5/R.java
