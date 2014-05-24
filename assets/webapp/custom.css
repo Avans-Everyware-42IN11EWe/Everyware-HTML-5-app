@@ -230,8 +230,9 @@ margin: 0;
 #overlay_container {
 	position:absolute;
 	z-index:999;
-	top:0;
+	top:30px;
 	left:0;
+	overflow:hidden;
 }
 #postcode{
     position:relative;
@@ -314,4 +315,33 @@ a.bordered{
 }
 .images img:first-child{
   margin-left:192px;  
+}
+
+#top-menu {
+	position:absolute;
+	background-color:#000000;
+	height:40px;
+	width:100%;
+	z-index:1000;
+	opacity:0.8;
+	filter:alpha(opacity=80); /* For IE8 and earlier */
+}
+
+#top-menu div {
+	padding:7px;
+	
+}
+
+#left-menu {
+	position:absolute;
+	background-color:#000000;
+	height:100%;
+	width:0;
+	z-index:1000;
+	opacity:0.95;
+	filter:alpha(opacity=95); /* For IE8 and earlier */
+}
+
+.swiper-slide {
+padding-top:35px;
 }
