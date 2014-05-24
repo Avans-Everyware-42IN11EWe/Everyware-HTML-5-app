@@ -35,7 +35,7 @@ public class MainActivity extends Activity {
 		//wv.loadUrl("file:///android_asset/webapp/index.html");
 		
 		// Javascript handler
-		wv.addJavascriptInterface(new IJavascriptHandler(getBaseContext()), "JHandler");		
+		wv.addJavascriptInterface(new IJavascriptHandler(), "JHandler");		
 		
 		wv.loadUrl("file:///android_asset/webapp/start.html");
 	

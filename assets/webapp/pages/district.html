@@ -1,204 +1,104 @@
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-<script>
-$(document).ready(function() 
-{
-	getDistrictInfo(1);   
-});    
+<!--<div class="swiper-slide">-->
+    <span style="font-size: 50px;">Welkom</span>
+    <p style="font-size: 20px;">This is html version of this app. Lorem ipsum. Proin gravida nibh vbel valit acutor atulet. Acenen soluudcutin, lorem quid bibendum acutor. Nisi elit consqeut impsum. nex sagittis sem nigh id eli. Duis sed odia sit amet bij vulupupat cursar sit amet mauros.</p>
+
+    <div id="information" style="position: relative; margin-top: 20px; width: 100%;">
+        <span id="buurtNaam" style="float: left; font-size: 40px; font-weight: bold;">Martijn's glasvezel buurt</span>
+        <span style="float: right; clear: left; font-size: 30px;">Aawijk-noord</span>
+        <table style="float: left; position: relative;">
+            <tr>
+                <td><span id="participants" style="font-size: 70px; clear: left; line-height: 50px;">106&nbsp;</span>
+                </td>
+                <td style="position: relative;"><span style="font-size: 30px; position: absolute; bottom: 0px;">deelnemers</span>
+                </td>
+            </tr>
+        </table>
+        <span id="percentage" style="float: left; font-size: 100px; clear: left;">22%</span>
+    </div>
+
+    <div id="buttons">
+        <a id="mijnWijk" class="customButton" style="background-color: #ECECEC; color: #2D8AF9; padding: 10px 20px;" href="#">Dit is mijn wijk!</a>
+        <a id="andereWijk" class="customButton" style="background-color: #868889; color: white; padding: 10px 20px; opacity: 0.85;" href="#">Andere wijk</a>
+    </div>
+    <br />
+    <p style="font-size:30px; clear: both;">buurt video</p>
+    <video id="intro" width="50%" height="50%">
+        <source src="https://dl.dropboxusercontent.com/u/20756116/Comp2.mp4" type="video/mp4">
+            <!-- <source src="movie.ogg" type="video/ogg">--></source>
+        <p>Fout! klik <a href="#">hier</a> om verder te gaan</p>
+    </video>
+    <br />
+    <br />
+
+    <p style="font-size:30px;">buurt kaart</p>
+    <div style="width:20em; height:20em; margin:10px;" id="map"></div>
+    <br />
+    <br />
+
+    <p style="font-size:30px;">goede doel</p>
+    <ul class="status">
+        <li>
+            <p id=goedeDoeltxt>1.&nbsp; Gratis telefoon, tv, internet en wifi voor basisschool Antonius&nbsp;</p>
+            <div id="goedeDoelVoortgang"></div>
+        </li>
+    </ul>
+    <br />
+    <br />
+
+    <p style="font-size:30px;">Veel gestelde vragen</p>
+    <ul class="status">
+        <li>
+            <p>hier vind u de meest gestelde vragen omtrent de app en glasvezel.</p>
+        </li>
+    </ul>
+    <br />
+    <br />
+
+    <p style="font-size:30px;">Stel uw vraag</p>
+    <ul class="status">
+        <li>
+            <p>Hier kunt u vragen stellen over de app en glasvezel.</p>
+        </li>
+    </ul>
+    <br />
+    <br />
+    <p style="font-size:30px;">stappen</p>
+    <ul class="status">
+        <li>
+            <p id=bewonersVerzamelentxt>1.&nbsp; Bewoners verzamelen&nbsp;</p>
+            <div id="bewonersVerzamelen"></div>
+        </li>
+        <li>
+            <p id="inschrijventxt">2.&nbsp; Inschrijven&nbsp;</p>
+            <div id="inschrijven"></div>
+        </li>
+        <li>
+            <p id="providerSelecterentxt">3.&nbsp; Provider selecteren&nbsp;</p>
+            <div id="providerSelecteren"></div>
+        </li>
+        <li>
+            <p id="glasvezelAandeeltxt">4.&nbsp; Glasvezel aandeel&nbsp;</p>
+            <div id="glasvezelAandeel"></div>
+        </li>
+        <li>
+            <p id="glasvezelAanleggentxt">5.&nbsp; Glasvezel aanleggen&nbsp;</p>
+            <div id="glasvezelAanleggen"></div>
+        </li>
+        <li>
+            <p id="overstappenNaarGlasvezeltxt">6.&nbsp; Overstappen naar glasvezel&nbsp;</p>
+            <div id="overstappenNaarGlasvezel"></div>
+        </li>
+
+    </ul>
+    <br />
+    <br />
+    <p style="position: relative; border-bottom: 3px solid #FFFFFF;">
+        <span id="participants2" style="font-size: 35px;">106 </span>
+        <span style="font-size: 15px;">deelnemers</span>
+        <span id="percentage2" style="position: absolute; right: 0px; bottom:-5px; font-size: 50px; ">22%</span>
+    </p>
+    <div id="userImages" class="images">
 
 
-// Functie om de data van de server op te halen
-function getDistrictInfo(id)
-{
-	
-	$.getJSON('http://glas.mycel.nl/district?id=' + id + '', function (data) 
-	{
-		// Zet alle benodigde data in variabelen
-		var buurtNaam = data.name;
-		var percentage = (100 * data.percentage) + "%";
-		var participants = data.participants;
-	    
-	    // Zet de variabelen op de goede plek in de html
-		document.getElementById("buurtNaam").innerHTML = buurtNaam;  
-		document.getElementById("percentage").innerHTML = percentage; 
-		document.getElementById("participants").innerHTML = participants; 
-		document.getElementById("percentage2").innerHTML = percentage; 
-		document.getElementById("participants2").innerHTML = participants;               
-	});
-}
-
-</script>
-                          <span style="font-size: 50px;">Welkom</span>
-                          <p style="font-size: 20px;">This is html version of this app. Lorem ipsum. Proin gravida nibh vbel valit acutor atulet. Acenen soluudcutin, lorem quid bibendum acutor. Nisi elit consqeut impsum. nex sagittis sem nigh id eli. Duis sed odia sit amet bij vulupupat cursar sit amet mauros.</p>
-
-                          <div id="information" style="position: relative; margin-top: 20px; width: 100%;">
-                            <span style="float: left; font-size: 40px; font-weight: bold;">Martijn's glasvezel buurt</span>
-                            <span style="float: right; clear: left; font-size: 30px;">Aawijk-noord</span>
-                            <table style="float: left; position: relative;">
-                              <tr>
-                                <td><span style="font-size: 70px; clear: left; line-height: 50px;">106&nbsp;</span></td>
-                                <td style="position: relative;"><span style="font-size: 30px; position: absolute; bottom: 0px;">deelnemers</span></td>
-                              </tr>
-                            </table>
-                            <span style="float: left; font-size: 100px; clear: left;">22%</span>
-                          </div>
-
-                          <div id="buttons">
-                            <a id="mijnWijk" class="customButton" style="background-color: #ECECEC; color: #2D8AF9; padding: 10px 20px;" href="#">Dit is mijn wijk!</a>
-                            <a id="andereWijk" class="customButton" style="background-color: #868889; color: white; padding: 10px 20px; opacity: 0.85;" href="#">Andere wijk</a>
-                          </div>
-                         <br />
-                          <p style="font-size:30px; clear: both;">buurt video</p>
-                        <video id="intro" width="50%" height="50%">
-    <source src="https://dl.dropboxusercontent.com/u/20756116/Comp2.mp4" type="video/mp4">
-    <!-- <source src="movie.ogg" type="video/ogg">--></source>
-    <p>Fout! klik <a href="#">hier</a> om verder te gaan</p>
-</video>
-<br />
-<br />
-                          
-<p style="font-size:30px;">buurt kaart</p>
-<iframe style="18em; height:18em; margin:10px;" src="http://glas.mycel.nl/geo.html">
-</iframe>
-<br />
-<br />
-                          
-<p style="font-size:30px;">goede doel</p>
-<ul class="status">
-                         <li>
-                          <p id=goedeDoeltxt>1.&nbsp; Gratis telefoon, tv, internet en wifi voor basisschool Antonius&nbsp;</p>
-                        <div id="goedeDoelVoortgang"></div> 
-                        </li> 
-                        </ul>
-                        <br />
-<br />
-                          
-<p style="font-size:30px;">Veel gestelde vragen</p>
-  <ul class="status">  
-   <li><p>hier vind u de meest gestelde vragen omtrent de app en glasvezel.</p></li>   
-   </ul> 
-   <br />
-   <br />                        
-
-<p style="font-size:30px;">Stel uw vraag</p>
-  <ul class="status"> 
-    <li><p>Hier kunt u vragen stellen over de app en glasvezel.</p></li>   
-  </ul>      
-<br />
-<br />                     
-<p style="font-size:30px;">stappen</p>
-   <ul class="status">
-                         <li>
-                          <p id=bewonersVerzamelentxt>1.&nbsp; Bewoners verzamelen&nbsp;</p>
-                        <div id="bewonersVerzamelen"></div> 
-                        </li> 
-                        <li>
-                         <p id="inschrijventxt">2.&nbsp; Inschrijven&nbsp;</p>
-                        <div id="inschrijven"></div> 
-                        </li>
-                        <li>
-                            <p id="providerSelecterentxt">3.&nbsp; Provider selecteren&nbsp;</p>
-                        <div id="providerSelecteren"></div> 
-                        </li>
-                        <li>
-                            <p id="glasvezelAandeeltxt">4.&nbsp; Glasvezel aandeel&nbsp;</p>
-                        <div id="glasvezelAandeel"></div>
-                        </li>
-                        <li> 
-                            <p id="glasvezelAanleggentxt">5.&nbsp; Glasvezel aanleggen&nbsp;</p>
-                        <div id="glasvezelAanleggen"></div> 
-                        </li>
-                        <li>
-                           <p id="overstappenNaarGlasvezeltxt">6.&nbsp; Overstappen naar glasvezel&nbsp;</p>
-                        <div id="overstappenNaarGlasvezel"></div> 
-                        </li>
-                          
-                      </ul>
-                      <br />
-                      <br />
-                        <p style="position: relative; border-bottom: 3px solid #FFFFFF;"><span style="font-size: 35px;">106 </span>
-                            <span style="font-size: 15px;">deelnemers</span>
-                             <span style="position: absolute; right: 0px; bottom:-5px; font-size: 50px; ">22%</span>
-                             </p>
-                             <div class="images">
-                             <img src="img/avatar.png" width="64px"height="64px" />
-                             <img src="img/user.png" width="64px" height="64px" />
-                             <img src="img/avatar.png" width="64px"height="64px" />
-                             <img src="img/user.png" width="64px" height="64px" />
-                             <img src="img/avatar.png" width="64px"height="64px" />
-                             <img src="img/user.png" width="64px" height="64px" />
-                             <img src="img/avatar.png" width="64px"height="64px" />
-                             <img src="img/user.png" width="64px" height="64px" />
-                             <img src="img/avatar.png" width="64px"height="64px" />
-                             <img src="img/user.png" width="64px" height="64px" />
-                             <img src="img/avatar.png" width="64px"height="64px" />
-                             <img src="img/user.png" width="64px" height="64px" />
-                             <img src="img/avatar.png" width="64px"height="64px" />
-                             <img src="img/user.png" width="64px" height="64px" /><img src="img/avatar.png" width="64px"height="64px" />
-                             <img src="img/user.png" width="64px" height="64px" /><img src="img/avatar.png" width="64px"height="64px" />
-                             <img src="img/user.png" width="64px" height="64px" /><img src="img/avatar.png" width="64px"height="64px" />
-                             <img src="img/user.png" width="64px" height="64px" /><img src="img/avatar.png" width="64px"height="64px" />
-                             <img src="img/user.png" width="64px" height="64px" /><img src="img/avatar.png" width="64px"height="64px" />
-                             <img src="img/user.png" width="64px" height="64px" /><img src="img/avatar.png" width="64px"height="64px" />
-                             <img src="img/user.png" width="64px" height="64px" /><img src="img/avatar.png" width="64px"height="64px" />
-                             <img src="img/user.png" width="64px" height="64px" /><img src="img/avatar.png" width="64px"height="64px" />
-                             <img src="img/user.png" width="64px" height="64px" /><img src="img/avatar.png" width="64px"height="64px" />
-                             <img src="img/user.png" width="64px" height="64px" /><img src="img/avatar.png" width="64px"height="64px" />
-                             <img src="img/user.png" width="64px" height="64px" /><img src="img/avatar.png" width="64px"height="64px" />
-                             <img src="img/user.png" width="64px" height="64px" /><img src="img/avatar.png" width="64px"height="64px" />
-                             <img src="img/user.png" width="64px" height="64px" /><img src="img/avatar.png" width="64px"height="64px" />
-                             <img src="img/user.png" width="64px" height="64px" /><img src="img/avatar.png" width="64px"height="64px" />
-                             <img src="img/user.png" width="64px" height="64px" /><img src="img/avatar.png" width="64px"height="64px" />
-                             <img src="img/user.png" width="64px" height="64px" /><img src="img/avatar.png" width="64px"height="64px" />
-                             <img src="img/user.png" width="64px" height="64px" /><img src="img/avatar.png" width="64px"height="64px" />
-                             <img src="img/user.png" width="64px" height="64px" /><img src="img/avatar.png" width="64px"height="64px" />
-                             <img src="img/user.png" width="64px" height="64px" /><img src="img/avatar.png" width="64px"height="64px" />
-                             <img src="img/user.png" width="64px" height="64px" /><img src="img/avatar.png" width="64px"height="64px" />
-                             <img src="img/user.png" width="64px" height="64px" /><img src="img/avatar.png" width="64px"height="64px" />
-                             <img src="img/user.png" width="64px" height="64px" /><img src="img/avatar.png" width="64px"height="64px" />
-                             <img src="img/user.png" width="64px" height="64px" /><img src="img/avatar.png" width="64px"height="64px" />
-                             <img src="img/user.png" width="64px" height="64px" /><img src="img/avatar.png" width="64px"height="64px" />
-                             <img src="img/user.png" width="64px" height="64px" /><img src="img/avatar.png" width="64px"height="64px" />
-                             <img src="img/user.png" width="64px" height="64px" /><img src="img/avatar.png" width="64px"height="64px" />
-                             <img src="img/user.png" width="64px" height="64px" /><img src="img/avatar.png" width="64px"height="64px" />
-                             <img src="img/user.png" width="64px" height="64px" /><img src="img/avatar.png" width="64px"height="64px" />
-                             <img src="img/user.png" width="64px" height="64px" /><img src="img/avatar.png" width="64px"height="64px" />
-                             <img src="img/user.png" width="64px" height="64px" /><img src="img/avatar.png" width="64px"height="64px" />
-                             <img src="img/user.png" width="64px" height="64px" /><img src="img/avatar.png" width="64px"height="64px" />
-                             <img src="img/user.png" width="64px" height="64px" /><img src="img/avatar.png" width="64px"height="64px" />
-                             <img src="img/user.png" width="64px" height="64px" /><img src="img/avatar.png" width="64px"height="64px" />
-                             <img src="img/user.png" width="64px" height="64px" /><img src="img/avatar.png" width="64px"height="64px" />
-                             <img src="img/user.png" width="64px" height="64px" /><img src="img/avatar.png" width="64px"height="64px" />
-                             <img src="img/user.png" width="64px" height="64px" /><img src="img/avatar.png" width="64px"height="64px" />
-                             <img src="img/user.png" width="64px" height="64px" /><img src="img/avatar.png" width="64px"height="64px" />
-                             <img src="img/user.png" width="64px" height="64px" /><img src="img/avatar.png" width="64px"height="64px" />
-                             <img src="img/user.png" width="64px" height="64px" /><img src="img/avatar.png" width="64px"height="64px" />
-                             <img src="img/user.png" width="64px" height="64px" /><img src="img/avatar.png" width="64px"height="64px" />
-                             <img src="img/user.png" width="64px" height="64px" /><img src="img/avatar.png" width="64px"height="64px" />
-                             <img src="img/user.png" width="64px" height="64px" /><img src="img/avatar.png" width="64px"height="64px" />
-                             <img src="img/user.png" width="64px" height="64px" /><img src="img/avatar.png" width="64px"height="64px" />
-                             <img src="img/user.png" width="64px" height="64px" /><img src="img/avatar.png" width="64px"height="64px" />
-                             <img src="img/user.png" width="64px" height="64px" /><img src="img/avatar.png" width="64px"height="64px" />
-                             <img src="img/user.png" width="64px" height="64px" /><img src="img/avatar.png" width="64px"height="64px" />
-                             <img src="img/user.png" width="64px" height="64px" /><img src="img/avatar.png" width="64px"height="64px" />
-                             <img src="img/user.png" width="64px" height="64px" /><img src="img/avatar.png" width="64px"height="64px" />
-                             <img src="img/user.png" width="64px" height="64px" /><img src="img/avatar.png" width="64px"height="64px" />
-                             <img src="img/user.png" width="64px" height="64px" /><img src="img/avatar.png" width="64px"height="64px" />
-                             <img src="img/user.png" width="64px" height="64px" /><img src="img/avatar.png" width="64px"height="64px" />
-                             <img src="img/user.png" width="64px" height="64px" /><img src="img/avatar.png" width="64px"height="64px" />
-                             <img src="img/user.png" width="64px" height="64px" /><img src="img/avatar.png" width="64px"height="64px" />
-                             <img src="img/user.png" width="64px" height="64px" /><img src="img/avatar.png" width="64px"height="64px" />
-                             <img src="img/user.png" width="64px" height="64px" /><img src="img/avatar.png" width="64px"height="64px" />
-                             <img src="img/user.png" width="64px" height="64px" /><img src="img/avatar.png" width="64px"height="64px" />
-                             <img src="img/user.png" width="64px" height="64px" /><img src="img/avatar.png" width="64px"height="64px" />
-                             <img src="img/user.png" width="64px" height="64px" /><img src="img/avatar.png" width="64px"height="64px" />
-                             <img src="img/user.png" width="64px" height="64px" /><img src="img/avatar.png" width="64px"height="64px" />
-                             <img src="img/user.png" width="64px" height="64px" /><img src="img/avatar.png" width="64px"height="64px" />
-                             <img src="img/user.png" width="64px" height="64px" /><img src="img/avatar.png" width="64px"height="64px" />
-                             <img src="img/user.png" width="64px" height="64px" /><img src="img/avatar.png" width="64px"height="64px" />
-                             <img src="img/user.png" width="64px" height="64px" /><img src="img/avatar.png" width="64px"height="64px" />
-                             <img src="img/user.png" width="64px" height="64px" /><img src="img/avatar.png" width="64px"height="64px" />
-                             <img src="img/user.png" width="64px" height="64px" /><img src="img/avatar.png" width="64px"height="64px" />
-                             <img src="img/user.png" width="64px" height="64px" />
-                             
-                             </div>
-                            
+    </div>
+<!--</div>-->

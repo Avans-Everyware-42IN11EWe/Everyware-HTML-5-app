@@ -1,6 +1,6 @@
 <script>
 
-  $("#registerbtn").click(function (event) {
+  $(document).on('click', '#registerbtn', function (event) {
         var Name = $("#txtName").val();
         var Email = $("#txtEmail").val();
 
@@ -33,15 +33,12 @@
             });
         }
     });
-
-    $("#register-facebook").click(function () {
-
-        // TODO - create and login
-        mySwiper.swipeNext();
+    $(document).on('click', '#register-facebook', function (event) {
+        window.JHandler.LoginFacebook();
     });
 </script>
 
-    <div id="registration">
+    <div id="overlay">
         <div class="overlaymargin">
         <span style="font-size: 50px; color: gray;">Registratie</span>
         <a class="closebutton righttop">X</a>
@@ -53,14 +50,14 @@
           <span style="color: #2D8AF9;">Ik wil buddy worden</span>
         </form>
         <div class="regButtons">
-            <a class="customButton regLinks" style="color: #2D8AF9;" href="#">Leuke foto toevoegen</a>
+            <a id="uploadPicture" class="customButton regLinks" style="color: #2D8AF9;" href="#">Leuke foto toevoegen</a>
         </div>
         <div class="regButtons" style="margin-top: 80px;">
             <a id="registerbtn" class="customButton regLinks" style="padding-left: 40px; padding-right: 40px;" href="#">Registratie afronden</a>
         </div>
         <hr />
         <div class="regButtons" style="bottom: 20px;">
-            <a href="#" ><img src="btnLoginFacebook.png" /></a>
+            <a id="register-facebook" href="#" ><img src="btnLoginFacebook.png" /></a>
         </div>
     </div>
 </div>
