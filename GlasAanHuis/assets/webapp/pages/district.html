@@ -1,4 +1,14 @@
-
+<script>
+    var inlog="";
+    var inlog = window.JHandler.GetSavedData("login.bin");
+    if(!isNaN(inlog)){
+        //alert("button change");
+        $("#mijnWijk").remove();
+        $("#andereWijk").remove();
+        $("#buttons").append('<a class="customButton" href="#" style="background-color: rgb(236, 236, 236); text-align:center; color: rgb(45, 138, 249); padding: 10px 20px; width: 100%;" id="schrijfIn">Schrijf je in!</a>');
+    }
+    
+</script>
     <span style="font-size: 50px;">Welkom</span>
     <p style="font-size: 20px;">This is html version of this app. Lorem ipsum. Proin gravida nibh vbel valit acutor atulet. Acenen soluudcutin, lorem quid bibendum acutor. Nisi elit consqeut impsum. nex sagittis sem nigh id eli. Duis sed odia sit amet bij vulupupat cursar sit amet mauros.</p>
 
