@@ -5,7 +5,8 @@
         <link rel="stylesheet" href="css/idangerous.swiper.css">
         <link rel="stylesheet" type="text/css" href="custom.css" />
         <link rel="stylesheet" type="text/css" href="css/jquery-ui-1.10.4.custom.css" />
-        
+         <link href='https://api.tiles.mapbox.com/mapbox.js/v1.6.1/mapbox.css' rel='stylesheet' />
+         
         <script>	
 
 			// Create postcode page
@@ -19,6 +20,18 @@
 			$eLogin.css("height", "100%");
 			$eLogin.css("width", "100%");
 			LoadHtmlPage("pages/register.html", $eLogin);
+
+            // create buddy page
+            $ebuddy = $("<div></div>");
+            $ebuddy.css("height", "100%");
+            $ebuddy.css("width", "100%");
+            LoadHtmlPage("pages/buddy.html", $ebuddy);
+            
+            // create chat page
+            $echat = $("<div></div>");
+            $echat.css("height", "100%");
+            $echat.css("width", "100%");
+            LoadHtmlPage("pages/chat.html", $echat);
 
 		    // create UploadPicture page
 		    $eUploadPicture = $("<div></div>");
@@ -135,6 +148,21 @@
           $("#overlay_container").html($ePostcode);							
 			    $("#overlay_container").show();
         });
+        $(document).on( "click", "#naarchat", function() {    
+                    $("#bg").css("opacity","0");
+                
+            // Go to  chat overlay
+          $("#overlay_container").html($echat);                         
+                $("#overlay_container").show();
+        });
+        
+        $(document).on( "click", "#userImages", function() {    
+                    $("#bg").css("opacity","0");
+                
+            // Go to chat overlay
+          $("#overlay_container").html($ebuddy);                         
+                $("#overlay_container").show();
+        });
 
         $(document).on( "click", "#uploadPicture", function() {  
           $("#bg").css("opacity","0");
@@ -177,7 +205,7 @@
 
                  //$("#first").on("scroll",".blur",function(){
 				 $(".blur").scroll(function(e) {
-				     console.log("scrollen");
+				    // console.log("scrollen");
                  var elem = $(".blur");
                  var maxScrollTop = elem[0].scrollHeight - elem.outerHeight();
                  var vaagheid = 6/maxScrollTop;
@@ -185,9 +213,9 @@
             
            
                  //grootte window
-                 console.log("blur per pixel: "+vaagheid);
-                 console.log("scrolltop waarde "+$(".blur").scrollTop());
-                 console.log("opacityval: "+blurHoeveelheid);
+                 //console.log("blur per pixel: "+vaagheid);
+                // console.log("scrolltop waarde "+$(".blur").scrollTop());
+                 //console.log("opacityval: "+blurHoeveelheid);
                  $("#bg").css("opacity",blurHoeveelheid);
                  
                 });

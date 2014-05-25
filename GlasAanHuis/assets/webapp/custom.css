@@ -345,3 +345,41 @@ a.bordered{
 .swiper-slide {
 padding-top:35px;
 }
+.streep{
+    position:relative;
+    border-bottom:solid 2px #808080;
+}
+.chatright{
+  float:right;
+  padding-bottom: 25px;  
+}
+.chatright p{
+   border-style:solid;
+   border-width:1px;
+   float:right;
+   margin-right:10px;
+   margin-top:10px;
+}
+.chatright img{
+    float:right;
+}
+.chatright p span{
+    padding:4px;
+}
+.clearfloatchat{
+    clear:both;
+    padding-bottom: 25px;
+}
+.clearfloatchat p{
+   border-style:solid;
+   border-width:1px;
+   float:left;
+   margin-left:10px;
+   margin-top:10px;
+}
+.clearfloatchat img{
+    float:left;
+}
+.clearfloatchat p span{
+    padding:4px;
+}

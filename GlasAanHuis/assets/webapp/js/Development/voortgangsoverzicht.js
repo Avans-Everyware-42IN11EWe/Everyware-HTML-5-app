@@ -23,5 +23,5 @@
                 $( "[id=glasvezelAandeel]" ).progressbar({value: glasvezelAandeel});                    
                 $( "[id=glasvezelAanleggen]" ).progressbar({value: glasvezelAanleggen});                     
                 $( "[id=overstappenNaarGlasvezel]" ).progressbar({value: overstappenNaarGlasvezel});
-                console.log("voortgang geladen");
+               // console.log("voortgang geladen");
 });

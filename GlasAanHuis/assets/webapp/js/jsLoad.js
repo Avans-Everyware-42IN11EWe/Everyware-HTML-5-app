@@ -6,8 +6,8 @@ document.write('<script type="text/javascript" charset="UTF-8" src="js/jquery/jq
 
 document.write('<script type="text/javascript" src="js/swiper/idangerous.swiper.min.js"></script>');
 document.write('<script type="text/javascript" charset="UTF-8" src="js/blur.js"></script>');
-
-
+document.write('<script src="js/underscore-min.js"></script>');
+document.write('<script src="js/mapbox.js"></script>');
 document.write('<script type="text/javascript" charset="UTF-8" src="js/fastclick.js"></script>');
 
 
