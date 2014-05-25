@@ -24,7 +24,6 @@ bin/GlasAanHuis.apk
 gen/nl/avans/glasaanhuis/html5/BuildConfig.java
 bin/jarlist.cache
 project.properties
-bin/AndroidManifest.xml
 bin/classes/nl/avans/glasaanhuis/html5/IJavascriptHandler.class
 bin/dexedLibs/android-support-v4-6950ca8940be4886cb26211985628c57.jar
 gen/nl/avans/glasaanhuis/html5/BuildConfig.java
