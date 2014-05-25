@@ -43,6 +43,14 @@ final class IJavascriptHandler {
 	   }
 	   
 	   @JavascriptInterface
+	   public void UploadPicture()
+	   {
+		   Intent photoPickerIntent = new Intent(Intent.ACTION_PICK);
+		   photoPickerIntent.setType("image/*");
+		   MainActivity._activity.startActivityForResult(photoPickerIntent, MainActivity.REQ_CODE_PICK_IMAGE);
+	   }
+	   
+	   @JavascriptInterface
 	   public boolean LoginFacebook()
 	   {
 			Session.openActiveSession(MainActivity._activity, true, new Session.StatusCallback() 
@@ -64,14 +72,13 @@ final class IJavascriptHandler {
 								{
 									String userId = user.getId();
 									prefs.edit().putString("userId", userId).commit();
-									try {
-									URL image_value = new URL("http://graph.facebook.com/"+userId+"/picture" );
-									
+									/*try {
+										URL image_value = new URL("http://graph.facebook.com/"+userId+"/picture" );
 										Bitmap profPict=BitmapFactory.decodeStream(image_value.openConnection().getInputStream());
 									} catch (IOException e) {
 										// TODO Auto-generated catch block
 										e.printStackTrace();
-									}
+									}*/
 								}
 							}
 						}).executeAsync();

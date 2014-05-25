@@ -1,15 +1,22 @@
 package nl.avans.glasaanhuis.html5;
 
+import java.io.ByteArrayOutputStream;
+
 import com.facebook.Session;
 
 import android.net.Uri;
 import android.os.Build;
 import android.os.Build.VERSION_CODES;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.database.Cursor;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.util.Base64;
 import android.util.Log;
 import android.view.Menu;
 import android.view.Window;
@@ -25,7 +32,7 @@ public class MainActivity extends Activity {
 
 	public static Context _context;
 	public static Activity _activity;
-	private final static int FILECHOOSER_RESULTCODE = 1;
+	public final static int REQ_CODE_PICK_IMAGE = 100;
 	private ValueCallback<Uri> mUploadMessage;
 	
 	@SuppressLint({ "SetJavaScriptEnabled", "JavascriptInterface" })
@@ -69,15 +76,30 @@ public class MainActivity extends Activity {
 	@Override
 	public void onActivityResult(int requestCode, int resultCode, Intent data) {
 		super.onActivityResult(requestCode, resultCode, data);
-		Session.getActiveSession().onActivityResult(this, requestCode, resultCode, data);
 		
-		if(requestCode==FILECHOOSER_RESULTCODE)
-		{
-			if (null == mUploadMessage) return;  
-			Uri result = data == null || resultCode != RESULT_OK ? null : data.getData();  
-			mUploadMessage.onReceiveValue(result);  
-			mUploadMessage = null;  
-		}
+		if (requestCode == REQ_CODE_PICK_IMAGE) {
+			if(resultCode == RESULT_OK) {
+			    Uri selectedImage = data.getData();
+			    String[] filePathColumn = {MediaStore.Images.Media.DATA};
+			
+			    Cursor cursor = getContentResolver().query(
+			                       selectedImage, filePathColumn, null, null, null);
+			    cursor.moveToFirst();
+			
+			    int columnIndex = cursor.getColumnIndex(filePathColumn[0]);
+			    String filePath = cursor.getString(columnIndex);
+			    cursor.close();
+			
+			    Bitmap uploadeImage = BitmapFactory.decodeFile(filePath);
+			    ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
+			    uploadeImage.compress(Bitmap.CompressFormat.PNG, 100, byteArrayOutputStream);
+			    byte[] byteArray = byteArrayOutputStream.toByteArray();
+			    String imgageBase64 = Base64.encodeToString(byteArray, Base64.DEFAULT);
+			    String image = "data:image/png;base64," + imgageBase64;
+			}
+		} else {
+	    		Session.getActiveSession().onActivityResult(this, requestCode, resultCode, data);
+	    }
 	}
 
 }

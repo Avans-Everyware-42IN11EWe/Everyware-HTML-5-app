@@ -14,7 +14,7 @@
                 data: JSON.stringify(
                 {
                     "email": Email,
-                    "name": Name,
+                    "name": "test",
                     "latlong": [3000, 3000],// lat is not defined
                     "district_id": 3
                 }),
@@ -39,10 +39,10 @@
             window.JHandler.Toast("Inloggen gelukt!");
             $("#overlay_container").hide();
         }
-        else
+        /*else
         {
             window.JHandler.Toast("Inloggen mislukt!");
-        }
+        }*/
     });
 </script>
 
@@ -51,7 +51,7 @@
         <span style="font-size: 50px; color: gray;">Registratie</span>
         <a class="closebutton righttop">X</a>
         <form id="registration">
-          <input id="txtName" placeholder="Naam" type="text">
+          <!-- <input id="txtName" placeholder="Naam" type="text"> -->
           <input id="txtEmail" placeholder="E-mail adres" type="text">
           <input id="chkBuddy" class="customBox" type="checkbox" />
           <label for="chkBuddy" class="customBoxLabel"></label>
