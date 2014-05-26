@@ -1,10 +1,7 @@
 *.jar
-.project
-bin/AndroidManifest.xml
 bin/GlasAanHuis.apk
 bin/classes.dex
 bin/resources.ap_
-project 1.properties
 GlasAanHuis/bin/R.txt
 facebook/bin/jarlist.cache
 GlasAanHuis/bin/R.txt
