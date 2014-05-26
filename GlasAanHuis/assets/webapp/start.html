@@ -175,7 +175,7 @@
 				$width = $( window ).width();
 				$(".swiper-container").css("height", $height + "px");
 
-				$("#overlay_container").css("height", $height + "px");
+				$("#overlay_container").css("height", $height-20 + "px");
 				$("#overlay_container").css("width", $width + "px");
 				$("#overlay_container").hide();
 				// --
@@ -184,7 +184,7 @@
 				$("#overlay_container").append($eIntro);							
 				$("#overlay_container").show();	
 				
-				$(".swiper-container").css("height", $height-20 + "px");
+				$(".swiper-container").css("height", $height + "px");
                 
                 mySwiper  = new Swiper('.swiper-container',{
                     //Your options here:
