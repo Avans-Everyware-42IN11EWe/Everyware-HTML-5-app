@@ -9,6 +9,12 @@
          
         <script>	
 
+			// Create settings page
+			$eSettings = $("<div></div>");
+			$eSettings.css("height", "100%");
+			$eSettings.css("width", "100%");
+			LoadHtmlPage("pages/settings.html", $eSettings);
+		
 			// Create postcode page
 			$ePostcode = $("<div></div>");
 			$ePostcode.css("height", "100%");
@@ -116,6 +122,16 @@
 				return false;				
             });	
 			
+			$(document).on( "click touchstart", "#left-menu ul li", function() {
+				if(!$menuIsAnimating)
+				{
+					$("#menu-btn-close").hide();
+					MenuClose();
+				}
+				return false;				
+            });	
+			
+			
 			$(document).on( "click touchstart", "#menu-btn-close", function() {
 				
 				if(!$menuIsAnimating)
@@ -164,6 +180,14 @@
                 $("#overlay_container").show();
         });
 
+		
+		
+		$(document).on( "click", "#settings_view", function() {  
+          $("#bg").css("opacity","0");
+          $("#overlay_container").html($eSettings);             
+          $("#overlay_container").show();
+        });
+		
         $(document).on( "click", "#uploadPicture", function() {  
           $("#bg").css("opacity","0");
           $("#overlay_container").html($eUploadPicture);             
@@ -232,7 +256,12 @@
 		<div style="float:left;" id="menu-btn-open"><img src="img/reveal-icon.png" /></div>
 		<div style="float:right;" id="menu-btn-close"><img src="img/reveal-icon.png" /></div>
 	</div>
-	<div id="left-menu"></div>
+	<div id="left-menu">
+	<ul>
+		<li id="settings_view">Settings</li>
+		<li>Mijn wijk</li>
+	</ul>
+	</div>
     <div class="swiper-container">
               <div class="swiper-wrapper">
 

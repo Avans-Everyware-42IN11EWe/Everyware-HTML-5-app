@@ -144,6 +144,7 @@ div#overlay {
     border-radius: 5px;
     padding: 10px;
     -moz-box-sizing: border-box;
+	color:#808080;
 }
 
 #information {
@@ -340,6 +341,17 @@ a.bordered{
 	z-index:1000;
 	opacity:0.95;
 	filter:alpha(opacity=95); /* For IE8 and earlier */
+	overflow:hidden;
+	text-align:center;
+}
+
+#left-menu ul {
+	list-style-type:none;
+}
+
+#left-menu ul li {
+	font-size:120%;
+	margin-bottom:5px;
 }
 
 .swiper-slide {
