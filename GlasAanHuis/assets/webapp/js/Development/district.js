@@ -1,7 +1,8 @@
-
+var id;
 	$(document).ready(function ()
 	{
-		getDistrictInfo(1);
+		id = 1;
+		getDistrictInfo(id);
 		
         var goedeDoel = 3;
         $('[id=goedeDoeltxt]').append(goedeDoel+"%");
@@ -70,4 +71,11 @@
 	        $("[id=overstappenNaarGlasvezel]" ).progressbar({value: overstappenNaarGlasvezel});
 			
 		});
+		
+		function mijnWijk()
+		{
+			alert("wijk "+ windows.id + " gekozen");
+
+			window.JHandler.SaveToFile("wijkID.bin", windows.id);
+		}
 	}
