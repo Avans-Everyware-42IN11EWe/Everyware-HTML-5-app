@@ -34,13 +34,14 @@ public class MainActivity extends Activity {
 	public static Activity _activity;
 	public final static int REQ_CODE_PICK_IMAGE = 100;
 	private ValueCallback<Uri> mUploadMessage;
+	private WebView wv;
 	
 	@SuppressLint({ "SetJavaScriptEnabled", "JavascriptInterface" })
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
-		WebView wv;
+		
 		wv = (WebView) findViewById(R.id.WebView);
 		
 		_context = getBaseContext();
@@ -52,7 +53,7 @@ public class MainActivity extends Activity {
 		wv.setWebChromeClient(new CustomChromeClient(this));
 		// Javascript handler
 		wv.addJavascriptInterface(new IJavascriptHandler(), "JHandler");		
-		
+		wv.getSettings().setJavaScriptEnabled(true);
 		wv.loadUrl("file:///android_asset/webapp/start.html");
 		
 		// Waarom werkt dit niet
@@ -89,13 +90,15 @@ public class MainActivity extends Activity {
 			    int columnIndex = cursor.getColumnIndex(filePathColumn[0]);
 			    String filePath = cursor.getString(columnIndex);
 			    cursor.close();
-			
+			    
 			    Bitmap uploadeImage = BitmapFactory.decodeFile(filePath);
 			    ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
 			    uploadeImage.compress(Bitmap.CompressFormat.PNG, 100, byteArrayOutputStream);
 			    byte[] byteArray = byteArrayOutputStream.toByteArray();
-			    String imgageBase64 = Base64.encodeToString(byteArray, Base64.DEFAULT);
-			    String image = "data:image/png;base64," + imgageBase64;
+			    String imageBase64 = Base64.encodeToString(byteArray, Base64.NO_WRAP);
+			    String image = "data:image/png;base64," + imageBase64;
+			    String str = String.format("javascript:setValue('%s')", image);
+ 			    wv.loadUrl(str);
 			}
 		} else {
 	    		Session.getActiveSession().onActivityResult(this, requestCode, resultCode, data);

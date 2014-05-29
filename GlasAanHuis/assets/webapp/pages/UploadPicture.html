@@ -4,16 +4,22 @@
 		window.JHandler.UploadPicture();
 	});
 
+    function setValue(url) {
+        $("#imgProfilePicture").attr("src", url);
+        $("#TitleUploadPicture").text("Uw foto");
+        $("#btnUploadPicture").text("Verander");
+    }
+
 </script>
 
 <div id="overlay">
 	<div class="overlaymargin">
-        <span style="font-size: 50px; color: gray;">Upload afbeelding</span>
+        <span id="TitleUploadPicture" style="font-size: 50px; color: gray;">Upload afbeelding</span>
         <a class="closebutton righttop">X</a>
-        <form>
-        	<!-- <input id="btnUploadPicture" type="file" name="photo" accept="image/*" capture="camera"> -->
+        <form style="margin-top: 20px;">
+        	<img id="imgProfilePicture" src="" alt="Nog geen foto beschikbaar" style="height: 350px; width: 525px;" />
         	<div class="regButtons">
-	        	<a id="btnUploadPicture" href="#">Upload een foto</a>
+	        	<a id="btnUploadPicture" class="customButton regLinks" href="#">Upload een foto</a>
 	        </div>
         </form>
     </div>
