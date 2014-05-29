@@ -1,5 +1,5 @@
 <script>
-    var inlog="";
+    /*var inlog="";
     var inlog = window.JHandler.GetSavedData("login.bin");
     if(!isNaN(inlog)){
         //alert("button change");
@@ -7,7 +7,7 @@
         $("#andereWijk").remove();
         $("#buttons").append('<a class="customButton" href="#" style="background-color: rgb(236, 236, 236); text-align:center; color: rgb(45, 138, 249); padding: 10px 20px; width: 100%;" id="schrijfIn">Schrijf je in!</a>');
         $("#buttons").css("margin-left", "10px", "margin-right", "10px");
-    }
+    }*/
     
 </script>
     <span style="font-size: 50px;">Welkom</span>
@@ -78,29 +78,26 @@
     <br />
     <br />
     <p style="font-size:30px;">stappen</p>
-    <ul class="status">
+    <ul id="stappen" class="status">
+    
         <li>
-            <p id=bewonersVerzamelentxt>1.&nbsp; Bewoners verzamelen&nbsp;</p>
+            <p id=bewonersVerzamelentxt>1.&nbsp;</p>
             <div id="bewonersVerzamelen"></div>
         </li>
         <li>
-            <p id="inschrijventxt">2.&nbsp; Inschrijven&nbsp;</p>
+            <p id="inschrijventxt">2.&nbsp;</p>
             <div id="inschrijven"></div>
         </li>
         <li>
-            <p id="providerSelecterentxt">3.&nbsp; Provider selecteren&nbsp;</p>
+            <p id="providerSelecterentxt">3.&nbsp;</p>
             <div id="providerSelecteren"></div>
         </li>
         <li>
-            <p id="glasvezelAandeeltxt">4.&nbsp; Glasvezel aandeel&nbsp;</p>
-            <div id="glasvezelAandeel"></div>
-        </li>
-        <li>
-            <p id="glasvezelAanleggentxt">5.&nbsp; Glasvezel aanleggen&nbsp;</p>
+            <p id="glasvezelAanleggentxt">4.&nbsp;</p>
             <div id="glasvezelAanleggen"></div>
         </li>
         <li>
-            <p id="overstappenNaarGlasvezeltxt">6.&nbsp; Overstappen naar glasvezel&nbsp;</p>
+            <p id="overstappenNaarGlasvezeltxt">5.&nbsp;</p>
             <div id="overstappenNaarGlasvezel"></div>
         </li>
 
