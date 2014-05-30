@@ -315,7 +315,7 @@ a.bordered{
     top:15px;
 }
 .images img:first-child{
-  margin-left:192px;  
+  /*margin-left:192px;  */
 }
 
 #top-menu {
@@ -394,4 +394,18 @@ padding-top:35px;
 }
 .clearfloatchat p span{
     padding:4px;
+}
+
+.profilePictures {
+    float: left;
+    height: 75px;
+}
+
+.buddy {
+    box-shadow: inset 0px 0px 5px 5px lime;
+}
+
+.test {
+    position: relative;
+    z-index: -2;
 }
