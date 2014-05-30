@@ -314,9 +314,9 @@ a.bordered{
     position: relative;
     top:15px;
 }
-.images img:first-child{
+/*.images img:first-child{
   margin-left:225px;  
-}
+}*/
 
 #top-menu {
 	position:absolute;
