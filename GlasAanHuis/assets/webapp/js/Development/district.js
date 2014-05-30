@@ -1,7 +1,10 @@
 var id;
 	$(document).ready(function ()
 	{
-    	$(".swiper-slide").clone(true).appendTo(".swiper-wrapper");
+	           id = 1;
+        getDistrictInfo(id);
+
+    	/*$(".swiper-slide").clone(true).appendTo(".swiper-wrapper");
 		$.get("http://glas.mycel.nl/districts?search=5211AA", function(data, status)
 		{
 			for (var i = 0; i < data.length; i++)
@@ -10,7 +13,7 @@ var id;
 				getDistrictInfo(id);
 			}
 						
-		});
+		});*/
     	
         var goedeDoel = 3;
         $('[id=goedeDoeltxt]').append(goedeDoel+"%");
