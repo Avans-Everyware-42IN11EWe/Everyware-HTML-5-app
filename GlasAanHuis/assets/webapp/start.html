@@ -49,9 +49,16 @@
 			$eIntro = $("<div></div>");				
 			$eIntro.css("backgroundColor", "black");
 			$eIntro.css("height", "100%");
-			$eIntro.css("width", "100%");
-				
+			$eIntro.css("width", "100%");				
 			LoadHtmlPage("pages/intro_video.html", $eIntro);
+			
+			
+            // create fullmap page
+            $emap = $('<div></div>');             
+            $emap.css("backgroundColor", "black");
+            $emap.css("height", "100%");
+            $emap.css("width", "100%");
+            LoadHtmlPage("pages/map.html", $emap);
 			
 			// Hide the intro video
             $(document).on( "click", "#skip_intro", function() {
@@ -193,6 +200,12 @@
           $("#overlay_container").html($eUploadPicture);             
           $("#overlay_container").show();
         });
+        
+        $(document).on("click","div#naarMap",function(){
+          $("#bg").css("opacity","0");
+          $("#overlay_container").html($emap);             
+          $("#overlay_container").show();
+            });
 				
 				// Prepare the containers
 				$height = $( window ).height();
