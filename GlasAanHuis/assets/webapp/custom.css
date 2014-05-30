@@ -185,13 +185,13 @@ div#overlay {
     background: #FFF;
    /* background-size: cover !important;*/
 }
-form#registration {
+form#registration, form#settings {
     position: relative;
     margin: 0;
     padding: 0;
 }
 
-form#registration input[type=text] {
+form#registration, form#settings input[type=text] {
     border: 1px solid #DBDBDB;
     background-color: #ECECEC;
     border-radius: 2px;

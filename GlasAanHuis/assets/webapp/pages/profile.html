@@ -1,0 +1,44 @@
+<script>
+	/*$( document ).ready(function() {
+		$("#btnWrapper").width($(".overlay").width());
+	}*/
+
+	$(document).on('click', '#btnUpdateSettings', function (event) {
+		$("#bg").css("opacity","0");
+
+      	$("#overlay_container").html($eSettings);                         
+        $("#overlay_container").show();
+	});
+
+</script>
+
+<div class="overlay">
+	<div class="overlaymargin">
+		<img width="75" src="http://graph.facebook.com/100002085564993/picture" />
+		<span style="font-size: 30px; color: gray; margin-left: 15px;">Buddy</span>
+		<a class="closebutton">X</a>
+		<div class="streep"></div>
+		<br />
+		<br />
+		<p>
+			Leeftijd: 22 <br />
+			Woonplaats: Aawijk <br />
+			Telefoon: 06-87958475 <br />
+			E-mail: mail@email.com       
+		</p>
+		<br />
+
+		<video id="intro" style="width:25%;">
+		<source src="https://dl.dropboxusercontent.com/u/20756116/Comp2.mp4" type="video/mp4">
+		<!-- <source src="movie.ogg" type="video/ogg">--></source>
+		<p>Fout! klik <a href="#">hier</a> om verder te gaan</p>
+		</video>
+
+		<div id="btnWrapper" style="position: absolute; left: 50%; bottom:15px;">
+			<div style="position: relative; left: -50%;">
+				<a class="customButton bordered" id="btnUpdateSettings" style="color: #2D8AF9;">Wijzig gegevens</a>   
+			</div>
+		</div>  
+
+	</div>
+</div>

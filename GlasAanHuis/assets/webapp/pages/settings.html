@@ -1,4 +1,51 @@
+<script>
+
+	$(document).on('click', '#btnUploadPicture', function (event) {
+		$("#bg").css("opacity","0");
+
+      	$("#overlay_container").html($eUploadPicture);                         
+        $("#overlay_container").show();
+	});
+
+	$(document).on('click', '#btnUploadVideo', function (event) {
+		$("#bg").css("opacity","0");
+
+      	$("#overlay_container").html($eUploadVideo);                         
+        $("#overlay_container").show();
+	});
+
+	$(document).on('click', '#btnSaveSettings', function (event) {                        
+        $("#overlay_container").hide();
+	});
+
+</script>
+
 <div id="overlay">
-	<h3>Settings</h3>
-	<a class="closebutton righttop">X</a>
+	<div class="overlaymargin">
+		<span style="font-size: 30px; color: gray; margin-left: 15px;">Instellingen wijzigen</span>
+		<a class="closebutton righttop">X</a>
+		<hr />
+		<form id="settings">
+          <input id="txtName" placeholder="Naam" type="text">
+          <input id="txtAge" placeholder="Leeftijd" type="text">
+          <input id="txtCity" placeholder="Woonplaats" type="text">
+          <input id="txtPhone" placeholder="Telefoonnummer" type="text">
+          <input id="txtEmail" placeholder="E-mail adres" type="text">
+          <input id="chkBuddy" class="customBox" type="checkbox" />
+          <label for="chkBuddy" class="customBoxLabel"></label>
+          <span style="color: #2D8AF9;">Ik wil buddy worden</span>
+        </form>
+        
+	</div>
+	<div style="position: absolute; bottom: 15px; width: 95%;">
+			<div class="regButtons">
+				<a class="customButton bordered" id="btnUploadPicture" style="color: #2D8AF9;">Profielfoto uploaden</a>   
+			</div>
+			<div class="regButtons">
+				<a class="customButton bordered" id="btnUploadVideo" style="color: #2D8AF9;">Video uploaden</a>   
+			</div>
+			<div class="regButtons">
+				<a class="customButton bordered" id="btnSaveSettings" style="color: #2D8AF9;">Wijzigen opslaan</a>   
+			</div>
+		</div>
 </div>

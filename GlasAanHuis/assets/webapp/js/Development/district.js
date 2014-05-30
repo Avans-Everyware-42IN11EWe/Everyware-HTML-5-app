@@ -53,6 +53,7 @@ var id;
 				div.setAttribute('class', 'profilePictures');
 				var img = document.createElement("IMG");
 			    img.src = data.plaatjes[i].plaatje;
+			    div.setAttribute('id', 'person_'+i);
 			    img.setAttribute('class', 'test');
 			    img.setAttribute('width', 75);
     			document.getElementById('userImages').appendChild(div);
@@ -62,6 +63,23 @@ var id;
 				{
 					//div.setAttribute('style', 'box-shadow: inset 0px 0px 5px 5px lime;');
 					div.setAttribute('class', 'profilePictures buddy');
+					$(document).on( "click", "#person_"+i, function() {    
+	                	$("#bg").css("opacity","0");
+				            
+				        // Go to chat overlay
+				      	$("#overlay_container").html($ebuddy);                         
+			            $("#overlay_container").show();
+				    });
+				}
+				else if (data.plaatjes[i].has_video == 1)
+				{
+					$(document).on( "click", "#person_"+i, function() {    
+	                	$("#bg").css("opacity","0");
+				            
+				        // Go to chat overlay
+				      	$("#overlay_container").html($ebuddy);                         
+			            $("#overlay_container").show();
+				    });
 				}
 				
       		}
@@ -88,10 +106,14 @@ var id;
 			
 		});
 		
-		function mijnWijk()
-		{
-			alert("wijk "+ windows.id + " gekozen");
 
-			window.JHandler.SaveToFile("wijkID.bin", windows.id);
-		}
 	}
+
+	function mijnWijk()
+	{
+		alert("wijk "+ windows.id + " gekozen");
+
+		window.JHandler.SaveToFile("wijkID.bin", windows.id);
+	}
+
+	
