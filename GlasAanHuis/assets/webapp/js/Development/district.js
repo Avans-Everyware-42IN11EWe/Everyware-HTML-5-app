@@ -1,9 +1,17 @@
 var id;
 	$(document).ready(function ()
 	{
-		id = 1;
-		getDistrictInfo(id);
-		
+    	$(".swiper-slide").clone(true).appendTo(".swiper-wrapper");
+		$.get("http://glas.mycel.nl/districts?search=5211AA", function(data, status)
+		{
+			for (var i = 0; i < data.length; i++)
+			{
+				id = i + 1;
+				getDistrictInfo(id);
+			}
+						
+		});
+    	
         var goedeDoel = 3;
         $('[id=goedeDoeltxt]').append(goedeDoel+"%");
         $('[id=goedeDoelVoortgang]').progressbar({value: goedeDoel});
@@ -38,16 +46,21 @@ var id;
 			
 			for (var i = 0; i < data.plaatjes.length; i++)
 			{
+				var div = document.createElement("DIV");
+				div.setAttribute('class', 'profilePictures');
 				var img = document.createElement("IMG");
 			    img.src = data.plaatjes[i].plaatje;
+			    img.setAttribute('class', 'test');
 			    img.setAttribute('width', 75);
-    			document.getElementById('userImages').appendChild(img);
-    			
+    			document.getElementById('userImages').appendChild(div);
+    			div.appendChild(img);
+
     			if(data.plaatjes[i].is_buddy == 1)
 				{
-    				img.setAttribute('border', 3)
-    				img.style.borderColor = "lime";
+					//div.setAttribute('style', 'box-shadow: inset 0px 0px 5px 5px lime;');
+					div.setAttribute('class', 'profilePictures buddy');
 				}
+				
       		}
 			
 			var bewonersVerzamelen = Math.round(100 * data.stappen[0].percentage);
