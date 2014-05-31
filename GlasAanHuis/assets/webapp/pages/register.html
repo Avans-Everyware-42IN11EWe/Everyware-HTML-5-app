@@ -21,8 +21,10 @@
                 dataType: "json",
                 success: function (data)
                 {
-                    alert(data.user_id);
-                    window.JHandler.SaveToFile("login.bin", data.user_id);
+                    alert(data.user_id+" "+data.auth_token);
+                    window.JHandler.SaveToFile("uid.bin", data.user_id);
+                      //alert(data.auth_token);
+                    window.JHandler.saveToFile("utoken.bin", data.auth_token);
                     mySwiper.swipeNext();
                 },
                 error: function (jqXHR, textStatus, errorThrown)
