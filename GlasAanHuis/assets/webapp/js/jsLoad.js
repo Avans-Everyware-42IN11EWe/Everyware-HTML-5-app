@@ -22,3 +22,4 @@ document.write('<script type="text/javascript" charset="utf-8" src="js/Developme
 //document.write('<script type="text/javascript" charset="utf-8" src="js/Development/voortgangsoverzicht.js"></script>');
 document.write('<script type="text/javascript" charset="utf-8" src="js/Development/mijnWijk.js"></script>');
 document.write('<script type="text/javascript" charset="utf-8" src="js/Development/zoekpostcode.js"></script>');
+document.write('<script type="text/javascript" charset="utf-8" src="js/Development/progress.js"></script>');

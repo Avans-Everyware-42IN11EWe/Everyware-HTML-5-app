@@ -111,9 +111,12 @@ var id;
 
 	function mijnWijk()
 	{
+	    //wat is windows.id en waar komt het vandaan en waarom word dit niet in de functie parameters doorgegeven?
+	    // is nu in ieder geval undefined
 		alert("wijk "+ windows.id + " gekozen");
 
 		window.JHandler.SaveToFile("wijkID.bin", windows.id);
 	}
-
+	
+	
 	
