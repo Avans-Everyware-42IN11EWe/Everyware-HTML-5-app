@@ -1,23 +1,14 @@
 var id;
 	$(document).ready(function ()
 	{
-		id = 1;
+	           id = 1;
         getDistrictInfo(id);
 
-		/*var div = document.createElement("DIV");
-		div.setAttribute('class', 'swiper-slide' + 0 + ' blur swiper-slide-visible swiper-slide-active');
-		div.setAttribute('id', 'first');
-		document.getElementById('test_Container').appendChild(div);
-		
+    	/*$(".swiper-slide").clone(true).appendTo(".swiper-wrapper");
 		$.get("http://glas.mycel.nl/districts?search=5211AA", function(data, status)
 		{
 			for (var i = 0; i < data.length; i++)
 			{
-		    	var cloneSlide = $('.swiper-slide' + i).clone();
-		    	cloneSlide.appendTo(".swiper-wrapper");
-		    	//cloneSlide.setAttribute('class', 'swiper-slide' + i+1 + ' blur');
-		    	//cloneSlide.setAttribute('id', 'first');
-		    	
 				id = i + 1;
 				getDistrictInfo(id);
 			}
@@ -45,7 +36,6 @@ var id;
 			$percentage = (100 * data.percentage) + "%";
 			$participants = data.participants;
 			$bgImgUrl = data.plaatje;
-			$vidSource = data.video;
 			//console.error("hello");
 			
 			
@@ -56,7 +46,6 @@ var id;
 			$("#percentage2").html($percentage);
 			$("#participants2").html($participants);
 			$("body").css('background-image', 'url('+ $bgImgUrl +')');
-			$("intro").setAttribute("src", $vidSource);
 			
 			for (var i = 0; i < data.plaatjes.length; i++)
 			{
