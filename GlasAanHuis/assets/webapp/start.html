@@ -64,6 +64,12 @@
 			$eIntro.css("width", "100%");				
 			LoadHtmlPage("pages/intro_video.html", $eIntro);
 			
+			// create FAQ page
+			$faq = $("<div></div>");
+			$faq.css("height", "100%");
+			$faq.css("width", "100%");				
+			LoadHtmlPage("pages/faq.html", $faq);
+			
 			
             // create fullmap page
             $emap = $('<div></div>');             
@@ -206,6 +212,13 @@
           $("#overlay_container").html($eProfile);             
           $("#overlay_container").show();
         });
+        
+        $(document).on("click", "#faq", function() {  
+          $("#bg").css("opacity","0");
+          $("#overlay_container").html($faq);             
+          $("#overlay_container").show();
+        	
+        });
 		
         $(document).on( "click", "#uploadPicture", function() {  
           $("#bg").css("opacity","0");
@@ -297,8 +310,8 @@
                 <div class="swiper-slide noSwiping" id="postcode">content</div>
             
                
-                <!--6th Slide-->
-                <div class="swiper-slide noSwiping overlayparent" id="provider">content</div>
+                <!--6th Slide
+                <div class="swiper-slide noSwiping overlayparent" id="provider">content</div>-->
                
                
                </div><!-- end swiper container-->
