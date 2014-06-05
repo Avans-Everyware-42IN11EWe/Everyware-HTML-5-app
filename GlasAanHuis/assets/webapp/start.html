@@ -70,6 +70,12 @@
 			$faq.css("width", "100%");				
 			LoadHtmlPage("pages/faq.html", $faq);
 			
+			// create forum page
+			$forum = $("<div></div>");
+			$forum.css("height", "100%");
+			$forum.css("width", "100%");				
+			LoadHtmlPage("pages/forum.html", $forum);
+			
 			
             // create fullmap page
             $emap = $('<div></div>');             
@@ -219,6 +225,14 @@
           $("#overlay_container").show();
         	
         });
+        
+        $(document).on("click", "#forum", function() {  
+          $("#bg").css("opacity","0");
+          $("#overlay_container").html($forum);             
+          $("#overlay_container").show();
+        	
+        });
+		
 		
         $(document).on( "click", "#uploadPicture", function() {  
           $("#bg").css("opacity","0");
