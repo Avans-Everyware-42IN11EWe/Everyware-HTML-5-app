@@ -1,8 +1,9 @@
 var id;
 	$(document).ready(function ()
 	{
-	           id = 1;
+		id = 1;
         getDistrictInfo(id);
+        getProgress(id);
 
     	/*$(".swiper-slide").clone(true).appendTo(".swiper-wrapper");
 		$.get("http://glas.mycel.nl/districts?search=5211AA", function(data, status)
@@ -21,6 +22,34 @@ var id;
         console.log("voortgang geladen");
         
 	});
+	
+	function getProgress(id)
+	{
+		$.get("http://glas.mycel.nl/progress?id=1&auth_token=blaat123",function(data, status)
+		{
+			$status = data.status;
+			console.error("status = " + $status);
+
+			if($status == 1){
+				$("#mijnWijk").html("Dit is mijn wijk");
+			}
+			if($status == 2){
+				$("#mijnWijk").html("Aanmelden");
+				$("#mijnWijk").css('width', '100%');
+				$("#andereWijk").hide();
+			}
+			if($status == 3){
+				$("#mijnWijk").html("Provider voorkeur");
+				$("#andereWijk").hide();
+			}
+			if($status == 4){
+				$("#mijnWijk").html("Betalen");
+				$("#andereWijk").hide();
+			}
+			
+		});
+	}
+	
 
 
 	// Functie om de data van de server op te halen
