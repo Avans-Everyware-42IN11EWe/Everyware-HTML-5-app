@@ -68,7 +68,7 @@
 			$faq = $("<div></div>");
 			$faq.css("height", "100%");
 			$faq.css("width", "100%");				
-			LoadHtmlPage("pages/faq.html", $faq);
+			LoadHtmlPage("pages/faq.html", $faq);			
 			
 			// create forum page
 			$forum = $("<div></div>");
@@ -76,6 +76,17 @@
 			$forum.css("width", "100%");				
 			LoadHtmlPage("pages/forum.html", $forum);
 			
+			// create Provider page
+			$eProvider = $("<div></div>");
+			$eProvider.css("height", "100%");
+			$eProvider.css("width", "100%");				
+			LoadHtmlPage("pages/provider.html", $eProvider);
+			
+			// create Pay page
+			$ePay = $("<div></div>");
+			$ePay.css("height", "100%");
+			$ePay.css("width", "100%");				
+			LoadHtmlPage("pages/Pay.html", $ePay);
 			
             // create fullmap page
             $emap = $('<div></div>');             
@@ -180,13 +191,30 @@
                 
 				$("#menu-btn-close").hide();				
 					
-				$(document).on( "click", "#mijnWijk", function() {	
-					$("#bg").css("opacity","0");
-                
+				$(document).on( "click", "#mijnWijk", function() 
+				{	
+					$("#bg").css("opacity","0"); 
 					// Go to login overlay
-          $("#overlay_container").html($eLogin);							
+         			//$("#overlay_container").html($eLogin);							
+					//$("#overlay_container").show();
+					
+					switch($status)
+					{
+						case 1:
+		          			$("#overlay_container").html($eLogin);	
+							break;
+						case 2:
+		          			$("#overlay_container").html($eLogin);	
+							break;
+						case 3:
+		          			$("#overlay_container").html($eProvider);
+							break;
+						case 4:
+		          			$("#overlay_container").html($ePay);	
+							break;			
+					}
 					$("#overlay_container").show();
-        });
+        		});
 
 				$(document).on( "click", "#andereWijk", function() {	
 					$("#bg").css("opacity","0");

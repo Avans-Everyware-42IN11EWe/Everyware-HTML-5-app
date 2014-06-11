@@ -28,8 +28,27 @@ var id;
 		$.get("http://glas.mycel.nl/progress?id=1&auth_token=blaat123",function(data, status)
 		{
 			$status = data.status;
-			console.error("status = " + $status);
+			//console.error("status = " + $status);
 
+			switch($status){
+				case 1:
+					$("#mijnWijk").html("Dit is mijn wijk");
+					break;
+				case 2:
+					$("#mijnWijk").html("Aanmelden");
+					$("#andereWijk").hide();
+					break;
+				case 3:
+					$("#mijnWijk").html("Provider voorkeur");
+					$("#andereWijk").hide();
+					break;
+				case 4:
+					$("#mijnWijk").html("Betalen");
+					$("#andereWijk").hide();
+					break;
+			
+			}
+			/*
 			if($status == 1){
 				$("#mijnWijk").html("Dit is mijn wijk");
 			}
@@ -45,7 +64,7 @@ var id;
 			if($status == 4){
 				$("#mijnWijk").html("Betalen");
 				$("#andereWijk").hide();
-			}
+			}*/
 			
 		});
 	}
@@ -144,7 +163,7 @@ var id;
 	    // is nu in ieder geval undefined
 		alert("wijk "+ windows.id + " gekozen");
 
-		window.JHandler.SaveToFile("wijkID.bin", windows.id);
+		//window.JHandler.SaveToFile("wijkID.bin", windows.id);
 	}
 	
 	
