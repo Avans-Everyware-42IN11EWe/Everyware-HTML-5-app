@@ -68,11 +68,9 @@ var id;
 			
 		});
 	}
-	
-
 
 	// Functie om de data van de server op te halen
-	function getDistrictInfo(id)
+	function getDistrictInfo(id, element)
 	{
 		$.get("http://glas.mycel.nl/district?id=" + id + "",function(data, status)
 		{
@@ -86,13 +84,19 @@ var id;
 			$bgImgUrl = data.plaatje;
 			//console.error("hello");
 			
-			
+			element.find(".buurtNaam").html($buurtNaam);
+			element.find(".percentage").html($percentage);
+			element.find(".participants").html($participants);
+			element.find(".percentage2").html($percentage);
+			element.find(".participants2").html($participants);
 			// Zet de variabelen op de goede plek in de html
+			/*
 			$("#buurtNaam").html($buurtNaam);
 			$("#percentage").html($percentage);
 			$("#participants").html($participants);
 			$("#percentage2").html($percentage);
 			$("#participants2").html($participants);
+			*/
 			$("body").css('background-image', 'url('+ $bgImgUrl +')');
 			
 			for (var i = 0; i < data.plaatjes.length; i++)
@@ -104,6 +108,7 @@ var id;
 			    div.setAttribute('id', 'person_'+i);
 			    img.setAttribute('class', 'test');
 			    img.setAttribute('width', 75);
+			    element.find(".userImages").append(div);
     			document.getElementById('userImages').appendChild(div);
     			div.appendChild(img);
 
@@ -139,19 +144,31 @@ var id;
 	        var overstappenNaarGlasvezel = Math.round(100 * data.stappen[4].percentage);
 
 	        /******text****/
+	        element.find(".bewonersVerzamelentxt").append(data.stappen[0].naam + " " + bewonersVerzamelen+"%");
+	        element.find(".inschrijventxt").append(data.stappen[1].naam + " " + inschrijven+"%");
+	        element.find(".providerSelecterentxt").append(data.stappen[2].naam + " " + providerSelecteren+"%");
+	        element.find(".glasvezelAanleggentxt").append(data.stappen[3].naam + " " + glasvezelAanleggen+"%");
+	        element.find(".overstappenNaarGlasvezeltxt").append(data.stappen[4].naam + " " + overstappenNaarGlasvezel+"%");
+	        /*
 	        $('[id=bewonersVerzamelentxt]').append(data.stappen[0].naam + " " + bewonersVerzamelen+"%");
 	        $('[id=inschrijventxt]').append(data.stappen[1].naam + " " + inschrijven+"%");
 	        $('[id=providerSelecterentxt]').append(data.stappen[2].naam + " " + providerSelecteren+"%");
 	        $('[id=glasvezelAanleggentxt]').append(data.stappen[3].naam + " " + glasvezelAanleggen+"%");
 	        $('[id=overstappenNaarGlasvezeltxt]').append(data.stappen[4].naam + " " + overstappenNaarGlasvezel+"%");
-
+			*/
 	        /******progressbars****/
+	        element.find(".bewonersVerzamelen").progressbar({value: bewonersVerzamelen});
+	        element.find(".inschrijven").progressbar({value: inschrijven});
+	        element.find(".providerSelecteren").progressbar({value: providerSelecteren});
+	        element.find(".glasvezelAanleggen").progressbar({value: glasvezelAanleggen});
+	        element.find(".overstappenNaarGlasvezel").progressbar({value: overstappenNaarGlasvezel});
+	        /*
 	        $("[id=bewonersVerzamelen]").progressbar({value: bewonersVerzamelen});
-	        $("[id=inschrijven]" ).progressbar({value: inschrijven});                
-	        $("[id=providerSelecteren]" ).progressbar({value: providerSelecteren});                 
-	        $("[id=glasvezelAanleggen]" ).progressbar({value: glasvezelAanleggen});                     
+	        $("[id=inschrijven]" ).progressbar({value: inschrijven});
+	        $("[id=providerSelecteren]" ).progressbar({value: providerSelecteren});
+	        $("[id=glasvezelAanleggen]" ).progressbar({value: glasvezelAanleggen});
 	        $("[id=overstappenNaarGlasvezel]" ).progressbar({value: overstappenNaarGlasvezel});
-			
+			*/
 		});
 		
 
