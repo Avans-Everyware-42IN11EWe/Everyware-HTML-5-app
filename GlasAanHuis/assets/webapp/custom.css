@@ -147,12 +147,12 @@ div#overlay {
 	color:#808080;
 }
 
-#information {
+.information {
 	position: relative;
 	float: left;
 }
 
-#buttons {
+.buttons {
 	position: relative;
 	float: left;
 	clear: left;

@@ -1,4 +1,5 @@
  $( document ).ready(function() {
+ /*
                 var map = L.mapbox.map('map', 'nanne.i84f0he3');
                  $.get('http://glas.mycel.nl/geo?id=2', function(data){
                // console.log(JSON.stringify(data));
@@ -19,4 +20,5 @@
                             //console.log(JSON.stringify(wijkarray));
                      polygon.setStyle({color: "black",weight: 3,fillColor: "rgb("+red+","+green+",0)",fillOpacity: 0.7});
                 });
+*/
             });

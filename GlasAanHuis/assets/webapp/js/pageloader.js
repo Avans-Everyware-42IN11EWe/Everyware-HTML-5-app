@@ -31,7 +31,8 @@
 $( document ).ready(function() {
  
   LoadHtmlPage("pages/intro_video.html", $("#intro_video"));
-  LoadHtmlPage("pages/district.html", $("#first"), '<script type="text/javascript" charset="utf-8" src="js/Development/district.js"></script><script src="js/Development/mapcode.js"></script>');
+  LoadHtmlPage("pages/district.html", $("#first"));
+    LoadHtmlPage("pages/district.html", $("#second"));
   //LoadHtmlPage("pages/district.html", $("#second"));
   //LoadHtmlPage("pages/district.html", $("#third"));
   

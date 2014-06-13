@@ -186,9 +186,18 @@
 			
 						
 			// --
+			var jsonDistricts = null;
 	        var mySwiper;
             $( document ).ready(function() {
-                
+				
+				$.get("http://glas.mycel.nl/districts?lat=51.983333&long=5.916667",function(data, status)
+				{
+					jsonDistricts = data;			
+				});
+				
+				
+				
+				
 				$("#menu-btn-close").hide();				
 					
 				$(document).on( "click", "#mijnWijk", function() 
@@ -290,14 +299,54 @@
 				
 				$(".swiper-container").css("height", $height + "px");
                 
+				
+				$currentSlides = 2;
+				$currentIndex = 1;
+				
+				
                 mySwiper  = new Swiper('.swiper-container',{
                     //Your options here:
                     mode:'horizontal',
                     noSwiping: true,
                     loop: false,
-                    //etc..
+					
+					// Slide next event
+					onSlideNext: function() {
+						$currentIndex++;	
+						//alert($currentIndex +" "+  $currentSlides);
+						if($currentIndex == $currentSlides && $currentSlides < jsonDistricts.length)
+						{
+							
+							// Maak een clone van de eerste slide
+							var newSlide = mySwiper.getSlide(0).clone();	
+
+							
+							$slide = $(newSlide);
+							
+							//alert($slide);
+							
+							//alert(jsonDistricts[$currentSlides].id);
+							
+							
+							mySwiper.appendSlide(newSlide);
+							getDistrictInfo(jsonDistricts[$currentSlides].id, $slide);
+
+					
+							$currentSlides++;
+						}	
+
+						$("body").css('background-image', "url('"+ jsonDistricts[$currentIndex-1].plaatje +"')");
+						
+					},
+					
+					onSlidePrev:  function() {
+						$currentIndex --;
+												
+						$("body").css('background-image', "url('"+ jsonDistricts[$currentIndex-1].plaatje +"')");
+					}
+										
                 });
-                  
+							
                 $('#bg').blurjs({
                     source: 'body',
                     radius: 35,
@@ -323,6 +372,13 @@
                  $("#bg").css("opacity",blurHoeveelheid);
                  
                 });
+				
+				
+				
+				//
+				
+				getDistrictInfo(1, $("#first"), true);			
+				getDistrictInfo(2, $("#second"));				
 			});
         </script>
     </head>
@@ -349,7 +405,7 @@
                 <div class="swiper-slide blur" id="first" >content</div>                    				
 				                              
                 <!--5th Slide-->
-                <div class="swiper-slide noSwiping" id="postcode">content</div>
+                <div class="swiper-slide blur" id="second">content</div>
             
                
                 <!--6th Slide

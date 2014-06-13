@@ -2,7 +2,6 @@ var id;
 	$(document).ready(function ()
 	{
 		id = 1;
-        getDistrictInfo(id);
         getProgress(id);
 
     	/*$(".swiper-slide").clone(true).appendTo(".swiper-wrapper");
@@ -68,12 +67,12 @@ var id;
 			
 		});
 	}
-
+	
 	// Functie om de data van de server op te halen
-	function getDistrictInfo(id, element)
+	function getDistrictInfo(id, element, loadBackground = false)
 	{
 		$.get("http://glas.mycel.nl/district?id=" + id + "",function(data, status)
-		{
+		{			
 	    	//console.log("Data: " + data + "\nStatus: " + status);
 	    	//console.log("Name: " + JSON.stringify(data.name));
 	    	
@@ -97,7 +96,10 @@ var id;
 			$("#percentage2").html($percentage);
 			$("#participants2").html($participants);
 			*/
-			$("body").css('background-image', 'url('+ $bgImgUrl +')');
+			
+
+			if(loadBackground)
+				$("body").css('background-image', 'url('+ $bgImgUrl +')');
 			
 			for (var i = 0; i < data.plaatjes.length; i++)
 			{
@@ -109,7 +111,7 @@ var id;
 			    img.setAttribute('class', 'test');
 			    img.setAttribute('width', 75);
 			    element.find(".userImages").append(div);
-    			document.getElementById('userImages').appendChild(div);
+    			//document.getElementById('userImages').appendChild(div);
     			div.appendChild(img);
 
     			if(data.plaatjes[i].is_buddy == 1)
