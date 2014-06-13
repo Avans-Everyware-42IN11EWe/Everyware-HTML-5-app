@@ -22,6 +22,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.net.Uri;
 import android.sax.StartElementListener;
 import android.util.Log;
 import android.webkit.JavascriptInterface;
@@ -48,6 +49,13 @@ final class IJavascriptHandler {
 		   Intent photoPickerIntent = new Intent(Intent.ACTION_PICK);
 		   photoPickerIntent.setType("image/*");
 		   MainActivity._activity.startActivityForResult(photoPickerIntent, MainActivity.REQ_CODE_PICK_IMAGE);
+	   }
+	   
+	   @JavascriptInterface
+	   public void OpenInExternalWebBrowser(String url)
+	   {
+		   Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
+		   MainActivity._context.startActivity(intent);
 	   }
 	   
 	   @JavascriptInterface

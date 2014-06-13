@@ -118,5 +118,13 @@ var id;
 		window.JHandler.SaveToFile("wijkID.bin", windows.id);
 	}
 	
-	
+	function openInWebBrowser() {
+		var url = $("#FacebookLink").attr("href");
+		window.JHandler.OpenInExternalWebBrowser(url);
+	}
+
+	/*$(document).on('click', '#FacebookLink', function (event) {
+		var url = $("#FacebookLink").attr("href");
+		window.JHandler.OpenInExternalWebBrowser(url);
+	}*/
 	
