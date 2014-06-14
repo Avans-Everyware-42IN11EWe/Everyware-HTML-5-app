@@ -26,7 +26,7 @@ var id;
 	
 	function getProgress(id, key)
 	{
-		//$status = 0;
+		$status = 0;
 		if(id != null && key != null)
 		{
 			$.get("http://glas.mycel.nl/progress?id="+id+"&auth_token="+key+"",function(data, status)
@@ -40,7 +40,7 @@ var id;
 						break;
 					case 2:
 						$("div#buttons").empty();
-				        $("div#buttons").append('<a class="customButton" href="#" style="background-color: rgb(236, 236, 236); text-align:center; color: rgb(45, 138, 249); padding: 10px 20px; position:absolute; left:0px; right:0px;" id="mijnWijk">Schrijf je in!</a>');
+				        $("div#buttons").append('<a class="customButton" href="#" style="background-color: rgb(236, 236, 236); text-align:center; color: rgb(45, 138, 249); padding: 10px 20px; position:absolute; left:0px; right:0px;" id="mijnWijk">Geef een provider voorkeur</a>');
 				        $("div#buttons").css({"margin-left" : "10px", "margin-right" : "10px", "width" : "100%", "padding-bottom" : "50px"});
 						//$("#mijnWijk").html("Aanmelden");
 						//$("#andereWijk").hide();

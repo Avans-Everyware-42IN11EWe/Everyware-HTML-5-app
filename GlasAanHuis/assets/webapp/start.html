@@ -9,6 +9,7 @@
          
         <script>	
 
+			
 			// Create profile page
 			$eProfile = $("<div></div>");
 			$eProfile.css("height", "100%");
@@ -202,6 +203,7 @@
 					
 				$(document).on( "click", "#mijnWijk", function() 
 				{	
+					//alert('hoi');
 					$("#bg").css("opacity","0"); 
 					// Go to login overlay
          			//$("#overlay_container").html($eLogin);							
@@ -209,6 +211,9 @@
 					
 					switch($status)
 					{
+						case 0:
+		          			$("#overlay_container").html($eLogin);	
+							break;							
 						case 1:
 		          			$("#overlay_container").html($eLogin);	
 							break;
@@ -217,7 +222,10 @@
 							break;
 						case 3:
 		          			$("#overlay_container").html($ePay);
-							break;			
+							break;
+						default:
+		          			$("#overlay_container").html($eLogin);	
+							break;		
 					}
 					$("#overlay_container").show();
         		});
@@ -375,8 +383,10 @@
 				//
 				
 				getDistrictInfo(1, $("#first"), true);			
-				getDistrictInfo(2, $("#second"));				
+				getDistrictInfo(2, $("#second"));
+								
 			});
+			
         </script>
     </head>
     <body onLoad="initFastButtons();">
