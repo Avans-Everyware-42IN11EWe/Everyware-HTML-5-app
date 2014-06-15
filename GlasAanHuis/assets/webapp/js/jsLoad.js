@@ -16,14 +16,14 @@ document.write('<script type="text/javascript" charset="UTF-8" src="js/fastclick
 
 /*****************Eigen js files met code hier**********************/
 
-
+document.write('<script type="text/javascript" charset="utf-8" src="js/pageloader.js"></script>');
 
 document.write('<script type="text/javascript" charset="utf-8" src="js/Development/district.js"></script>');
 document.write('<script src="js/Development/mapcode.js"></script>');
 
 
 
-document.write('<script type="text/javascript" charset="utf-8" src="js/pageloader.js"></script>');
+
 //document.write('<script type="text/javascript" charset="utf-8" src="js/Development/blurcode.js"></script>');
 //document.write('<script type="text/javascript" charset="utf-8" src="js/Development/hoofdpagina.js"></script>');
 document.write('<script type="text/javascript" charset="utf-8" src="js/Development/introvideo.js"></script>');

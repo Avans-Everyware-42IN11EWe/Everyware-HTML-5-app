@@ -192,11 +192,7 @@
 				
 				$.get("http://glas.mycel.nl/districts?lat=51.983333&long=5.916667",function(data, status)
 				{
-					jsonDistricts = data;			
-				});
-				
-				
-				
+				jsonDistricts = data;			
 				
 				$("#menu-btn-close").hide();				
 					
@@ -317,22 +313,24 @@
 						if($currentIndex == $currentSlides && $currentSlides < jsonDistricts.length)
 						{
 							
-							// Maak een clone van de eerste slide
-							var newSlide = mySwiper.getSlide(0).clone();	
-
-							
-							$slide = $(newSlide);
-							
-							//alert($slide);
-							
-							//alert(jsonDistricts[$currentSlides].id);
-							
-							
-							mySwiper.appendSlide(newSlide);
-							getDistrictInfo(jsonDistricts[$currentSlides].id, $slide);
-
-					
-							$currentSlides++;
+							$.get("http://glas.mycel.nl/district?id=" + jsonDistricts[$currentSlides].id + "",function(data, status)
+							{							
+								// Maak een clone van de eerste slide
+								var newSlide = mySwiper.getSlide(0).clone();	
+								
+								$slide = $(newSlide);
+								
+								//alert($slide);
+								
+								//alert(jsonDistricts[$currentSlides].id);
+								
+								
+								
+								getDistrictInfo(data, $slide);
+								mySwiper.appendSlide(newSlide);
+						
+								$currentSlides++;
+							});
 						}	
 
 						$("body").css('background-image', "url('"+ jsonDistricts[$currentIndex-1].plaatje +"')");
@@ -377,8 +375,18 @@
 				
 				//
 				
-				getDistrictInfo(1, $("#first"), true);			
-				getDistrictInfo(2, $("#second"));				
+				$.get("http://glas.mycel.nl/district?id=1",function(data, status)
+				{
+					$.get("http://glas.mycel.nl/district?id=2",function(data2, status2)
+					{
+						getDistrictInfo(data, $("#first"), true);
+						getDistrictInfo(data, $("#second"));						
+					});	
+				});				
+				
+
+			});
+				
 			});
         </script>
     </head>

@@ -1,5 +1,5 @@
   // Function to load html pages 
-  function LoadHtmlPage($page, $element, $script)
+  function LoadHtmlPage($page, $element, callback, $script)
   {				
     $path = "file:///android_asset/webapp/";
   
@@ -14,8 +14,12 @@
     $path = "file://assets/webapp/";  
   	//$($element).load($page); 
   	$($element).load( $page, function() {
+	
+		if(callback != null)
+			callback($element);
+	
   	    if($script!=null){
-    $('head').append($script);
+			$('head').append($script);
   }
 });
 	
