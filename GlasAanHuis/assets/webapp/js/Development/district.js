@@ -88,16 +88,16 @@ var id;
                  switch($status){
                     case 0:
                     //niksdoen
-                    alert("switch "+$status);
+                    //alert("switch "+$status);
                      break;
                     case 1:
-                    alert("switch "+$status);
+                    //alert("switch "+$status);
                        // $("div#buttons").empty();
                         //$("div#buttons").append('<a class="customButton" href="#" style="background-color: rgb(236, 236, 236); text-align:center; color: rgb(45, 138, 249); padding: 10px 20px; position:absolute; left:0px; right:0px;" id="mijnWijk">Geef een provider voorkeur</a>');
                         //$("div#buttons").css({"margin-left" : "10px", "margin-right" : "10px", "width" : "100%", "padding-bottom" : "50px"});
                         break;
                     case 2:
-                   alert("switch "+$status);
+                   //alert("switch "+$status);
                        $(document).find("div.statusbuttons").empty();
                         $(document).find("div.statusbuttons").append('<a class="customButton" href="#" style="background-color: rgb(236, 236, 236); text-align:center; color: rgb(45, 138, 249); padding: 10px 20px;  wicth:95%; margin-left:15px" id="mijnWijk">Ik doe mee!!!</a>');
                         
