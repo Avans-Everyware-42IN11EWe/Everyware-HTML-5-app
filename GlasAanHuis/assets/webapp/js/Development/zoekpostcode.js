@@ -24,6 +24,15 @@
      //var gekozen= $("a.linkwijk[gekozen]").attr("data");
      //var gekozen= $("a.linkwijk[gekozen]").attr("data");
      //uit data het id van het gekozen element gehaald
-     alert("uw gekozen wijk is: "+wijkSelectedId);
+	 
+	 wijkSelectedId--;
+	 
+     //alert("uw gekozen wijk is: "+wijkSelectedId);
+	 mySwiper.swipeTo(wijkSelectedId, 300, false);	 
+	 $("body").css('background-image', "url('"+ districts[wijkSelectedId].plaatje +"')");
+	 $("#overlay_container").hide();
+	 
+	 $currentSlide = wijkSelectedId;
+	 
   });
 });

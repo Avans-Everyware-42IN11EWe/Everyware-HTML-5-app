@@ -132,6 +132,7 @@ var id;
 		}
 				
 		var mySwiper;
+		var districts;
         $( document ).ready(function() {
 
 		$maxSlides = 0;
@@ -140,11 +141,10 @@ var id;
 		$isCreatingSlide = false;
 		
 		$currentDistrictId = 2;
-		
-		
+				
 		var map = []; 	
 		// Creates a new district
-		function CreateDistrict($disId)
+		function CreateDistrict($disId, callback)
 		{
 			$isCreatingSlide = true;
 		
@@ -262,21 +262,29 @@ var id;
 					
 					//alert("Slide created");
 					
-					
+					if(callback)
+						callback($element);
 					$isCreatingSlide = false;
 				});
 			});
 		}
-
+		
 		$.get("http://glas.mycel.nl/districts?lat=51.983333&long=5.916667",function(data, status)
 		{
+		districts = data;
 		
 		$maxSlides  = data.length;
 		
 		// Create the two first districts
-		CreateDistrict(data[0].id);
 		$("body").css('background-image', "url('"+ data[0].plaatje +"')");
-		CreateDistrict(data[1].id);
+		CreateDistrict(data[0].id, function(){
+			CreateDistrict(data[1].id);
+		});
+		
+		
+		
+		
+		
 		
 		mySwiper  = new Swiper('.swiper-container',{
                     //Your options here:
