@@ -28,50 +28,61 @@ var id;
 		});
 		
 	});
-	/*
-	var userID = localStorage.getItem("id");
+	/*if (localStorage.getItem("id") !== null || localStorage.getItem("key") !== null) {
+  
+
+    var userID = localStorage.getItem("id");
         var userKey = localStorage.getItem("key");
         console.log("userid: "+userID+"key: "+userKey);
+    }*/
+   try{
+    var userData = window.JHandler.GetSavedData("uid.bin");
+    alert("de userdata is: "+userData);
+    }catch(err){
+        console.log("jhandler error bij ophalen userdata: "+err);
+    }
+    userID=null;
+    userKey=null;
         getProgress(userID, userKey);
-	*/
-	function getProgress(id, key)
-	{
-	    //voor t geval dat hij undefined is wann er geen userid en key voorradig is
-		$status =1;
-		
-		if(id != null && key != null)
-		{
-			$.get("http://glas.mycel.nl/progress?id="+id+"&auth_token="+key+"",function(data, status)
-			{
-				$status = data.status;
-				//console.error("status = " + $status);
-				});
-				}
-	//switch mag buiten de get en de !=null check anders kan hij in het begin nooit bereikt worden
-				switch($status){
-					case 1:
-						$("#mijnWijk").html("Dit is mijn wijk");
-						break;
-					case 2:
-						$("div#buttons").empty();
-				        $("div#buttons").append('<a class="customButton" href="#" style="background-color: rgb(236, 236, 236); text-align:center; color: rgb(45, 138, 249); padding: 10px 20px; position:absolute; left:0px; right:0px;" id="mijnWijk">Geef een provider voorkeur</a>');
-				        $("div#buttons").css({"margin-left" : "10px", "margin-right" : "10px", "width" : "100%", "padding-bottom" : "50px"});
-						//$("#mijnWijk").html("Aanmelden");
-						//$("#andereWijk").hide();
-						break;
-					case 3:
-						//$("#mijnWijk").html("Provider voorkeur");
-						//$("#andereWijk").hide();
-						break;
-					case 4:
-						$("#mijnWijk").html("Betalen");
-						$("#andereWijk").hide();
-						break;
-				
-				}			
-			//});
-		
-	}
+    
+    function getProgress(id, key)
+    {
+        //voor t geval dat hij undefined is wann er geen userid en key voorradig is
+        $status =1;
+        
+        if(id != null && key != null)
+        {
+            $.get("http://glas.mycel.nl/progress?id="+id+"&auth_token="+key+"",function(data, status)
+            {
+                $status = data.status;
+                //console.error("status = " + $status);
+                });
+                }
+    //switch mag buiten de get en de !=null check anders kan hij in het begin nooit bereikt worden
+                 switch($status){
+                    case 1:
+                        $("#mijnWijk").html("Dit is mijn wijk");
+                        break;
+                    case 2:
+                        $("div#buttons").empty();
+                        $("div#buttons").append('<a class="customButton" href="#" style="background-color: rgb(236, 236, 236); text-align:center; color: rgb(45, 138, 249); padding: 10px 20px; position:absolute; left:0px; right:0px;" id="mijnWijk">Geef een provider voorkeur</a>');
+                        $("div#buttons").css({"margin-left" : "10px", "margin-right" : "10px", "width" : "100%", "padding-bottom" : "50px"});
+                        //$("#mijnWijk").html("Aanmelden");
+                        //$("#andereWijk").hide();
+                        break;
+                    case 3:
+                        //$("#mijnWijk").html("Provider voorkeur");
+                        //$("#andereWijk").hide();
+                        break;
+                    case 4:
+                        $("#mijnWijk").html("Betalen");
+                        $("#andereWijk").hide();
+                        break;
+                
+                }       
+            //});
+        
+    }
 	
 		function LoadDistrictPage($element, callback)
 		{		
