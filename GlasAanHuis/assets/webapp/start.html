@@ -235,21 +235,23 @@
 					switch($status)
 					{
 					    case 0:
-					    $("#overlay_container").html($eLogin); 
-					    break;
+							$("#overlay_container").html($eLogin); 
+							break;
 						case 1:
 		          			$("#overlay_container").html($ePostcode);	
 							break;
 						case 2:
+							alert('Pay');
 		          			$("#overlay_container").html($ePay);	
 							break;
 						case 3:
+							alert('Provider');
 		          			$("#overlay_container").html($eProvider);
 							break;
 						case 4:
 		          			//$("#overlay_container").html($ePay);	
 		          			//lekker niks doen tis nl afgelopen
-							break;			
+							break;
 					}
 					$("#overlay_container").show();
         		});

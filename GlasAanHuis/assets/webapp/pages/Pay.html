@@ -1,5 +1,28 @@
 <script>
-	
+	$(document).ready(function (event) {
+		$(document).on("click", "#betaal", function (event) {
+		$.ajax(
+		{
+			url: "glas.mycel.nl/commitment?id="+ userData.userId +"&auth_token="+ userData.authToken +"",
+			type: "POST",
+			data: JSON.stringify(
+			{
+				"naam": $("#naam").val(),
+				"adres": $("#adres").val()
+			}),
+			success: function (data)
+			{
+				window.JHandler.Toast("Commitment is gemaakt!");
+				$("#overlay_container").hide();
+			},
+			error: function (jqXHR, textStatus, errorThrown)
+			{
+				//alert("ERROR! --" + textStatus);
+				console.log(textStatus, errorThrown);
+				$("#overlay_container").hide();
+			}
+		});
+	});
 </script>
 <div id="overlay">
 	<div class="overlaymargin">
@@ -12,6 +35,11 @@
 		  	<option value="ABN-Amro">ABN-Amro</option>
 			<option value="SNS">SNS Bank</option>
 		</select> 
+		<br />
+		<input id="naam" type="input" name="naam" value="naam">		
+		<br />
+		<br />
+		<input id="adres" type="adres" name="adres" value="adres">		
 		<br />
 		<br />
 		<input type="checkbox" name="akkoord" value="akkoord">Akkoord met betalen

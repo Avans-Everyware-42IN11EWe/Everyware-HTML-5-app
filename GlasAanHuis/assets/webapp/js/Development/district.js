@@ -2,7 +2,7 @@ var id;
 	$(document).ready(function ()
 	{
 		//id = 1;
-        
+         
 
     	/*$(".swiper-slide").clone(true).appendTo(".swiper-wrapper");
 		$.get("http://glas.mycel.nl/districts?search=5211AA", function(data, status)
@@ -235,6 +235,7 @@ var id;
 					$element.find(".percentage2").html($percentage);
 					$element.find(".participants2").html($participants);
 					$element.find(".facebookLink").attr('href', data.facebookpageurl);
+					$element.find(".goedeDoeltxt").text(data.goededoel.doel);
 					
 					for (var i = 0; i < data.plaatjes.length; i++)
 					{
