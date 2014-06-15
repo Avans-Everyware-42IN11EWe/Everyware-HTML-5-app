@@ -226,6 +226,7 @@ var id;
 					// Slide next event
 					onSlideNext: function() {
 							
+						
 							
 						if($slidesCreated < $maxSlides && !$isCreatingSlide)
 						{
@@ -240,7 +241,17 @@ var id;
 					onSlidePrev:  function() {
 						$currentSlide--;
 						$("body").css('background-image', "url('"+ data[$currentSlide].plaatje +"')");
-					}										
+					}/*,
+
+					onSetWrapperTransition: function() {
+						if($currentSlide == $maxSlides-1)
+						{
+							mySwiper.swipeTo(0);
+							$currentSlide = 0;
+							$("body").css('background-image', "url('"+ data[$currentSlide].plaatje +"')");
+						}
+					}*/
+					
                 });
 			});
 		});
@@ -317,7 +328,7 @@ var id;
                 });*/
                 
                 
-			
+			/*
 			for (var i = 0; i < data.plaatjes.length; i++)
 			{
 				var div = document.createElement("DIV");

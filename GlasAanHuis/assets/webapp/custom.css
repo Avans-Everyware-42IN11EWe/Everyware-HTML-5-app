@@ -73,7 +73,9 @@ input[type=radio].customRadio:checked + label.customRadioLabel {
 }
 
 
-
+.scroll {
+	overflow-y:scroll;
+}
 
 /*******end Custom radio style********/                       
 .closebutton{
