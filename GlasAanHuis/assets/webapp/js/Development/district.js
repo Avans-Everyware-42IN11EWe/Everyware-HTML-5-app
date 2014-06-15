@@ -28,12 +28,12 @@ var id;
 		});
 		
 	});
-	
+	/*
 	var userID = localStorage.getItem("id");
         var userKey = localStorage.getItem("key");
         console.log("userid: "+userID+"key: "+userKey);
         getProgress(userID, userKey);
-	
+	*/
 	function getProgress(id, key)
 	{
 	    //voor t geval dat hij undefined is wann er geen userid en key voorradig is
@@ -129,7 +129,9 @@ var id;
 		$isCreatingSlide = false;
 		
 		$currentDistrictId = 2;
-			
+		
+		
+		var map = []; 	
 		// Creates a new district
 		function CreateDistrict($disId)
 		{
@@ -139,10 +141,33 @@ var id;
 			$ele = $('<div class="swiper-slide blur">');				
 			// Load the page
 			LoadDistrictPage($ele, function($element) {
-				// TODO juiste ids gebruiken
-						
-				$.get("http://glas.mycel.nl/district?id=" + $disId + "",function(data, status)
+				
+			var mapElement = $element.find("#map");		
+			map.push(L.mapbox.map(mapElement[0], 'nanne.i84f0he3'));
+                 $.get('http://glas.mycel.nl/geo?id='+$disId, function(data){
+               // console.log(JSON.stringify(data));
+			   
+                map[map.length-1].setView(data.center.reverse(), 14);
+                var wijkarray=[];
+                wijkarray=data.bound;
+                    for (var i = 0; i < data.bound.length; i++) {
+                       var wijk = data.bound[i];
+                       var p = data.percentage;              
+                        var red = Math.ceil((100 - Math.max(50, p)) * (255/50));
+                        var green = Math.ceil(Math.min(50, p) * (255/50));
+                        wijk.reverse();
+                    }
+                    L.marker(data.center).addTo(map[map.length-1])
+                            .bindPopup("Uw wijk")
+                            .openPopup();
+                     var polygon = L.polygon(wijkarray).addTo(map[map.length-1]);
+                            //console.log(JSON.stringify(wijkarray));
+                     polygon.setStyle({color: "black",weight: 3,fillColor: "rgb("+red+","+green+",0)",fillOpacity: 0.7});
+            });
+				
+			$.get("http://glas.mycel.nl/district?id=" + $disId + "",function(data, status)
 				{	
+					$element.find(".naarMap").attr('disid', $disId);
 
 					// Zet alle benodigde data in variabelen
 					$buurtNaam = data.name;
