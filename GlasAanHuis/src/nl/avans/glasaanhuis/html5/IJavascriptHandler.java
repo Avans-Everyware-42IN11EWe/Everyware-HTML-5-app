@@ -134,16 +134,19 @@ final class IJavascriptHandler {
 	   @JavascriptInterface
 	   public String[] GetSavedData()
 	   {
+		   String[] result = new String[2];
+		   
 			try {
-				String[] result = new String[2];
+				
 				result[0] = prefs.getString("userId", null);
 				result[1] = prefs.getString("authToken", null);
-				
-				return result;
+								
 			} catch (Exception e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
+			
+			return result;
 	   }
 	   
 	}

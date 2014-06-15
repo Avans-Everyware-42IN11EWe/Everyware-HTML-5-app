@@ -6,7 +6,15 @@ $(document).ready(function () {
 });
 
 function loadUserSettings() {
-	var arr = window.JHandler.GetSavedData();
-	userId = arr[0];
-	userToken = arr[1];
+
+	try {
+		var arr = window.JHandler.GetSavedData();
+		userId = arr[0];
+		userToken = arr[1];
+	}
+	catch(err) {
+		// err
+	}
+	
+	
 }
