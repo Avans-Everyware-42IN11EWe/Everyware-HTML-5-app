@@ -39,7 +39,7 @@ event.stopPropagation();
          };
          function preventGhostClick(x, y) {
             coordinates.push(x, y);
-            window.setTimeout(gpop, 150);
+            window.setTimeout(gpop, 300);
          };
          function gpop() {
             coordinates.splice(0, 2);
