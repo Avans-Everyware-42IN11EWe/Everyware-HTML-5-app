@@ -142,26 +142,29 @@ final class IJavascriptHandler {
 	   }
 	   
 	   @JavascriptInterface
-	   public String GetSavedData(String fName)
+	   public String[] GetSavedData()
 	   {
-		   File file = MainActivity._context.getFileStreamPath(fName);
+		   /*File file = MainActivity._context.getFileStreamPath(fName);
 			if(!file.exists()) 
 				return "";
 			
 			String result = "";
 			
-			FileInputStream fis;
+			FileInputStream fis;*/
 			try {
-				fis = MainActivity._context.openFileInput(fName);
+				/*fis = MainActivity._context.openFileInput(fName);
 				ObjectInputStream is = new ObjectInputStream(fis);
 				result = (String) is.readObject();
-				is.close();
+				is.close();*/
+				String[] result = new String[2];
+				result[0] = prefs.getString("userId", null);
+				result[1] = prefs.getString("authToken", null);
+				
+				return result;
 			} catch (Exception e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
-			}		
-			
-			return result;
+			}
 	   }
 	   
 	}
