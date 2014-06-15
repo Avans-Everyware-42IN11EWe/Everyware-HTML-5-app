@@ -22,6 +22,13 @@ var id;
         $('[id=goedeDoelVoortgang]').progressbar({value: goedeDoel});
         console.log("voortgang geladen");
         
+		$(document).on('click', '.facebookLink', function (event) {
+				//alert("testje");
+				var url = $(this).attr("href");
+				alert(url);
+				window.JHandler.OpenInExternalWebBrowser(url);
+		});
+		
 	});
 	
 	function getProgress(id, key)
@@ -59,6 +66,10 @@ var id;
 		}
 	}
 	
+	
+	
+	
+	
 	// Functie om de data van de server op te halen
 	function getDistrictInfo(id, element, loadBackground = false)
 	{
@@ -83,11 +94,7 @@ var id;
 			
 			facebook.attr("href", data.facebookpageurl);
 			
-			$(document).on('click', facebook, function (event) {
-				var url = facebook.attr("href");
-				//alert(url);
-				window.JHandler.OpenInExternalWebBrowser(url);
-			});
+			
 			// Zet de variabelen op de goede plek in de html
 			/*
 			$("#buurtNaam").html($buurtNaam);
@@ -106,24 +113,30 @@ var id;
 				div.setAttribute('class', 'profilePictures');
 				var img = document.createElement("DIV");
 			    //img.src = data.plaatjes[i].plaatje;
-			    div.setAttribute('id', 'person_'+data.plaatjes[i].id);
+				div.setAttribute('personid', data.plaatjes[i].id);
 			    img.setAttribute('class', 'districtProfileIMG');
 				img.setAttribute('style', 'background-image: url("'+data.plaatjes[i].plaatje+'");background-size: 100%; width: 75px; height: 75px;');
 			    element.find(".userImages").append(div);
     			div.appendChild(img);
 				
-
-    			if(data.plaatjes[i].is_buddy == 1)
+				if(data.plaatjes[i].is_buddy == 1)
 				{
 					//div.setAttribute('style', 'box-shadow: inset 0px 0px 5px 5px lime;');
 					div.setAttribute('class', 'profilePictures buddy');
-					$(document).on( "click", "#person_"+data.plaatjes[i].id, function() {
+					$(document).on( "click", ".profilePictures[personid='"+data.plaatjes[i].id+"']", function() {
 	                	$("#bg").css("opacity","0");
 				            
 				        // Go to chat overlay
 				      	$("#overlay_container").html($ebuddy);                         
 			            $("#overlay_container").show();
 				    });
+					if (data.plaatjes[i].has_video == 1)
+					{
+						var cameraIcon = document.createElement("DIV");
+						cameraIcon.setAttribute('style', 'background-image: url(cameraicon.png);background-size: 100%; width: 20px; height: 20px;');
+						cameraIcon.setAttribute('class', 'cameraIcon');
+						div.appendChild(cameraIcon);
+					}
 				}
 				else if (data.plaatjes[i].has_video == 1)
 				{
@@ -131,7 +144,7 @@ var id;
 					cameraIcon.setAttribute('style', 'background-image: url(cameraicon.png);background-size: 100%; width: 20px; height: 20px;');
 					cameraIcon.setAttribute('class', 'cameraIcon');
 					div.appendChild(cameraIcon);
-					$(document).on( "click", "#person_"+data.plaatjes[i].id, function() {
+					$(document).on( "click", ".profilePictures[personid='"+data.plaatjes[i].id+"']", function() {
 	                	$("#bg").css("opacity","0");
 				            
 				        // Go to chat overlay
@@ -139,7 +152,6 @@ var id;
 			            $("#overlay_container").show();
 				    });
 				}
-				
       		}
 			
 			var bewonersVerzamelen = Math.round(100 * data.stappen[0].percentage);
