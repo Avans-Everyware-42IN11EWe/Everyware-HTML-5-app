@@ -276,10 +276,18 @@ var id;
 		
 		// Create the two first districts
 		$("body").css('background-image', "url('"+ data[0].plaatje +"')");
+		
+		function dis(k, max) {
+			if(k <= max) CreateDistrict(data[k].id, function(){ dis(k+1, max);  });
+		}
+		dis(0, $maxSlides);
+		
+		
+		/*
 		CreateDistrict(data[0].id, function(){
 			CreateDistrict(data[1].id);
 		});
-		
+		*/
 		
 		
 		
