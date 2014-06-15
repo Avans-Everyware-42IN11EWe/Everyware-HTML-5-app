@@ -1,11 +1,8 @@
 var id;
 	$(document).ready(function ()
 	{
-		id = 1;
-        var userID = localStorage.getItem("id");
-        var userKey = localStorage.getItem("key");
-        console.log("userid: "+userID+"key: "+userKey);
-        getProgress(userID, userKey);
+		//id = 1;
+        
 
     	/*$(".swiper-slide").clone(true).appendTo(".swiper-wrapper");
 		$.get("http://glas.mycel.nl/districts?search=5211AA", function(data, status)
@@ -18,11 +15,11 @@ var id;
 						
 		});*/
     	
-        var goedeDoel = 3;
+       /* var goedeDoel = 3;
         $('[id=goedeDoeltxt]').append(goedeDoel+"%");
         $('[id=goedeDoelVoortgang]').progressbar({value: goedeDoel});
         console.log("voortgang geladen");
-        
+        */
 		$(document).on('click', '.facebookLink', function (event) {
 				//alert("testje");
 				var url = $(this).attr("href");
@@ -32,16 +29,26 @@ var id;
 		
 	});
 	
+	var userID = localStorage.getItem("id");
+        var userKey = localStorage.getItem("key");
+        console.log("userid: "+userID+"key: "+userKey);
+        getProgress(userID, userKey);
+	
 	function getProgress(id, key)
 	{
-		$status = 0;
+	    //voor t geval dat hij undefined is wann er geen userid en key voorradig is
+		$status =1;
+		
+		alert($status+" is de status");
 		if(id != null && key != null)
 		{
 			$.get("http://glas.mycel.nl/progress?id="+id+"&auth_token="+key+"",function(data, status)
 			{
 				$status = data.status;
 				//console.error("status = " + $status);
-	
+				});
+				}
+	//switch mag buiten de get en de !=null check anders kan hij in het begin nooit bereikt worden
 				switch($status){
 					case 1:
 						$("#mijnWijk").html("Dit is mijn wijk");
@@ -63,8 +70,8 @@ var id;
 						break;
 				
 				}			
-			});
-		}
+			//});
+		
 	}
 	
 		function LoadDistrictPage($element, callback)
