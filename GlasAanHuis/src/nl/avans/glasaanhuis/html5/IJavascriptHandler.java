@@ -1,42 +1,24 @@
 package nl.avans.glasaanhuis.html5;
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
-import java.net.URL;
-
-import org.apache.http.HttpResponse;
 import org.apache.http.HttpVersion;
-import org.apache.http.client.ClientProtocolException;
-import org.apache.http.client.ResponseHandler;
-import org.apache.http.client.methods.HttpPost;
 import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.params.BasicHttpParams;
 import org.apache.http.params.CoreProtocolPNames;
 import org.apache.http.params.HttpParams;
 
-import com.facebook.LoginActivity;
+import android.content.Context;
+import android.content.Intent;
+import android.content.SharedPreferences;
+import android.net.Uri;
+import android.util.Log;
+import android.webkit.JavascriptInterface;
+import android.widget.Toast;
+
 import com.facebook.Request;
 import com.facebook.Response;
 import com.facebook.Session;
 import com.facebook.SessionState;
 import com.facebook.model.GraphUser;
-
-import android.app.Activity;
-import android.content.Context;
-import android.content.Intent;
-import android.content.SharedPreferences;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.net.Uri;
-import android.sax.StartElementListener;
-import android.util.Log;
-import android.webkit.JavascriptInterface;
-import android.widget.Toast;
 
 final class IJavascriptHandler {
 
@@ -134,16 +116,15 @@ final class IJavascriptHandler {
 	   @JavascriptInterface
 	   public String[] GetSavedData()
 	   {
+		   String[] result = new String[2];
 			try {
-				String[] result = new String[2];
 				result[0] = prefs.getString("userId", null);
 				result[1] = prefs.getString("authToken", null);
-				
-				return result;
 			} catch (Exception e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
+			return result;
 	   }
 	   
 	}
