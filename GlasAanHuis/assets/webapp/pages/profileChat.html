@@ -1,0 +1,28 @@
+<script>
+
+	$(document).on('click', '#btnUploadPicture', function (event) {
+		window.JHandler.UploadPicture();
+	});
+
+    function setValue(url) {
+        $("#imgProfilePicture").attr("src", url);
+        $("#TitleUploadPicture").text("Uw foto");
+        $("#btnUploadPicture").text("Verander");
+    }
+
+</script>
+
+<div id="overlay">
+	<div class="overlaymargin">
+        <span id="TitleUploadPicture" style="font-size: 50px; color: gray;">Upload afbeelding</span>
+        <a class="closebutton righttop">X</a>
+        <form style="margin-top: 20px;">
+        	<img id="imgProfilePicture" src="" alt="Nog geen foto beschikbaar" style="height: 350px; width: 100%;" />
+			<div class="absoluteFormButtons">
+				<div class="regButtons">
+					<a id="btnUploadPicture" class="customButton bordered formButtons">Upload een foto</a>
+				</div>
+			</div>
+        </form>
+    </div>
+</div>

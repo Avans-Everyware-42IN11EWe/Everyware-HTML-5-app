@@ -353,6 +353,7 @@ a.bordered{
 #left-menu ul li {
 	font-size:120%;
 	margin-bottom:5px;
+	text-align: left;
 }
 
 .swiper-slide {
@@ -428,4 +429,11 @@ div.absoluteFormButtons {
 a.formButtons {
 	color: #2d8af9;
 	display: block;
+}
+
+#districtProfileVideo {
+	width: 25%;
+	display: block;
+    margin-left: auto;
+    margin-right: auto;
 }
