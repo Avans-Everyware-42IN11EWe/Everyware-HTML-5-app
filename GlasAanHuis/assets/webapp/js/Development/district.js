@@ -162,7 +162,12 @@ var id;
 			// Load the page
 			LoadDistrictPage($ele, function($element) {
 				
-			var mapElement = $element.find("#map");		
+			$mapElement = $element.find(".map");	
+						
+			$mapElement.append('<img src="img/wijk_'+$disId+'.png" />');	
+	
+			/*	
+			var mapElement = $element.find(".map");		
 			map.push(L.mapbox.map(mapElement[0], 'nanne.i84f0he3'));
                  $.get('http://glas.mycel.nl/geo?id='+$disId, function(data){
                // console.log(JSON.stringify(data));
@@ -184,7 +189,7 @@ var id;
                             //console.log(JSON.stringify(wijkarray));
                      polygon.setStyle({color: "black",weight: 3,fillColor: "rgb("+red+","+green+",0)",fillOpacity: 0.7});
             });
-				
+			*/	
 			$.get("http://glas.mycel.nl/district?id=" + $disId + "",function(data, status)
 				{	
 					$element.find(".naarMap").attr('disid', $disId);
