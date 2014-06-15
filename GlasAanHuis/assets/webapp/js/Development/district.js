@@ -75,20 +75,18 @@ var id;
                     case 2:
                    alert("switch "+$status);
                        $(document).find("div.statusbuttons").empty();
-                        $(document).find("div.statusbuttons").append('<a class="customButton" href="#" style="background-color: rgb(236, 236, 236); text-align:center; color: rgb(45, 138, 249); padding: 10px 20px; position:absolute; left:0px; right:0px;" id="mijnWijk">Ik doe mee!!!</a>');
-                        $(document).find("div.statusbuttons").css({"margin-left" : "10px", "margin-right" : "10px", "width" : "100%", "padding-bottom" : "50px"});
+                        $(document).find("div.statusbuttons").append('<a class="customButton" href="#" style="background-color: rgb(236, 236, 236); text-align:center; color: rgb(45, 138, 249); padding: 10px 20px;  wicth:95%; margin-left:15px" id="mijnWijk">Ik doe mee!!!</a>');
+                        
                         break;
                     case 3:
                     alert("switch "+$status);
                         $(document).find("div.statusbuttons").empty();
-                        $(document).find("div.statusbuttons").append('<a class="customButton" href="#" style="background-color: rgb(236, 236, 236); text-align:center; color: rgb(45, 138, 249); padding: 10px 20px; position:absolute; left:0px; right:0px;" id="mijnWijk">Geef een provider voorkeur</a>');
-                        $(document).find("div.statusbuttons").css({"margin-left" : "10px", "margin-right" : "10px", "width" : "100%", "padding-bottom" : "50px"});
+                        $(document).find("div.statusbuttons").append('<a class="customButton" href="#" style="background-color: rgb(236, 236, 236); text-align:center; color: rgb(45, 138, 249); padding: 10px 20px;  wicth:95%; margin-left:15px" id="mijnWijk">Geef een provider voorkeur</a>');
                         break;
                     case 4:
                     alert("switch "+$status);
                        $(document).find("div.statusbuttons").empty();
-                        $(document).find("div.statusbuttons").append('<a class="customButton" href="#" style="background-color: rgb(236, 236, 236); text-align:center; color: rgb(45, 138, 249); padding: 10px 20px; position:absolute; left:0px; right:0px;" id="mijnWijk">Wachten op het slagen van de actie</a>');
-                        $(document).find("div.statusbuttons").css({"margin-left" : "10px", "margin-right" : "10px", "width" : "100%", "padding-bottom" : "50px"});
+               $(document).find("div.statusbuttons").append('<a class="customButton" href="#" style="background-color: rgb(236, 236, 236); text-align:center; color: rgb(45, 138, 249); padding: 10px 20px;  wicth:95%; margin-left:15px" id="mijnWijk">Wachten op het slagen van de actie</a>');
                         break;
                 
                 }     
