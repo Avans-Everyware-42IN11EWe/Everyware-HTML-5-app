@@ -14,6 +14,11 @@
 			$eProfile.css("height", "100%");
 			$eProfile.css("width", "100%");
 			LoadHtmlPage("pages/profile.html", $eProfile);
+			
+			$eProfileVideo = $("<div></div>");
+			$eProfileVideo.css("height", "100%");
+			$eProfileVideo.css("width", "100%");
+			LoadHtmlPage("pages/UploadVideo.html", $eProfileVideo);
 
 			// Create settings page
 			$eSettings = $("<div></div>");
@@ -249,6 +254,12 @@
 		$(document).on( "click", "#settings_view", function() {  
           $("#bg").css("opacity","0");
           $("#overlay_container").html($eProfile);             
+          $("#overlay_container").show();
+        });
+		
+		$(document).on( "click", "#video_view", function() {  
+          $("#bg").css("opacity","0");
+          $("#overlay_container").html($eProfileVideo);             
           $("#overlay_container").show();
         });
         

@@ -406,14 +406,26 @@ padding-top:35px;
   box-shadow: inset 0px 0px 5px 5px lime;
 }
    
- .districtProfileIMG {
- position: relative;
- z-index: -2;
- height: 75px;
- }
- 
- .cameraIcon {
+.districtProfileIMG {
+	position: relative;
+	z-index: -2;
+	height: 75px;
+}
+
+.cameraIcon {
 	position: absolute;
 	bottom: 5px;
 	right: 5px;
- }
+}
+
+div.absoluteFormButtons {
+	position: absolute;
+	left: 0px;
+	right: 0px;
+	bottom: 10px;
+}
+
+a.formButtons {
+	color: #2d8af9;
+	display: block;
+}
