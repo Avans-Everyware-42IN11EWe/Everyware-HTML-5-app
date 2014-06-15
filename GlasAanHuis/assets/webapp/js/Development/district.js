@@ -23,7 +23,6 @@ var id;
 		$(document).on('click', '.facebookLink', function (event) {
 				//alert("testje");
 				var url = $(this).attr("href");
-				alert(url);
 				window.JHandler.OpenInExternalWebBrowser(url);
 		});
 		

@@ -58,7 +58,7 @@ final class IJavascriptHandler {
 	   public void OpenInExternalWebBrowser(String url)
 	   {
 		   Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
-		   MainActivity._context.startActivity(intent);
+		   MainActivity._activity.startActivity(intent);
 	   }
 	   
 	   @JavascriptInterface
