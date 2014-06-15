@@ -10,6 +10,12 @@
         <script>	
 
 			// Create profile page
+			$eMenuInfo = $("<div></div>");
+			$eMenuInfo.css("height", "100%");
+			$eMenuInfo.css("width", "100%");
+			LoadHtmlPage("pages/menuInfo.html", $eMenuInfo);
+			
+			// Create profile page
 			$eProfile = $("<div></div>");
 			$eProfile.css("height", "100%");
 			$eProfile.css("width", "100%");
@@ -176,6 +182,7 @@
 			$(document).on( "click touchstart", "#menu-btn-open", function() {
 				if(!$menuIsAnimating)
 				{
+					$("#menuInfo").css('display', 'none');
 					$("#menu-btn-close").show();
 					MenuOpen();
 				}
@@ -185,6 +192,7 @@
 			$(document).on( "click touchstart", "#left-menu ul li", function() {
 				if(!$menuIsAnimating)
 				{
+					$("#menuInfo").css('display', 'initial');
 					$("#menu-btn-close").hide();
 					MenuClose();
 				}
@@ -195,12 +203,13 @@
 			$(document).on( "click touchstart", "#menu-btn-close", function() {
 				
 				if(!$menuIsAnimating)
-				{	
+				{
+					$("#menuInfo").css('display', 'initial');
 					$("#menu-btn-close").hide();
 					MenuClose();
 				}
 				return false;				
-            });	
+            });
 			
 			// --
             $( document ).ready(function() {
@@ -260,6 +269,12 @@
 		$(document).on( "click", "#settings_view", function() {  
           $("#bg").css("opacity","0");
           $("#overlay_container").html($eProfile);             
+          $("#overlay_container").show();
+        });
+		
+		$(document).on( "click", "#menuInfo", function() {  
+          $("#bg").css("opacity","0");
+          $("#overlay_container").html($eMenuInfo);             
           $("#overlay_container").show();
         });
 		
@@ -356,6 +371,7 @@
 	<div id="top-menu">
 		<div style="float:left;" id="menu-btn-open"><img src="img/reveal-icon.png" /></div>
 		<div style="float:right;" id="menu-btn-close"><img src="img/reveal-icon.png" /></div>
+		<div id="menuInfo">info</div>
 	</div>
 	<div id="left-menu">
 	<ul>

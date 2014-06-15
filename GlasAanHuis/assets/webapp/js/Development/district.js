@@ -39,7 +39,6 @@ var id;
 	    //voor t geval dat hij undefined is wann er geen userid en key voorradig is
 		$status =1;
 		
-		alert($status+" is de status");
 		if(id != null && key != null)
 		{
 			$.get("http://glas.mycel.nl/progress?id="+id+"&auth_token="+key+"",function(data, status)
@@ -96,10 +95,14 @@ var id;
 		  });
 		}
 		
-		function LoadDistrictProfilePage(id, isBuddy)
+		function LoadDistrictProfilePage(id)
 		{
-			$.get("http://glas.mycel.nl/buddy?id=" + id + "",function(data, status) {
-				if (isBuddy) {
+			$.get("http://glas.mycel.nl/buddy?id=" + id + "", function(data, status) {
+				if (data.is_buddy == "true") {
+					// Go to chat overlay
+					$("#overlay_container").html($ebuddy);                         
+					$("#overlay_container").show();
+					
 					$("#bg").css("opacity","0");
 					$("#districtProfileImage").attr('src', data.plaatje);
 					$("#districtProfileName").text(data.naam);
@@ -108,13 +111,11 @@ var id;
 					$("#districtProfilePhone").text(data.telefoon);
 					$("#districtProfileEmail").text(data.email);
 					$("#districtProfileVideo").attr('src', data.video);
-					// Go to chat overlay
-					$("#overlay_container").html($ebuddy);                         
-					$("#overlay_container").show();
 				} else {
-					$("#districtProfileVideo").attr('src', data.video);
 					$("#overlay_container").html($eDistrictProfile);                         
 					$("#overlay_container").show();
+					
+					$("#districtProfileVideo").attr('src', data.video);
 				}
 			});
 		}
@@ -174,7 +175,8 @@ var id;
 							div.setAttribute('class', 'profilePictures buddy');
 							$(document).on( "click", ".profilePictures[personid='"+data.plaatjes[i].id+"']", function() {
 								$id = $(this).attr('personid');
-								LoadDistrictProfilePage($id, true);
+								
+								LoadDistrictProfilePage($id);
 							});
 							if (data.plaatjes[i].has_video == 1)
 							{
@@ -192,7 +194,7 @@ var id;
 							div.appendChild(cameraIcon);
 							$(document).on( "click", ".profilePictures[personid='"+data.plaatjes[i].id+"']", function() {
 								$id = $(this).attr('personid');
-								LoadDistrictProfilePage($id, false);
+								LoadDistrictProfilePage($id);
 							});
 						}
 					}
