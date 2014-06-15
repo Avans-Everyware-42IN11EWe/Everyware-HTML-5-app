@@ -28,7 +28,7 @@
 	 wijkSelectedId--;
 	 
      //alert("uw gekozen wijk is: "+wijkSelectedId);
-	 mySwiper.swipeTo(wijkSelectedId, 300, false);	 
+	 mySwiper.swipeTo(wijkSelectedId, 0);	 
 	 $("body").css('background-image', "url('"+ districts[wijkSelectedId].plaatje +"')");
 	 $("#overlay_container").hide();
 	 

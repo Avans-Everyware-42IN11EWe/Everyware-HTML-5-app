@@ -26,7 +26,31 @@ var id;
 				window.JHandler.OpenInExternalWebBrowser(url);
 		});
 		
+		
+		
+		$(document).on('click', '#district_view', function (event) {
+				
+			if(! userData)
+			{
+				return false;
+			}
+				//$.get("http://glas.mycel.nl/progress?id=1&auth_token=blaat123",function(data, status)	
+				$.get("http://glas.mycel.nl/progress?id="+userData.userId+"&auth_token="+userData.authToken,function(data, status)
+				{			
+					mySwiper.swipeTo(data.district_id-1, 0);
+					$currentSlide = data.district_id-1;
+					$("body").css('background-image', "url('"+ districts[data.district_id-1].plaatje +"')");				
+				});
+				
+		});
+		
+		
+		
+		
+		
+		
 	});
+	
 	/*if (localStorage.getItem("id") !== null || localStorage.getItem("key") !== null) {
   
 
@@ -326,17 +350,17 @@ var id;
 							
 						if($slidesCreated < $maxSlides && !$isCreatingSlide)
 						{
-							CreateDistrict(data[$currentDistrictId].id);	
+							CreateDistrict(districts[$currentDistrictId].id);	
 														
 							$currentDistrictId++;							
 						}									
 						$currentSlide++;
-						$("body").css('background-image', "url('"+ data[$currentSlide].plaatje +"')");
+						$("body").css('background-image', "url('"+ districts[$currentSlide].plaatje +"')");
 					},
 					
 					onSlidePrev:  function() {
 						$currentSlide--;
-						$("body").css('background-image', "url('"+ data[$currentSlide].plaatje +"')");
+						$("body").css('background-image', "url('"+ districts[$currentSlide].plaatje +"')");
 					}/*,
 
 					onSetWrapperTransition: function() {
