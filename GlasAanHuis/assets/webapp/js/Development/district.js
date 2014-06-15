@@ -66,15 +66,10 @@ var id;
 		}
 	}
 	
-	
-	
-	
-	
 	// Functie om de data van de server op te halen
-	function getDistrictInfo(id, element, loadBackground = false)
+	function getDistrictInfo(data, element, loadBackground)
 	{
-		$.get("http://glas.mycel.nl/district?id=" + id + "",function(data, status)
-		{			
+					
 	    	//console.log("Data: " + data + "\nStatus: " + status);
 	    	//console.log("Name: " + JSON.stringify(data.name));
 	    	
@@ -186,9 +181,6 @@ var id;
 	        $("[id=glasvezelAanleggen]" ).progressbar({value: glasvezelAanleggen});
 	        $("[id=overstappenNaarGlasvezel]" ).progressbar({value: overstappenNaarGlasvezel});
 			*/
-		});
-		
-
 	}
 
 	function mijnWijk()

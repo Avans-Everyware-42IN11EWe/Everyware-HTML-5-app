@@ -9,7 +9,6 @@
          
         <script>	
 
-			
 			// Create profile page
 			$eProfile = $("<div></div>");
 			$eProfile.css("height", "100%");
@@ -193,39 +192,31 @@
 				
 				$.get("http://glas.mycel.nl/districts?lat=51.983333&long=5.916667",function(data, status)
 				{
-					jsonDistricts = data;			
-				});
-				
-				
-				
+				jsonDistricts = data;			
 				
 				$("#menu-btn-close").hide();				
 					
 				$(document).on( "click", "#mijnWijk", function() 
 				{	
-					//alert('hoi');
 					$("#bg").css("opacity","0"); 
 					// Go to login overlay
          			//$("#overlay_container").html($eLogin);							
 					//$("#overlay_container").show();
-					$status = overlay_container;
+					
 					switch($status)
 					{
-						case 0:
-		          			$("#overlay_container").html($eLogin);	
-							break;							
 						case 1:
 		          			$("#overlay_container").html($eLogin);	
 							break;
 						case 2:
-		          			$("#overlay_container").html($eProvider);	
+		          			$("#overlay_container").html($eLogin);	
 							break;
 						case 3:
-		          			$("#overlay_container").html($ePay);
+		          			$("#overlay_container").html($eProvider);
 							break;
-						default:
-		          			$("#overlay_container").html($eLogin);	
-							break;		
+						case 4:
+		          			$("#overlay_container").html($ePay);	
+							break;			
 					}
 					$("#overlay_container").show();
         		});
@@ -322,22 +313,24 @@
 						if($currentIndex == $currentSlides && $currentSlides < jsonDistricts.length)
 						{
 							
-							// Maak een clone van de eerste slide
-							var newSlide = mySwiper.getSlide(0).clone();	
-
-							
-							$slide = $(newSlide);
-							
-							//alert($slide);
-							
-							//alert(jsonDistricts[$currentSlides].id);
-							
-							
-							mySwiper.appendSlide(newSlide);
-							getDistrictInfo(jsonDistricts[$currentSlides].id, $slide);
-
-					
-							$currentSlides++;
+							$.get("http://glas.mycel.nl/district?id=" + jsonDistricts[$currentSlides].id + "",function(data, status)
+							{							
+								// Maak een clone van de eerste slide
+								var newSlide = mySwiper.getSlide(0).clone();	
+								
+								$slide = $(newSlide);
+								
+								//alert($slide);
+								
+								//alert(jsonDistricts[$currentSlides].id);
+								
+								
+								
+								getDistrictInfo(data, $slide);
+								mySwiper.appendSlide(newSlide);
+						
+								$currentSlides++;
+							});
 						}	
 
 						$("body").css('background-image', "url('"+ jsonDistricts[$currentIndex-1].plaatje +"')");
@@ -382,11 +375,25 @@
 				
 				//
 				
+				$.get("http://glas.mycel.nl/district?id=1",function(data, status)
+				{
+					$.get("http://glas.mycel.nl/district?id=2",function(data2, status2)
+					{
+						getDistrictInfo(data, $("#first"), true);
+						getDistrictInfo(data, $("#second"));						
+					});	
+				});				
+				
+
+			});
+				
+				getDistrictInfo(1, $("#first"), true);			
+				getDistrictInfo(2, $("#second"));
+								
 				getDistrictInfo(1, $("#first"), true);			
 				getDistrictInfo(2, $("#second"));
 								
 			});
-			
         </script>
     </head>
     <body onLoad="initFastButtons();">
