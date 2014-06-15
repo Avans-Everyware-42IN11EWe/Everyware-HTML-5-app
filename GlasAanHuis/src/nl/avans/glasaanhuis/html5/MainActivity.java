@@ -68,7 +68,7 @@ public class MainActivity extends Activity {
 		// Javascript handler
 		wv.addJavascriptInterface(new IJavascriptHandler(), "JHandler");		
 		wv.getSettings().setJavaScriptEnabled(true);
-		wv.loadUrl("file:///android_asset/webapp/start.html");
+		wv.loadUrl("file:///android_asset/webapp/slidertest.html");
 		
 		// Waarom werkt dit niet
 		wv.setWebChromeClient(new WebChromeClient() {
