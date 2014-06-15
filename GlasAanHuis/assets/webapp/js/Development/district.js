@@ -279,9 +279,9 @@ var id;
 		$("body").css('background-image', "url('"+ data[0].plaatje +"')");
 		
 		function dis(k, max) {
-			if(k <= max) CreateDistrict(data[k].id, function(){ dis(k+1, max);  });
+			if(k < max) CreateDistrict(districts[k].id, function(){ dis(k+1, max);  });
 		}
-		dis(0, $maxSlides);
+		dis(0, $maxSlides, data);
 		
 		
 		/*
