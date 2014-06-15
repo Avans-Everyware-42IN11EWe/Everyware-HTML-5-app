@@ -5,6 +5,7 @@ import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.params.BasicHttpParams;
 import org.apache.http.params.CoreProtocolPNames;
 import org.apache.http.params.HttpParams;
+import org.json.JSONObject;
 
 import android.content.Context;
 import android.content.Intent;
@@ -114,20 +115,22 @@ final class IJavascriptHandler {
 	   }
 	   
 	   @JavascriptInterface
-	   public String[] GetSavedData()
+	   public String GetSavedData()
 	   {
-		   String[] result = new String[2];		 
+		   String[] result = new String[2];
+		   JSONObject jObj = new JSONObject();
 			try {
-				
 				result[0] = prefs.getString("userId", null);
 				result[1] = prefs.getString("authToken", null);
-								
+				
+				jObj.put("userId", result[0]);
+				jObj.put("authToken", result[1]);
 			} catch (Exception e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 			
-			return result;
+			return jObj.toString();
 	   }
 	   
 	}

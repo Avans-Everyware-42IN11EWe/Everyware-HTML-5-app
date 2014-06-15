@@ -34,10 +34,10 @@ var id;
         var userKey = localStorage.getItem("key");
         console.log("userid: "+userID+"key: "+userKey);
     }*/
-   try{
-    var userData = window.JHandler.GetSavedData();
-    alert("de userdata is: "+userData);
-    }catch(err){
+	var userData;
+   try {
+		userData = JSON.parse(window.JHandler.GetSavedData());
+    } catch(err) {
         console.log("jhandler error bij ophalen userdata: "+err);
     }
     userID=null;
@@ -191,6 +191,7 @@ var id;
 					$element.find(".participants").html($participants);
 					$element.find(".percentage2").html($percentage);
 					$element.find(".participants2").html($participants);
+					$element.find(".facebookLink").attr('href', data.facebookpageurl);
 					
 					for (var i = 0; i < data.plaatjes.length; i++)
 					{
