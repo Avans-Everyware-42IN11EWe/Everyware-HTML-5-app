@@ -2,9 +2,7 @@ var id;
 	$(document).ready(function ()
 	{
 		//id = 1;
-        //var userID = localStorage.getItem("id");
-        //var userKey = localStorage.getItem("key");
-        //getProgress(userID, userKey);
+        
 
     	/*$(".swiper-slide").clone(true).appendTo(".swiper-wrapper");
 		$.get("http://glas.mycel.nl/districts?search=5211AA", function(data, status)
@@ -17,11 +15,11 @@ var id;
 						
 		});*/
     	
-        var goedeDoel = 3;
+       /* var goedeDoel = 3;
         $('[id=goedeDoeltxt]').append(goedeDoel+"%");
         $('[id=goedeDoelVoortgang]').progressbar({value: goedeDoel});
         console.log("voortgang geladen");
-        
+        */
 		$(document).on('click', '.facebookLink', function (event) {
 				//alert("testje");
 				var url = $(this).attr("href");
@@ -31,16 +29,26 @@ var id;
 		
 	});
 	
+	var userID = localStorage.getItem("id");
+        var userKey = localStorage.getItem("key");
+        console.log("userid: "+userID+"key: "+userKey);
+        getProgress(userID, userKey);
+	
 	function getProgress(id, key)
 	{
-		$status = 0;
+	    //voor t geval dat hij undefined is wann er geen userid en key voorradig is
+		$status =1;
+		
+		alert($status+" is de status");
 		if(id != null && key != null)
 		{
 			$.get("http://glas.mycel.nl/progress?id="+id+"&auth_token="+key+"",function(data, status)
 			{
 				$status = data.status;
 				//console.error("status = " + $status);
-	
+				});
+				}
+	//switch mag buiten de get en de !=null check anders kan hij in het begin nooit bereikt worden
 				switch($status){
 					case 1:
 						$("#mijnWijk").html("Dit is mijn wijk");
@@ -62,8 +70,8 @@ var id;
 						break;
 				
 				}			
-			});
-		}
+			//});
+		
 	}
 	
 		function LoadDistrictPage($element, callback)
@@ -329,7 +337,7 @@ var id;
                 
                 
 			/*
-			for (var i = 0; i < data.plaatjes.length; i++)
+			/*for (var i = 0; i < data.plaatjes.length; i++)
 			{
 				var div = document.createElement("DIV");
 				div.setAttribute('class', 'profilePictures');
@@ -380,7 +388,7 @@ var id;
 	        var inschrijven = Math.round(100 * data.stappen[1].percentage);
 	        var providerSelecteren = Math.round(100 * data.stappen[2].percentage);
 	        var glasvezelAanleggen = Math.round(100 * data.stappen[3].percentage);
-	        var overstappenNaarGlasvezel = Math.round(100 * data.stappen[4].percentage);
+	        var overstappenNaarGlasvezel = Math.round(100 * data.stappen[4].percentage);*/
 /*
 	        /******text****/
 			/*
