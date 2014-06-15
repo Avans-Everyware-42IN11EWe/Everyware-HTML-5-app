@@ -15,11 +15,24 @@
 			$eProfile.css("width", "100%");
 			LoadHtmlPage("pages/profile.html", $eProfile);
 			
+			// Create profile video upload page
 			$eProfileVideo = $("<div></div>");
 			$eProfileVideo.css("height", "100%");
 			$eProfileVideo.css("width", "100%");
 			LoadHtmlPage("pages/UploadVideo.html", $eProfileVideo);
-
+			
+			// create profile chat page
+			$eProfileChat = $("<div></div>");
+			$eProfileChat.css("height", "100%");
+			$eProfileChat.css("width", "100%");
+			LoadHtmlPage("pages/profileChat.html", $eProfileChat);
+			
+			// create district profile page
+			$eDistrictProfile = $("<div></div>");
+			$eDistrictProfile.css("height", "100%");
+			$eDistrictProfile.css("width", "100%");
+			LoadHtmlPage("pages/districtProfile.html", $eDistrictProfile);
+			
 			// Create settings page
 			$eSettings = $("<div></div>");
 			$eSettings.css("height", "100%");
@@ -255,6 +268,12 @@
           $("#overlay_container").html($eProfileVideo);             
           $("#overlay_container").show();
         });
+		
+		$(document).on( "click", "#chat_view", function() {  
+          $("#bg").css("opacity","0");
+          $("#overlay_container").html($eProfileChat);             
+          $("#overlay_container").show();
+        });
         
         $(document).on("click", "#faq", function() {  
           $("#bg").css("opacity","0");
@@ -343,6 +362,7 @@
 		<li id="settings_view">Mijn profiel</li>
 		<li id="video_view">Mijn video</li>
 		<li id="district_view">Mijn wijk</li>
+		<li id="chat_view">Mijn berichten</li>
 	</ul>
 	</div>
     <div class="swiper-container">

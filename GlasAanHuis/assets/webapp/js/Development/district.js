@@ -95,6 +95,29 @@ var id;
 					callback($element);
 		  });
 		}
+		
+		function LoadDistrictProfilePage(id, isBuddy)
+		{
+			$.get("http://glas.mycel.nl/buddy?id=" + id + "",function(data, status) {
+				if (isBuddy) {
+					$("#bg").css("opacity","0");
+					$("#districtProfileImage").attr('src', data.plaatje);
+					$("#districtProfileName").text(data.naam);
+					$("#districtProfileAge").text(data.leeftijd);
+					$("#districtProfileCity").text(data.woonplaats);
+					$("#districtProfilePhone").text(data.telefoon);
+					$("#districtProfileEmail").text(data.email);
+					$("#districtProfileVideo").attr('src', data.video);
+					// Go to chat overlay
+					$("#overlay_container").html($ebuddy);                         
+					$("#overlay_container").show();
+				} else {
+					$("#districtProfileVideo").attr('src', data.video);
+					$("#overlay_container").html($eDistrictProfile);                         
+					$("#overlay_container").show();
+				}
+			});
+		}
 				
 		var mySwiper;
         $( document ).ready(function() {
@@ -151,12 +174,7 @@ var id;
 							div.setAttribute('class', 'profilePictures buddy');
 							$(document).on( "click", ".profilePictures[personid='"+data.plaatjes[i].id+"']", function() {
 								$id = $(this).attr('personid');
-								
-								$("#bg").css("opacity","0");
-									
-								// Go to chat overlay
-								$("#overlay_container").html($ebuddy);                         
-								$("#overlay_container").show();
+								LoadDistrictProfilePage($id, true);
 							});
 							if (data.plaatjes[i].has_video == 1)
 							{
@@ -173,11 +191,8 @@ var id;
 							cameraIcon.setAttribute('class', 'cameraIcon');
 							div.appendChild(cameraIcon);
 							$(document).on( "click", ".profilePictures[personid='"+data.plaatjes[i].id+"']", function() {
-								$("#bg").css("opacity","0");
-									
-								// Go to chat overlay
-								$("#overlay_container").html($ebuddy);                         
-								$("#overlay_container").show();
+								$id = $(this).attr('personid');
+								LoadDistrictProfilePage($id, false);
 							});
 						}
 					}
