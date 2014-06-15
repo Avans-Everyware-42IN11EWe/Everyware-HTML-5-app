@@ -35,10 +35,6 @@
 $( document ).ready(function() {
  
   LoadHtmlPage("pages/intro_video.html", $("#intro_video"));
-  LoadHtmlPage("pages/district.html", $("#first"));
-    LoadHtmlPage("pages/district.html", $("#second"));
-  //LoadHtmlPage("pages/district.html", $("#second"));
-  //LoadHtmlPage("pages/district.html", $("#third"));
   
   LoadHtmlPage("pages/steps.html", $("#steps"));
   //LoadHtmlPage("pages/postcode.html",$("#postcode"));

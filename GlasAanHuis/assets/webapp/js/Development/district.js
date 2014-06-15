@@ -1,10 +1,10 @@
 var id;
 	$(document).ready(function ()
 	{
-		id = 1;
-        var userID = localStorage.getItem("id");
-        var userKey = localStorage.getItem("key");
-        getProgress(userID, userKey);
+		//id = 1;
+        //var userID = localStorage.getItem("id");
+        //var userKey = localStorage.getItem("key");
+        //getProgress(userID, userKey);
 
     	/*$(".swiper-slide").clone(true).appendTo(".swiper-wrapper");
 		$.get("http://glas.mycel.nl/districts?search=5211AA", function(data, status)
@@ -66,6 +66,188 @@ var id;
 		}
 	}
 	
+		function LoadDistrictPage($element, callback)
+		{		
+			$page = "pages/district.html";
+			$path = "file:///android_asset/webapp/";
+		  
+		  
+			var isDesktop = (function() {
+			return !('ontouchstart' in window) // works on most browsers 
+			|| !('onmsgesturechange' in window); // works on ie10
+		   })();
+
+		   window.isDesktop = isDesktop;
+		   if( isDesktop )
+			$path = "file://assets/webapp/";  
+	 
+			$($element).load( $page, function() {
+			
+				if(callback != null)
+					callback($element);
+		  });
+		}
+				
+		var mySwiper;
+        $( document ).ready(function() {
+
+		$maxSlides = 0;
+		$slidesCreated = 0;
+		$currentSlide = 0;
+		$isCreatingSlide = false;
+		
+		$currentDistrictId = 2;
+			
+		// Creates a new district
+		function CreateDistrict($disId)
+		{
+			$isCreatingSlide = true;
+		
+			// Create new element
+			$ele = $('<div class="swiper-slide blur">');				
+			// Load the page
+			LoadDistrictPage($ele, function($element) {
+				// TODO juiste ids gebruiken
+						
+				$.get("http://glas.mycel.nl/district?id=" + $disId + "",function(data, status)
+				{	
+
+					// Zet alle benodigde data in variabelen
+					$buurtNaam = data.name;
+					$percentage = Math.round((100 * data.percentage)) + "%";
+					$participants = data.participants;
+					$bgImgUrl = data.plaatje;
+					//console.error("hello");
+					
+					$element.find(".buurtNaam").html($buurtNaam);
+					$element.find(".percentage").html($percentage);
+					$element.find(".participants").html($participants);
+					$element.find(".percentage2").html($percentage);
+					$element.find(".participants2").html($participants);
+					
+					for (var i = 0; i < data.plaatjes.length; i++)
+					{
+						var div = document.createElement("DIV");
+						div.setAttribute('class', 'profilePictures');
+						var img = document.createElement("DIV");
+						//img.src = data.plaatjes[i].plaatje;
+						div.setAttribute('personid', data.plaatjes[i].id);
+						img.setAttribute('class', 'districtProfileIMG');
+						img.setAttribute('style', 'background-image: url("'+data.plaatjes[i].plaatje+'");background-size: 100%; width: 75px; height: 75px;');
+						$element.find(".userImages").append(div);
+						div.appendChild(img);
+						
+						if(data.plaatjes[i].is_buddy == 1)
+						{
+							//div.setAttribute('style', 'box-shadow: inset 0px 0px 5px 5px lime;');
+							div.setAttribute('class', 'profilePictures buddy');
+							$(document).on( "click", ".profilePictures[personid='"+data.plaatjes[i].id+"']", function() {
+								$id = $(this).attr('personid');
+								
+								$("#bg").css("opacity","0");
+									
+								// Go to chat overlay
+								$("#overlay_container").html($ebuddy);                         
+								$("#overlay_container").show();
+							});
+							if (data.plaatjes[i].has_video == 1)
+							{
+								var cameraIcon = document.createElement("DIV");
+								cameraIcon.setAttribute('style', 'background-image: url(cameraicon.png);background-size: 100%; width: 20px; height: 20px;');
+								cameraIcon.setAttribute('class', 'cameraIcon');
+								div.appendChild(cameraIcon);
+							}
+						}
+						else if (data.plaatjes[i].has_video == 1)
+						{
+							var cameraIcon = document.createElement("DIV");
+							cameraIcon.setAttribute('style', 'background-image: url(cameraicon.png);background-size: 100%; width: 20px; height: 20px;');
+							cameraIcon.setAttribute('class', 'cameraIcon');
+							div.appendChild(cameraIcon);
+							$(document).on( "click", ".profilePictures[personid='"+data.plaatjes[i].id+"']", function() {
+								$("#bg").css("opacity","0");
+									
+								// Go to chat overlay
+								$("#overlay_container").html($ebuddy);                         
+								$("#overlay_container").show();
+							});
+						}
+					}
+					
+					var bewonersVerzamelen = Math.round(100 * data.stappen[0].percentage);
+					var inschrijven = Math.round(100 * data.stappen[1].percentage);
+					var providerSelecteren = Math.round(100 * data.stappen[2].percentage);
+					var glasvezelAanleggen = Math.round(100 * data.stappen[3].percentage);
+					var overstappenNaarGlasvezel = Math.round(100 * data.stappen[4].percentage);
+
+					/******text****/
+					$element.find(".bewonersVerzamelentxt").append(data.stappen[0].naam + " " + bewonersVerzamelen+"%");
+					$element.find(".inschrijventxt").append(data.stappen[1].naam + " " + inschrijven+"%");
+					$element.find(".providerSelecterentxt").append(data.stappen[2].naam + " " + providerSelecteren+"%");
+					$element.find(".glasvezelAanleggentxt").append(data.stappen[3].naam + " " + glasvezelAanleggen+"%");
+					$element.find(".overstappenNaarGlasvezeltxt").append(data.stappen[4].naam + " " + overstappenNaarGlasvezel+"%");
+
+					/******progressbars****/
+					$element.find(".bewonersVerzamelen").progressbar({value: bewonersVerzamelen});
+					$element.find(".inschrijven").progressbar({value: inschrijven});
+					$element.find(".providerSelecteren").progressbar({value: providerSelecteren});
+					$element.find(".glasvezelAanleggen").progressbar({value: glasvezelAanleggen});
+					$element.find(".overstappenNaarGlasvezel").progressbar({value: overstappenNaarGlasvezel});
+
+					// End filling data
+										
+					mySwiper.appendSlide(mySwiper.createSlide($element.html()));
+					$slidesCreated++;	
+					
+					//alert("Slide created");
+					
+					
+					$isCreatingSlide = false;
+				});
+			});
+		}
+
+		$.get("http://glas.mycel.nl/districts?lat=51.983333&long=5.916667",function(data, status)
+		{
+		
+		$maxSlides  = data.length;
+		
+		// Create the two first districts
+		CreateDistrict(data[0].id);
+		$("body").css('background-image', "url('"+ data[0].plaatje +"')");
+		CreateDistrict(data[1].id);
+		
+		mySwiper  = new Swiper('.swiper-container',{
+                    //Your options here:
+                    mode:'horizontal',
+                    noSwiping: true,
+                    loop: false,
+					
+					// Slide next event
+					onSlideNext: function() {
+							
+							
+						if($slidesCreated < $maxSlides && !$isCreatingSlide)
+						{
+							CreateDistrict(data[$currentDistrictId].id);	
+														
+							$currentDistrictId++;							
+						}									
+						$currentSlide++;
+						$("body").css('background-image', "url('"+ data[$currentSlide].plaatje +"')");
+					},
+					
+					onSlidePrev:  function() {
+						$currentSlide--;
+						$("body").css('background-image', "url('"+ data[$currentSlide].plaatje +"')");
+					}										
+                });
+			});
+		});
+	
+	
+	
+	/*
 	// Functie om de data van de server op te halen
 	function getDistrictInfo(data, element, loadBackground)
 	{
@@ -98,7 +280,7 @@ var id;
 			$("#percentage2").html($percentage);
 			$("#participants2").html($participants);
 			*/
-			
+			/*
 			if(loadBackground)
 				$("body").css('background-image', 'url('+ $bgImgUrl +')');
 				//code om een geblurde image in div #bg te zetten
@@ -188,8 +370,9 @@ var id;
 	        var providerSelecteren = Math.round(100 * data.stappen[2].percentage);
 	        var glasvezelAanleggen = Math.round(100 * data.stappen[3].percentage);
 	        var overstappenNaarGlasvezel = Math.round(100 * data.stappen[4].percentage);
-
+/*
 	        /******text****/
+			/*
 	        element.find(".bewonersVerzamelentxt").append(data.stappen[0].naam + " " + bewonersVerzamelen+"%");
 	        element.find(".inschrijventxt").append(data.stappen[1].naam + " " + inschrijven+"%");
 	        element.find(".providerSelecterentxt").append(data.stappen[2].naam + " " + providerSelecteren+"%");
@@ -203,6 +386,7 @@ var id;
 	        $('[id=overstappenNaarGlasvezeltxt]').append(data.stappen[4].naam + " " + overstappenNaarGlasvezel+"%");
 			*/
 	        /******progressbars****/
+			/*
 	        element.find(".bewonersVerzamelen").progressbar({value: bewonersVerzamelen});
 	        element.find(".inschrijven").progressbar({value: inschrijven});
 	        element.find(".providerSelecteren").progressbar({value: providerSelecteren});
@@ -214,8 +398,8 @@ var id;
 	        $("[id=providerSelecteren]" ).progressbar({value: providerSelecteren});
 	        $("[id=glasvezelAanleggen]" ).progressbar({value: glasvezelAanleggen});
 	        $("[id=overstappenNaarGlasvezel]" ).progressbar({value: overstappenNaarGlasvezel});
-			*/
-	}
+			*//*
+	}*/
 
 	function mijnWijk()
 	{
