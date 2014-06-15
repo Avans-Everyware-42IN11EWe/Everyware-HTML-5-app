@@ -2,7 +2,9 @@ var id;
 	$(document).ready(function ()
 	{
 		id = 1;
-        getProgress(id);
+        var userID = localStorage.getItem("id");
+        var userKey = localStorage.getItem("key");
+        getProgress(userID, userKey);
 
     	/*$(".swiper-slide").clone(true).appendTo(".swiper-wrapper");
 		$.get("http://glas.mycel.nl/districts?search=5211AA", function(data, status)
@@ -22,50 +24,39 @@ var id;
         
 	});
 	
-	function getProgress(id)
+	function getProgress(id, key)
 	{
-		$.get("http://glas.mycel.nl/progress?id=1&auth_token=blaat123",function(data, status)
+		$status = 0;
+		if(id != null && key != null)
 		{
-			$status = data.status;
-			//console.error("status = " + $status);
-
-			switch($status){
-				case 1:
-					$("#mijnWijk").html("Dit is mijn wijk");
-					break;
-				case 2:
-					$("#mijnWijk").html("Aanmelden");
-					$("#andereWijk").hide();
-					break;
-				case 3:
-					$("#mijnWijk").html("Provider voorkeur");
-					$("#andereWijk").hide();
-					break;
-				case 4:
-					$("#mijnWijk").html("Betalen");
-					$("#andereWijk").hide();
-					break;
-			
-			}
-			/*
-			if($status == 1){
-				$("#mijnWijk").html("Dit is mijn wijk");
-			}
-			if($status == 2){
-				$("#mijnWijk").html("Aanmelden");
-				$("#mijnWijk").css('width', '100%');
-				$("#andereWijk").hide();
-			}
-			if($status == 3){
-				$("#mijnWijk").html("Provider voorkeur");
-				$("#andereWijk").hide();
-			}
-			if($status == 4){
-				$("#mijnWijk").html("Betalen");
-				$("#andereWijk").hide();
-			}*/
-			
-		});
+			$.get("http://glas.mycel.nl/progress?id="+id+"&auth_token="+key+"",function(data, status)
+			{
+				$status = data.status;
+				//console.error("status = " + $status);
+	
+				switch($status){
+					case 1:
+						$("#mijnWijk").html("Dit is mijn wijk");
+						break;
+					case 2:
+						$("div#buttons").empty();
+				        $("div#buttons").append('<a class="customButton" href="#" style="background-color: rgb(236, 236, 236); text-align:center; color: rgb(45, 138, 249); padding: 10px 20px; position:absolute; left:0px; right:0px;" id="mijnWijk">Geef een provider voorkeur</a>');
+				        $("div#buttons").css({"margin-left" : "10px", "margin-right" : "10px", "width" : "100%", "padding-bottom" : "50px"});
+						//$("#mijnWijk").html("Aanmelden");
+						//$("#andereWijk").hide();
+						break;
+					case 3:
+						//$("#mijnWijk").html("Provider voorkeur");
+						//$("#andereWijk").hide();
+						break;
+					case 4:
+						$("#mijnWijk").html("Betalen");
+						$("#andereWijk").hide();
+						break;
+				
+				}			
+			});
+		}
 	}
 	
 	
@@ -79,7 +70,7 @@ var id;
 	    	
 	    	// Zet alle benodigde data in variabelen
 			$buurtNaam = data.name;
-			$percentage = (100 * data.percentage) + "%";
+			$percentage = Math.round(100 * data.percentage) + "%";
 			$participants = data.participants;
 			$bgImgUrl = data.plaatje;
 			//console.error("hello");
@@ -89,6 +80,15 @@ var id;
 			element.find(".participants").html($participants);
 			element.find(".percentage2").html($percentage);
 			element.find(".participants2").html($participants);
+			var facebook = element.find(".facebookLink");
+			
+			facebook.attr("href", data.facebookpageurl);
+			
+			$(document).on('click', facebook, function (event) {
+				var url = facebook.attr("href");
+				//alert(url);
+				window.JHandler.OpenInExternalWebBrowser(url);
+			});
 			// Zet de variabelen op de goede plek in de html
 			/*
 			$("#buurtNaam").html($buurtNaam);
@@ -98,7 +98,6 @@ var id;
 			$("#participants2").html($participants);
 			*/
 			
-
 			if(loadBackground)
 				$("body").css('background-image', 'url('+ $bgImgUrl +')');
 			
@@ -106,20 +105,20 @@ var id;
 			{
 				var div = document.createElement("DIV");
 				div.setAttribute('class', 'profilePictures');
-				var img = document.createElement("IMG");
-			    img.src = data.plaatjes[i].plaatje;
-			    div.setAttribute('id', 'person_'+i);
-			    img.setAttribute('class', 'test');
-			    img.setAttribute('width', 75);
+				var img = document.createElement("DIV");
+			    //img.src = data.plaatjes[i].plaatje;
+			    div.setAttribute('id', 'person_'+data.plaatjes[i].id);
+			    img.setAttribute('class', 'districtProfileIMG');
+				img.setAttribute('style', 'background-image: url("'+data.plaatjes[i].plaatje+'");background-size: 100%; width: 75px; height: 75px;');
 			    element.find(".userImages").append(div);
-    			//document.getElementById('userImages').appendChild(div);
     			div.appendChild(img);
+				
 
     			if(data.plaatjes[i].is_buddy == 1)
 				{
 					//div.setAttribute('style', 'box-shadow: inset 0px 0px 5px 5px lime;');
 					div.setAttribute('class', 'profilePictures buddy');
-					$(document).on( "click", "#person_"+i, function() {    
+					$(document).on( "click", "#person_"+data.plaatjes[i].id, function() {
 	                	$("#bg").css("opacity","0");
 				            
 				        // Go to chat overlay
@@ -129,7 +128,11 @@ var id;
 				}
 				else if (data.plaatjes[i].has_video == 1)
 				{
-					$(document).on( "click", "#person_"+i, function() {    
+					var cameraIcon = document.createElement("DIV");
+					cameraIcon.setAttribute('style', 'background-image: url(cameraicon.png);background-size: 100%; width: 20px; height: 20px;');
+					cameraIcon.setAttribute('class', 'cameraIcon');
+					div.appendChild(cameraIcon);
+					$(document).on( "click", "#person_"+data.plaatjes[i].id, function() {
 	                	$("#bg").css("opacity","0");
 				            
 				        // Go to chat overlay
@@ -178,10 +181,18 @@ var id;
 	{
 	    //wat is windows.id en waar komt het vandaan en waarom word dit niet in de functie parameters doorgegeven?
 	    // is nu in ieder geval undefined
-		alert("wijk "+ windows.id + " gekozen");
+		//alert("wijk "+ windows.id + " gekozen");
 
 		//window.JHandler.SaveToFile("wijkID.bin", windows.id);
 	}
 	
-	
+	/*function OpenInExternalWebBrowser() {
+		var url = $(".FacebookLink").attr("href");
+		window.JHandler.OpenInExternalWebBrowser(url);
+	}*/
+
+	/*$(document).on('click', '#FacebookLink', function (event) {
+		var url = $("#FacebookLink").attr("href");
+		window.JHandler.OpenInExternalWebBrowser(url);
+	}*/
 	

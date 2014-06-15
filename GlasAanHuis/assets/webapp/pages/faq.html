@@ -1,11 +1,32 @@
 <script>
+$(document).ready(function()
+{
+	var textarea=document.getElementById('textarea');
+	$.get("http://glas.mycel.nl/faq",function(data, status)
+	{
+		textarea.innerHTML = data;
+	});
+	
+	
+	$(document).on("click", "#andereVraag", function() {             
+	  $("#overlay_container").hide();
+	  $("#bg").css("opacity","0");
+	  $("#overlay_container").html($forum);             
+	  $("#overlay_container").show();
+		
+	});
+});
 	
 </script>
 <div id="overlay">
 	<div class="overlaymargin">
         <span style="font-size: 50px; color: gray;">FAQ</span>
-        <a class="closebutton righttop">X</a>        
-        <ol>
+        <a class="closebutton righttop">X</a>    
+
+		<div id="textarea">
+			
+		</div>
+        <!--<ol>
 	  		<li>Wat is glas?</li>
 	  		<li>Wat is vezel?</li>
 	  		<li>Wat is glasvezel?</li>
@@ -13,7 +34,7 @@
 		<a id="meer" class="customButton" style="background-color: #868889; color: white; padding: 10px 20px; opacity: 0.5;" href="#">meer &gt</a>
 		<p>
 			This is Photoshop's version of Lorem Ipsum. Prion Gravida Nibh vel velit auctor aliquet. Aenean sollicitudin, lorem quis bibendum auctor
-		</p>
+		</p>-->
         <a id="andereVraag" class="customButton" style="background-color: #ECECEC; color: #2D8AF9; padding: 10px 20px;"  href="#" >Mijn vraag staat er niet tussen.</a>
     </div>
 </div>

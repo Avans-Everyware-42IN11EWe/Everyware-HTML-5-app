@@ -1,51 +1,85 @@
+<script>
+var providerData;
+$(document).ready(function(){
+	$.get("http://glas.mycel.nl/providers?district=1",function(data, status)
+	{
+		providerData = data;
+		var providerRadio=document.getElementById('providerRadio');
+		var ul = document.createElement("ul");
+		for (var i = 0; i < data.length; i++)
+		{
+			var li = document.createElement("li");
+			var lbl = document.createElement("label");
+			var inputbtn = document.createElement("input");
+			var span = document.createElement("span");
+			//inputbtn.setAttribute('class', 'customRadio');
+			inputbtn.setAttribute('type', 'radio');
+			inputbtn.setAttribute('id', data[i].id);
+			inputbtn.setAttribute('name', 'chkProvider');
+			lbl.setAttribute('for', data[i].id);
+			lbl.setAttribute('class', 'customRadioLabel');
+			span.appendChild(document.createTextNode(data[i].name));
+			li.appendChild(inputbtn);
+			li.appendChild(lbl);
+			li.appendChild(span);
+			ul.appendChild(li);
+		}
+		providerRadio.appendChild(ul);
+	});
+
+});
+$(document).on('click', '#kiesBtn', function (event) {	
+
+	var userID = localStorage.getItem("id");
+    var userKey = localStorage.getItem("key");
+    var providerId;	
+    
+  	for (var i = 0; i < providerData.length; i++)
+	{
+		if (document.getElementById(i+1).checked == true)
+		{
+			providerId = i+1;
+		}
+	}
+	
+	$.ajax(
+	{
+	    url: "http://glas.mycel.nl/providers?user_id=" + userID + "&auth_token=" + userKey + "&provider_id="+providerId+"",
+	    type: "POST",
+	    data: JSON.stringify(
+	    {
+	    
+	    }),
+	    dataType: "json",
+	    success: function (data)
+	    {
+	    	$status++;
+			getProgress();
+	    	$("#overlay_container").hide();
+	    },
+	    error: function (jqXHR, textStatus, errorThrown)
+	    {
+	        alert("ERROR! --" + textStatus);
+	        console.log(textStatus, errorThrown);
+	    }
+	});
+});
+</script>
+
 <div class="overlay">
     <div class="overlaymargin">
     <span style="font-size: 30px; color: gray;">Kies provider</span>
     <a class="closebutton">X</a>
       <p style="font-size: 20px;">This is html version of this app. Lorem ipsum. Proin gravida nibh vbel valit acutor atulet. Acenen soluudcutin, lorem quid bibendum acutor. Nisi elit consqeut impsum. nex sagittis sem nigh id eli. Duis sed odia sit amet bij vulupupat cursar sit amet mauros.</p>
 
-    <form action="">
-        <ul>
-            <li>
-                <input id="chk1" name="chk" class="customRadio" type=radio>
-                <label for="chk1" class="customRadioLabel"></label>
-                <span>optie 1</span>
-            </li>
-             <li>
-                <input id="chk2" name="chk" class="customRadio" type=radio>
-                <label for="chk2" class="customRadioLabel"></label>
-                <span>optie 2</span>
-            </li>
-             <li>
-                <input id="chk3" name="chk" class="customRadio" type=radio>
-                <label for="chk3" class="customRadioLabel"></label>
-                <span>optie 3</span>
-            </li>
-             <li>
-                <input id="chk4" name="chk" class="customRadio" type=radio>
-                <label for="chk4" class="customRadioLabel"></label>
-                <span>optie 4</span>
-            </li>
-             <li>
-                <input id="chk5" name="chk" class="customRadio" type=radio>
-                <label for="chk5" class="customRadioLabel"></label>
-                <span>optie 5</span>
-            </li>
-             <li>
-                <input id="chk6" name="chk" class="customRadio" type=radio>
-                <label for="chk6" class="customRadioLabel"></label>
-                <span>optie 6</span>
-            </li>
-             <li>
-                <input id="chk7" name="chk" class="customRadio" type=radio>
-                <label for="chk7" class="customRadioLabel"></label>
-                <span>optie 7</span>
-            </li>
-        </ul>
+    <form id="providerForm" action="">
+    <div id="providerRadio">
+       <!-- Hier komen de providers die via javascript van de server worden opgehaald en hier neergezet -->
+    </div>
     </form>
     <div style="position: absolute; left: 50%; bottom:15px;">
         <div style="position: relative; left: -50%;">
-         <a class="customButton bordered" style="color: #2D8AF9;">Verder!</a>   
+         <a id="kiesBtn" class="customButton bordered" style="color: #2D8AF9;">Verder!</a>   
          </div></div>      
 </div>    
 </div>

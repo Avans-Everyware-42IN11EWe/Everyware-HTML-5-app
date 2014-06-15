@@ -1,16 +1,29 @@
 package nl.avans.glasaanhuis.html5;
 
 import java.io.ByteArrayOutputStream;
+import java.io.File;
+
+import org.apache.http.HttpEntity;
+import org.apache.http.HttpResponse;
+import org.apache.http.entity.mime.HttpMultipartMode;
+import org.apache.http.entity.mime.MultipartEntity;
+import org.apache.http.entity.mime.content.FileBody;
+import org.apache.http.util.EntityUtils;
+import org.apache.http.client.HttpClient;
+import org.apache.http.client.methods.HttpPost;
+import org.apache.http.impl.client.DefaultHttpClient;
 
 import com.facebook.Session;
 
 import android.net.Uri;
+import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Build.VERSION_CODES;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.annotation.SuppressLint;
 import android.app.Activity;
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
@@ -33,6 +46,7 @@ public class MainActivity extends Activity {
 	public static Context _context;
 	public static Activity _activity;
 	public final static int REQ_CODE_PICK_IMAGE = 100;
+	public final static int REQ_CODE_PICK_VIDEO = 200;
 	private ValueCallback<Uri> mUploadMessage;
 	private WebView wv;
 	
@@ -98,10 +112,119 @@ public class MainActivity extends Activity {
 			    String image = "data:image/png;base64," + imageBase64;
 			    String str = String.format("javascript:setValue('%s')", image);
  			    wv.loadUrl(str);
+ 			    
+ 			    new AsyncHttpPostPicture().execute(selectedImage);
 			}
-		} else {
+		} 
+		else if (requestCode == REQ_CODE_PICK_VIDEO) {
+			if(resultCode == RESULT_OK) {
+				Uri selectedVideo = data.getData();
+				new AsyncHttpPostVideo().execute(selectedVideo);
+			}
+		}
+		else {
 	    		Session.getActiveSession().onActivityResult(this, requestCode, resultCode, data);
+	    		String url = String.format("javascript:sendFacebookData('%s','%s')", "1",Session.getActiveSession().getAccessToken());
+	    		wv.loadUrl(url);
 	    }
 	}
+	
+	public class AsyncHttpPostPicture extends AsyncTask<Uri, Void, String> {
+        private final ProgressDialog dialog = new ProgressDialog(MainActivity.this);
+        private static final String TAG = "POST FAIL";
+
+        public String getPath(Uri uri) {
+            String[] projection = { MediaStore.Images.Media.DATA };
+            Cursor cursor = managedQuery(uri, projection, null, null, null);
+            int column_index = cursor.getColumnIndexOrThrow(MediaStore.Images.Media.DATA);
+            cursor.moveToFirst();
+            return cursor.getString(column_index);
+        }
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+            dialog.setMessage("Uploading photo...");
+            dialog.show();
+        }
+        @Override
+        protected String doInBackground(Uri... params) {
+            String result = null;
+            try {
+                HttpClient httpclient = new DefaultHttpClient();
+                HttpPost httppost = new HttpPost("http://glas.mycel.nl/image?id=1&auth_token=blaat123");//Connector.getServerUrl()+"upload_file2.php");
+                MultipartEntity entity  = new MultipartEntity( HttpMultipartMode.BROWSER_COMPATIBLE );
+
+                entity.addPart( "file", new FileBody(new File(getPath(params[0]))));
+                httppost.setEntity(entity);
+
+                HttpResponse response = httpclient.execute(httppost);// Execute HTTP Post Request
+                //Do something with response...
+                int status = response.getStatusLine().getStatusCode();
+                if(status == 201) {
+                    HttpEntity entityy = response.getEntity();
+                    result = EntityUtils.toString(entityy);// htmlResponse
+                }
+            } catch (Exception e) {
+                Log.d(TAG, "DIT WERKT NIET "+e.getMessage());
+            }
+            return result;
+        }
+        @Override
+        protected void onPostExecute(String result) {
+            super.onPostExecute(result);
+            dialog.dismiss();
+            if(result != null) {
+            }
+        }
+    }
+	
+	public class AsyncHttpPostVideo extends AsyncTask<Uri, Void, String> {
+        private final ProgressDialog dialog = new ProgressDialog(MainActivity.this);
+        private static final String TAG = "POST FAIL";
+
+        public String getPath(Uri uri) {
+            String[] projection = { MediaStore.Images.Media.DATA };
+            Cursor cursor = managedQuery(uri, projection, null, null, null);
+            int column_index = cursor.getColumnIndexOrThrow(MediaStore.Images.Media.DATA);
+            cursor.moveToFirst();
+            return cursor.getString(column_index);
+        }
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+            dialog.setMessage("Uploading video...");
+            dialog.show();
+        }
+        @Override
+        protected String doInBackground(Uri... params) {
+            String result = null;
+            try {
+                HttpClient httpclient = new DefaultHttpClient();
+                HttpPost httppost = new HttpPost("http://glas.mycel.nl/video?id=1&auth_token=blaat123");//Connector.getServerUrl()+"upload_file2.php");
+                MultipartEntity entity  = new MultipartEntity( HttpMultipartMode.BROWSER_COMPATIBLE );
+
+                entity.addPart( "file", new FileBody(new File(getPath(params[0]))));
+                httppost.setEntity(entity);
+
+                HttpResponse response = httpclient.execute(httppost);// Execute HTTP Post Request
+                //Do something with response...
+                int status = response.getStatusLine().getStatusCode();
+                if(status == 201) {
+                    HttpEntity entityy = response.getEntity();
+                    result = EntityUtils.toString(entityy);// htmlResponse
+                }
+            } catch (Exception e) {
+                Log.d(TAG, "DIT WERKT NIET "+e.getMessage());
+            }
+            return result;
+        }
+        @Override
+        protected void onPostExecute(String result) {
+            super.onPostExecute(result);
+            dialog.dismiss();
+            if(result != null) {
+            }
+        }
+    }
 
 }
