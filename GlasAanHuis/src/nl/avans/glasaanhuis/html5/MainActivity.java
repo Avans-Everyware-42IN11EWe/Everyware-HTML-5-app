@@ -26,6 +26,7 @@ import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -49,13 +50,14 @@ public class MainActivity extends Activity {
 	public final static int REQ_CODE_PICK_VIDEO = 200;
 	private ValueCallback<Uri> mUploadMessage;
 	private WebView wv;
+	private SharedPreferences prefs;
 	
 	@SuppressLint({ "SetJavaScriptEnabled", "JavascriptInterface" })
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
-		
+		prefs = getSharedPreferences("GlasAanHuis", Context.MODE_PRIVATE);
 		wv = (WebView) findViewById(R.id.WebView);
 		
 		_context = getBaseContext();
@@ -151,7 +153,7 @@ public class MainActivity extends Activity {
             String result = null;
             try {
                 HttpClient httpclient = new DefaultHttpClient();
-                HttpPost httppost = new HttpPost("http://glas.mycel.nl/image?id=1&auth_token=blaat123");//Connector.getServerUrl()+"upload_file2.php");
+                HttpPost httppost = new HttpPost("http://glas.mycel.nl/image?id="+prefs.getString("userId", "1")+"&auth_token="+prefs.getString("authToken", "blaat123")+"");//Connector.getServerUrl()+"upload_file2.php");
                 MultipartEntity entity  = new MultipartEntity( HttpMultipartMode.BROWSER_COMPATIBLE );
 
                 entity.addPart( "file", new FileBody(new File(getPath(params[0]))));
@@ -200,7 +202,7 @@ public class MainActivity extends Activity {
             String result = null;
             try {
                 HttpClient httpclient = new DefaultHttpClient();
-                HttpPost httppost = new HttpPost("http://glas.mycel.nl/video?id=1&auth_token=blaat123");//Connector.getServerUrl()+"upload_file2.php");
+                HttpPost httppost = new HttpPost("http://glas.mycel.nl/video?id="+prefs.getString("userId", "1")+"&auth_token="+prefs.getString("authToken", "blaat123")+"");//Connector.getServerUrl()+"upload_file2.php");
                 MultipartEntity entity  = new MultipartEntity( HttpMultipartMode.BROWSER_COMPATIBLE );
 
                 entity.addPart( "file", new FileBody(new File(getPath(params[0]))));

@@ -27,6 +27,12 @@
 			$eProfileVideo.css("width", "100%");
 			LoadHtmlPage("pages/UploadVideo.html", $eProfileVideo);
 			
+			// Create profile picture upload page
+			$eUserUploadPicture = $("<div></div>");
+			$eUserUploadPicture.css("height", "100%");
+			$eUserUploadPicture.css("width", "100%");
+			LoadHtmlPage("pages/userUploadPicture.html", $eUserUploadPicture);
+			
 			// create profile chat page
 			$eProfileChat = $("<div></div>");
 			$eProfileChat.css("height", "100%");
@@ -311,10 +317,15 @@
         	
         });
 		
-		
         $(document).on( "click", "#uploadPicture", function() {  
           $("#bg").css("opacity","0");
           $("#overlay_container").html($eUploadPicture);             
+          $("#overlay_container").show();
+        });
+		
+		$(document).on( "click", "#uploadPicture", function() {  
+          $("#bg").css("opacity","0");
+          $("#overlay_container").html($eUserUploadPicture);             
           $("#overlay_container").show();
         });
         

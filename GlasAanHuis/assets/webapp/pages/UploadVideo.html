@@ -1,8 +1,21 @@
 <script>
-
+	$(document).ready(function (event) {
+		$.get("http://glas.mycel.nl/buddy?id=" + userData.userId + "", function(data, status) {
+			if (data.video !== "") {
+				setValue(data.video);
+			}
+		});
+	});
+	
 	$(document).on('click', '#btnUploadVideo', function (event) {
 		window.JHandler.UploadVideo();
 	});
+	
+	function setValue(url) {
+        $("#userProfileVideo").attr("src", url);
+        $("#titleUploadVideo").text("Uw Video");
+        $("#btnUploadVideo").text("Verander");
+    }
 
 </script>
 
@@ -10,6 +23,11 @@
 	<div class="overlaymargin">
         <span id="titleUploadVideo" style="font-size: 50px; color: gray;">Upload video</span>
         <a class="closebutton righttop">X</a>
+		<video width="100%" height="50%" controls>
+			<source class="userProfileVideo" src="" type="video/mp4">
+			<!-- <source src="movie.ogg" type="video/ogg">--></source>
+			<p>Fout! klik <a href="#">hier</a> om verder te gaan</p>
+		</video>
         <form style="margin-top: 20px;">
 			<div class="absoluteFormButtons">
 				<div class="regButtons">

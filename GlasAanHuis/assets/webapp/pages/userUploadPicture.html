@@ -1,4 +1,12 @@
 <script>
+	$(document).ready(function (event) {
+		$.get("http://glas.mycel.nl/buddy?id=" + userData.userId + "", function(data, status) {
+			if (data.plaatje !== "") {
+				setValue(data.plaatje);
+			}
+		});
+	});
+	
 	$(document).on('click', '#btnUploadPicture', function (event) {
 		window.JHandler.UploadPicture();
 	});

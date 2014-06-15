@@ -1,21 +1,59 @@
 <script>
-
+	$(document).ready(function (event) {
+		$.get("http://glas.mycel.nl/buddy?id=" + userData.userId + "", function(data, status) {
+			
+			$("#txtName").val(data.naam);
+			$("#txtAge").val(data.leeftijd);
+			$("#txtStreet").val(data.adres);
+			$("#txtPhone").val(data.telefoon);
+			$("#txtEmail").val(data.email);
+			if (data.is_buddy) {
+				$("#chkBuddy").prop('checked', true);
+			} else {
+				$("#chkBuddy").prop('checked', false);
+			}
+		});
+	});
+	
 	$(document).on('click', '#btnUploadPicture', function (event) {
 		$("#bg").css("opacity","0");
 
-      	$("#overlay_container").html($eUploadPicture);                         
+      	$("#overlay_container").html($eUserUploadPicture);            
         $("#overlay_container").show();
 	});
 
-	$(document).on('click', '#btnUploadVideo', function (event) {
-		$("#bg").css("opacity","0");
-
-      	$("#overlay_container").html($eUploadVideo);                         
-        $("#overlay_container").show();
-	});
-
-	$(document).on('click', '#btnSaveSettings', function (event) {                        
-        $("#overlay_container").hide();
+	$(document).on('click', '#btnSaveSettings', function (event) {
+		var isBuddy;
+		if ($("#chkBuddy").is(":checked")) {
+			isBuddy = true;
+		} else {
+			isBuddy = false;
+		}
+		
+		$.ajax(
+		{
+			url: "http://glas.mycel.nl/profile?user_id=" + userData.userId + "&auth_token=" + userData.authToken + "",
+			type: "POST",
+			data: JSON.stringify(
+			{
+				"naam": $("#txtName").val(),
+				"leeftijd": $("#txtAge").val(),
+				"adres": $("#txtStreet").val(),
+				"telefoon": $("#txtPhone").val(),
+				"email": $("#txtEmail").val(),
+				"is_buddy": isBuddy
+			}),
+			success: function (data)
+			{
+				window.JHandler.Toast("Instellingen zijn opgeslagen");
+				$("#overlay_container").hide();
+			},
+			error: function (jqXHR, textStatus, errorThrown)
+			{
+				//alert("ERROR! --" + textStatus);
+				console.log(textStatus, errorThrown);
+			}
+		});
 	});
 
 </script>
@@ -26,11 +64,11 @@
 		<a class="closebutton righttop">X</a>
 		<hr />
 		<form id="settings">
-          <input id="txtName" placeholder="Naam" type="text">
-          <input id="txtAge" placeholder="Leeftijd" type="text">
-          <input id="txtCity" placeholder="Woonplaats" type="text">
-          <input id="txtPhone" placeholder="Telefoonnummer" type="text">
-          <input id="txtEmail" placeholder="E-mail adres" type="text">
+          <input id="txtName" placeholder="Naam" type="text" />
+          <input id="txtAge" placeholder="Leeftijd" type="text" />
+          <input id="txtStreet" placeholder="Adres" type="text" />
+          <input id="txtPhone" placeholder="Telefoonnummer" type="text" />
+          <input id="txtEmail" placeholder="E-mail adres" type="text" />
           <input id="chkBuddy" class="customBox" type="checkbox" />
           <label for="chkBuddy" class="customBoxLabel"></label>
           <span style="color: #2D8AF9;">Ik wil buddy worden</span>
@@ -41,11 +79,6 @@
 		<div class="regButtons">
 			<a class="customButton bordered formButtons" id="btnUploadPicture">Profielfoto uploaden</a>   
 		</div>
-		<!--
-		<div class="regButtons">
-			<a class="customButton bordered formButtons" id="btnUploadVideo">Video uploaden</a>   
-		</div>
-		-->
 		<div class="regButtons">
 			<a class="customButton bordered formButtons" id="btnSaveSettings">Wijzigen opslaan</a>   
 		</div>
