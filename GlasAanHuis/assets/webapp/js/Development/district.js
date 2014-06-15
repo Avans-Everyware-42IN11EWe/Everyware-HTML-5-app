@@ -1,10 +1,11 @@
 var id;
 	$(document).ready(function ()
 	{
-		//id = 1;
-        //var userID = localStorage.getItem("id");
-        //var userKey = localStorage.getItem("key");
-        //getProgress(userID, userKey);
+		id = 1;
+        var userID = localStorage.getItem("id");
+        var userKey = localStorage.getItem("key");
+        console.log("userid: "+userID+"key: "+userKey);
+        getProgress(userID, userKey);
 
     	/*$(".swiper-slide").clone(true).appendTo(".swiper-wrapper");
 		$.get("http://glas.mycel.nl/districts?search=5211AA", function(data, status)
@@ -318,7 +319,7 @@ var id;
                 
                 
 			
-			for (var i = 0; i < data.plaatjes.length; i++)
+			/*for (var i = 0; i < data.plaatjes.length; i++)
 			{
 				var div = document.createElement("DIV");
 				div.setAttribute('class', 'profilePictures');
@@ -369,7 +370,7 @@ var id;
 	        var inschrijven = Math.round(100 * data.stappen[1].percentage);
 	        var providerSelecteren = Math.round(100 * data.stappen[2].percentage);
 	        var glasvezelAanleggen = Math.round(100 * data.stappen[3].percentage);
-	        var overstappenNaarGlasvezel = Math.round(100 * data.stappen[4].percentage);
+	        var overstappenNaarGlasvezel = Math.round(100 * data.stappen[4].percentage);*/
 /*
 	        /******text****/
 			/*
