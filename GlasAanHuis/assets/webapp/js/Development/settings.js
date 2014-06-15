@@ -2,7 +2,6 @@ var userId;
 var userToken;
 
 $(document).ready(function () {
-	alert("hoi");
 	loadUserSettings();
 });
 

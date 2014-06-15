@@ -115,25 +115,15 @@ final class IJavascriptHandler {
 				}
 			});
 			
-			if (prefs.getString("userId", null) == null)
-				return false;
-			else
-				return true;
+			return true;
 	   }
 	   
 	   @JavascriptInterface
-	   public void SaveToFile(String fName, String userId, String authToken)
+	   public void SaveToFile(String userId, String authToken)
 	   {
-		   	//FileOutputStream fos;
 			try {
-				//fos = MainActivity._context.openFileOutput(fName, Context.MODE_PRIVATE);
 				prefs.edit().putString("userId", userId).commit();
 				prefs.edit().putString("authToken", authToken).commit();
-				/*
-				ObjectOutputStream os = new ObjectOutputStream(fos);
-				os.writeObject(data);
-				os.close();*/
-							
 			} catch (Exception e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -144,18 +134,7 @@ final class IJavascriptHandler {
 	   @JavascriptInterface
 	   public String[] GetSavedData()
 	   {
-		   /*File file = MainActivity._context.getFileStreamPath(fName);
-			if(!file.exists()) 
-				return "";
-			
-			String result = "";
-			
-			FileInputStream fis;*/
 			try {
-				/*fis = MainActivity._context.openFileInput(fName);
-				ObjectInputStream is = new ObjectInputStream(fis);
-				result = (String) is.readObject();
-				is.close();*/
 				String[] result = new String[2];
 				result[0] = prefs.getString("userId", null);
 				result[1] = prefs.getString("authToken", null);
