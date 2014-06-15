@@ -22,8 +22,8 @@
                 success: function (data)
                 {
                    try{
-					window.JHandler.SaveToFile(data.user_id, data.auth_token);
-					alert("register doet iets! yay!");
+					var str = window.JHandler.SaveToFile(data.user_id, data.auth_token);
+					alert(str);
 					}catch(err){
 					    alert("registreren error bij JHandler"+err);
 					}
