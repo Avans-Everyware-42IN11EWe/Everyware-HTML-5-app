@@ -36,7 +36,7 @@ var id;
         console.log("userid: "+userID+"key: "+userKey);
     }*/
    try{
-    var userData = window.JHandler.GetSavedData("uid.bin");
+    var userData = window.JHandler.GetSavedData();
     alert("de userdata is: "+userData);
     }catch(err){
         console.log("jhandler error bij ophalen userdata: "+err);
