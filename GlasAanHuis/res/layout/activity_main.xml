@@ -12,7 +12,7 @@
 		<ImageView
 		    android:id="@+id/LoadImg"
 		    android:layout_gravity="left"
-		    android:src="@drawable/ic_launcher"
+		    android:src="@drawable/load_image"
 		    android:layout_width="match_parent"
     		android:layout_height="match_parent"
 		     />
