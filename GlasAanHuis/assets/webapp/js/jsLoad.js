@@ -11,7 +11,7 @@ document.write('<script type="text/javascript" charset="UTF-8" src="js/blur.js">
 document.write('<script src="js/underscore-min.js"></script>');
 document.write('<script src="js/mapbox.js"></script>');
 document.write('<script type="text/javascript" charset="UTF-8" src="js/fastclick.js"></script>');
-
+document.write('<script src="js/pixastic.custom.js"></script>');
 
 
 /*****************Eigen js files met code hier**********************/

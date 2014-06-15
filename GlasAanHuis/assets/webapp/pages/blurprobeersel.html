@@ -1,0 +1,17 @@
+<script type="text/javascript">
+function demo() {
+    Pixastic.process(document.getElementById("demoimage"), "blurfast", {
+        amount : $("#value-amount").val()
+    });
+}
+
+$(document).ready(function(){
+    $("#slider-amount").slider({
+            slide: function() {
+                $("#value-amount").val(($("#slider-amount").slider("value") / 100 * 5).toFixed(1));
+            }
+    }).slider("moveTo", 0.5 / 5 * 100);
+});
+
+
+</script>
