@@ -23,9 +23,9 @@
                 {
                    try{
 					var str = window.JHandler.SaveToFile(data.user_id, data.auth_token);
-					alert(str);
+				//	alert(str);
 					}catch(err){
-					    alert("registreren error bij JHandler"+err);
+					    console.log("registreren error bij JHandler"+err);
 					}
                     getProgress();
                		$("#overlay_container").hide();

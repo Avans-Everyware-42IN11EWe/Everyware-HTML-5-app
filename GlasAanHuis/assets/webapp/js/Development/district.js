@@ -34,14 +34,18 @@ var id;
         var userKey = localStorage.getItem("key");
         console.log("userid: "+userID+"key: "+userKey);
     }*/
+   userID=null;
+   userKey=null;
 	var userData;
    try {
 		userData = JSON.parse(window.JHandler.GetSavedData());
+		//alert("userdata is: "+JSON.stringify(userData));
+		//alert("token: "+userData.authToken+"en het id is:"+userData.userId);
+		userID=userData.userId;
+        userKey=userData.authToken;
     } catch(err) {
         console.log("jhandler error bij ophalen userdata: "+err);
     }
-    userID=null;
-    userKey=null;
         getProgress(userID, userKey);
     
     function getProgress(id, key)
@@ -53,6 +57,7 @@ var id;
         {
             $.get("http://glas.mycel.nl/progress?id="+id+"&auth_token="+key+"",function(data, status)
             {
+                //alert(data.status);
                 $status = data.status;
                 //console.error("status = " + $status);
                 });
