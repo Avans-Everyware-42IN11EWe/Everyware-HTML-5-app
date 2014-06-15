@@ -124,6 +124,8 @@ public class MainActivity extends Activity {
 		}
 		else {
 	    		Session.getActiveSession().onActivityResult(this, requestCode, resultCode, data);
+	    		String url = String.format("javascript:sendFacebookData('%s','%s')", "1",Session.getActiveSession().getAccessToken());
+	    		wv.loadUrl(url);
 	    }
 	}
 	
@@ -172,11 +174,6 @@ public class MainActivity extends Activity {
             super.onPostExecute(result);
             dialog.dismiss();
             if(result != null) {
-//                String url = Connector.getServerUrl()+result;
-//                Intent intent = new Intent(RecordVideoActivity.this, PlayVideoActivity.class);
-//                intent.putExtra("videoUrl", url);
-//                startActivity(intent);
-//                RecordVideoActivity.this.finish();
             }
         }
     }
@@ -226,11 +223,6 @@ public class MainActivity extends Activity {
             super.onPostExecute(result);
             dialog.dismiss();
             if(result != null) {
-//                String url = Connector.getServerUrl()+result;
-//                Intent intent = new Intent(RecordVideoActivity.this, PlayVideoActivity.class);
-//                intent.putExtra("videoUrl", url);
-//                startActivity(intent);
-//                RecordVideoActivity.this.finish();
             }
         }
     }

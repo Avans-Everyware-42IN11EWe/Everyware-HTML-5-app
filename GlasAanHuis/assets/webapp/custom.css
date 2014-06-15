@@ -156,6 +156,7 @@ div#overlay {
 	position: relative;
 	float: left;
 	clear: left;
+	width: 100%;
 }
 
 .btnFacebook {
@@ -191,7 +192,7 @@ form#registration, form#settings {
     padding: 0;
 }
 
-form#registration, form#settings input[type=text] {
+form#registration input[type=text], form#settings input[type=text] {
     border: 1px solid #DBDBDB;
     background-color: #ECECEC;
     border-radius: 2px;
@@ -398,13 +399,21 @@ padding-top:35px;
 .profilePictures {
  float: left;
  height: 75px;
-   }
+ position: relative;
+}
    
 .buddy {
   box-shadow: inset 0px 0px 5px 5px lime;
-   }
+}
    
- .test {
+ .districtProfileIMG {
  position: relative;
  z-index: -2;
+ height: 75px;
+ }
+ 
+ .cameraIcon {
+	position: absolute;
+	bottom: 5px;
+	right: 5px;
  }

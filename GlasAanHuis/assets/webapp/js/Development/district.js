@@ -69,7 +69,7 @@ var id;
 	    	
 	    	// Zet alle benodigde data in variabelen
 			$buurtNaam = data.name;
-			$percentage = (100 * data.percentage) + "%";
+			$percentage = Math.round(100 * data.percentage) + "%";
 			$participants = data.participants;
 			$bgImgUrl = data.plaatje;
 			//console.error("hello");
@@ -79,6 +79,15 @@ var id;
 			element.find(".participants").html($participants);
 			element.find(".percentage2").html($percentage);
 			element.find(".participants2").html($participants);
+			var facebook = element.find(".facebookLink");
+			
+			facebook.attr("href", data.facebookpageurl);
+			
+			$(document).on('click', facebook, function (event) {
+				var url = facebook.attr("href");
+				//alert(url);
+				window.JHandler.OpenInExternalWebBrowser(url);
+			});
 			// Zet de variabelen op de goede plek in de html
 			/*
 			$("#buurtNaam").html($buurtNaam);
@@ -88,7 +97,6 @@ var id;
 			$("#participants2").html($participants);
 			*/
 			
-
 			if(loadBackground)
 				$("body").css('background-image', 'url('+ $bgImgUrl +')');
 			
@@ -96,20 +104,20 @@ var id;
 			{
 				var div = document.createElement("DIV");
 				div.setAttribute('class', 'profilePictures');
-				var img = document.createElement("IMG");
-			    img.src = data.plaatjes[i].plaatje;
-			    div.setAttribute('id', 'person_'+i);
-			    img.setAttribute('class', 'test');
-			    img.setAttribute('width', 75);
+				var img = document.createElement("DIV");
+			    //img.src = data.plaatjes[i].plaatje;
+			    div.setAttribute('id', 'person_'+data.plaatjes[i].id);
+			    img.setAttribute('class', 'districtProfileIMG');
+				img.setAttribute('style', 'background-image: url("'+data.plaatjes[i].plaatje+'");background-size: 100%; width: 75px; height: 75px;');
 			    element.find(".userImages").append(div);
-    			//document.getElementById('userImages').appendChild(div);
     			div.appendChild(img);
+				
 
     			if(data.plaatjes[i].is_buddy == 1)
 				{
 					//div.setAttribute('style', 'box-shadow: inset 0px 0px 5px 5px lime;');
 					div.setAttribute('class', 'profilePictures buddy');
-					$(document).on( "click", "#person_"+i, function() {    
+					$(document).on( "click", "#person_"+data.plaatjes[i].id, function() {
 	                	$("#bg").css("opacity","0");
 				            
 				        // Go to chat overlay
@@ -119,7 +127,11 @@ var id;
 				}
 				else if (data.plaatjes[i].has_video == 1)
 				{
-					$(document).on( "click", "#person_"+i, function() {    
+					var cameraIcon = document.createElement("DIV");
+					cameraIcon.setAttribute('style', 'background-image: url(cameraicon.png);background-size: 100%; width: 20px; height: 20px;');
+					cameraIcon.setAttribute('class', 'cameraIcon');
+					div.appendChild(cameraIcon);
+					$(document).on( "click", "#person_"+data.plaatjes[i].id, function() {
 	                	$("#bg").css("opacity","0");
 				            
 				        // Go to chat overlay
@@ -176,10 +188,10 @@ var id;
 		//window.JHandler.SaveToFile("wijkID.bin", windows.id);
 	}
 	
-	function openInWebBrowser() {
-		var url = $("#FacebookLink").attr("href");
+	/*function OpenInExternalWebBrowser() {
+		var url = $(".FacebookLink").attr("href");
 		window.JHandler.OpenInExternalWebBrowser(url);
-	}
+	}*/
 
 	/*$(document).on('click', '#FacebookLink', function (event) {
 		var url = $("#FacebookLink").attr("href");

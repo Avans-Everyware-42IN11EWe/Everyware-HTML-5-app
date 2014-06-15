@@ -122,16 +122,17 @@ final class IJavascriptHandler {
 	   }
 	   
 	   @JavascriptInterface
-	   public void SaveToFile(String fName, String data)
+	   public void SaveToFile(String fName, String userId, String authToken)
 	   {
-		   	FileOutputStream fos;
+		   	//FileOutputStream fos;
 			try {
-				fos = MainActivity._context.openFileOutput(fName, Context.MODE_PRIVATE);
-				prefs.edit().putString("userId", data).commit();
-				
+				//fos = MainActivity._context.openFileOutput(fName, Context.MODE_PRIVATE);
+				prefs.edit().putString("userId", userId).commit();
+				prefs.edit().putString("authToken", authToken).commit();
+				/*
 				ObjectOutputStream os = new ObjectOutputStream(fos);
 				os.writeObject(data);
-				os.close();
+				os.close();*/
 							
 			} catch (Exception e) {
 				// TODO Auto-generated catch block
