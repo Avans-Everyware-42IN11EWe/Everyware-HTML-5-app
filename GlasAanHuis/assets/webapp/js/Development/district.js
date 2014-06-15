@@ -101,6 +101,40 @@ var id;
 			
 			if(loadBackground)
 				$("body").css('background-image', 'url('+ $bgImgUrl +')');
+				//code om een geblurde image in div #bg te zetten
+				/*$( "#bg" ).has( ".blurBg" ).empty();
+				var image = new Image();
+                image.onload = function(){
+                    Pixastic.process(image, "blurfast", {amount:2.0});
+                    $("#bg").append(image);
+                };
+                alert(image);
+               image.setAttribute('class', 'blurBg');
+               // document.body.appendChild(img);
+                image.src = $bgImgUrl;
+                
+                //document.body.appendChild(img);
+              //  alert(img);
+               
+               
+				   
+                // code voor opacity
+                 $(".swiper-container").scroll(function(e) {
+                     //console.log("scrollen");
+                 var elem = $(".blur");
+                 var maxScrollTop = elem[0].scrollHeight - elem.outerHeight();
+                 var vaagheid = 6/maxScrollTop;
+                 var blurHoeveelheid =$(".swiper-container").scrollTop()*vaagheid;
+            
+           
+                 //grootte window
+                 //console.log("blur per pixel: "+vaagheid);
+                // console.log("scrolltop waarde "+$(".swiper-container").scrollTop());
+                 //console.log("opacityval: "+blurHoeveelheid);
+                 $("#bg").css("opacity",blurHoeveelheid);
+                });*/
+                
+                
 			
 			for (var i = 0; i < data.plaatjes.length; i++)
 			{
