@@ -58,7 +58,7 @@ var id;
         var userKey = localStorage.getItem("key");
         console.log("userid: "+userID+"key: "+userKey);
     }*/
-   userID=null;
+   /*userID=null;
    userKey=null;
 	var userData;
    try {
@@ -114,11 +114,8 @@ var id;
                 
                 }     
                    });
-                }
-  
-            //});
-        
-    }
+                }        
+    }*/
 	
 		function LoadDistrictPage($element, callback)
 		{		
