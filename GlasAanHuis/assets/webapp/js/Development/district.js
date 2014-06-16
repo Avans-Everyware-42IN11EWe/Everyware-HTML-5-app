@@ -84,7 +84,6 @@ var id;
                 //alert(data.status);
                 $status = data.status;
                 //console.error("status = " + $status);
-             alert("switch komt");
                  switch($status){
                     case 0:
                     //niksdoen
@@ -103,12 +102,12 @@ var id;
                         
                         break;
                     case 3:
-                    alert("switch "+$status);
+                    //alert("switch "+$status);
                         $(document).find("div.statusbuttons").empty();
                         $(document).find("div.statusbuttons").append('<a class="customButton" href="#" style="background-color: rgb(236, 236, 236); text-align:center; color: rgb(45, 138, 249); padding: 10px 20px;  wicth:95%; margin-left:15px" id="mijnWijk">Geef een provider voorkeur</a>');
                         break;
                     case 4:
-                    alert("switch "+$status);
+                    //alert("switch "+$status);
                        $(document).find("div.statusbuttons").empty();
                $(document).find("div.statusbuttons").append('<a class="customButton" href="#" style="background-color: rgb(236, 236, 236); text-align:center; color: rgb(45, 138, 249); padding: 10px 20px;  wicth:95%; margin-left:15px" id="mijnWijk">Wachten op het slagen van de actie</a>');
                         break;

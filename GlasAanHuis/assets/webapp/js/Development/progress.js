@@ -1,7 +1,7 @@
-
+/*
 function getProgress () {        
-    var uid = localStorage.getItem("id");
-    var token = localStorage.getItem("key");
+    var uid = userData.userId;
+    var token = userData.authToken;
      $.get('http://glas.mycel.nl/progress?id='+uid+'&auth_token='+token+'', function(data){
          
          if(data.status==1){
@@ -30,3 +30,4 @@ function getProgress () {
      
     });
     }
+*/

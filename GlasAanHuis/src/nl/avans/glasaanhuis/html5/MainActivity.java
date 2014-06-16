@@ -63,6 +63,9 @@ public class MainActivity extends Activity {
 		_context = getBaseContext();
 		_activity = this;
 		
+		// clear
+		//prefs.edit().clear().commit();
+		
 		wv.addJavascriptInterface(new Logging(),"Logging");
 		wv.setWebViewClient(new CustomWebViewclient(this));
 		//wv.loadUrl("file:///android_asset/webapp/index.html");

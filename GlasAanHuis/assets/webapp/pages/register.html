@@ -27,7 +27,7 @@
 					}catch(err){
 					    console.log("registreren error bij JHandler"+err);
 					}
-                    getProgress();
+                    getProgress(data.user_id, data.auth_token);
                		$("#overlay_container").hide();
                 },
                 error: function (jqXHR, textStatus, errorThrown)
@@ -55,7 +55,7 @@
                     //alert(data.user_id+" "+data.auth_token);
                     window.JHandler.SaveToFile(data.user_id, data.auth_token);
                     
-                    getProgress();
+                    getProgress(data.user_id, data.auth_token);
                		$("#overlay_container").hide();
                 },
                 error: function (jqXHR, textStatus, errorThrown)

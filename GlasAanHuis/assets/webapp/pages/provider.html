@@ -13,7 +13,7 @@ $(document).ready(function(){
 			var inputbtn = document.createElement("input");
 			var span = document.createElement("span");
 			//inputbtn.setAttribute('class', 'customRadio');
-			inputbtn.setAttribute('type', 'radio');
+			inputbtn.setAttribute('type', 'checkbox');
 			inputbtn.setAttribute('id', data[i].id);
 			inputbtn.setAttribute('name', 'chkProvider');
 			lbl.setAttribute('for', data[i].id);
@@ -30,8 +30,6 @@ $(document).ready(function(){
 });
 $(document).on('click', '#kiesBtn', function (event) {	
 
-	var userID = localStorage.getItem("id");
-    var userKey = localStorage.getItem("key");
     var providerId;	
     
   	for (var i = 0; i < providerData.length; i++)
@@ -44,23 +42,24 @@ $(document).on('click', '#kiesBtn', function (event) {
 	
 	$.ajax(
 	{
-	    url: "http://glas.mycel.nl/providers?user_id=" + userID + "&auth_token=" + userKey + "&provider_id="+providerId+"",
+	    url: "http://glas.mycel.nl/providers?user_id=" + userData.userId + "&auth_token=" + userData.authToken,
 	    type: "POST",
 	    data: JSON.stringify(
 	    {
-	    
+			[1, 2]
 	    }),
 	    dataType: "json",
 	    success: function (data)
 	    {
-	    	$status++;
-			getProgress();
+	    	//$status++;
+			getProgress(userData.userId, userData.authToken);
 	    	$("#overlay_container").hide();
 	    },
 	    error: function (jqXHR, textStatus, errorThrown)
 	    {
 	        alert("ERROR! --" + textStatus);
 	        console.log(textStatus, errorThrown);
+			$("#overlay_container").hide();
 	    }
 	});
 });
