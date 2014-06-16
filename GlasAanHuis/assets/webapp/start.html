@@ -222,18 +222,83 @@
 						
 				$.ajaxSetup({ cache: false });
 						
-				$("#menu-btn-close").hide();				
-					
+				$("#menu-btn-close").hide();	
+				 userID=null;
+   userKey=null;
+    var userData;
+    $(document).on( "click", "body", function() {
+   try {
+        userData = JSON.parse(window.JHandler.GetSavedData());
+        //alert("userdata is: "+JSON.stringify(userData));
+        //alert("token: "+userData.authToken+"en het id is:"+userData.userId);
+        userID=userData.userId;
+        userKey=userData.authToken;
+    } catch(err) {
+        console.log("jhandler error bij ophalen userdata: "+err);
+        alert("jhandler error bij ophalen userdata: "+err);
+    }
+        getProgress(userID, userKey);
+    
+    function getProgress(id, key)
+    {
+        //voor t geval dat hij undefined is wann er geen userid en key voorradig is
+        $status =0;
+        
+        if(id != null && key != null)
+        {
+           // alert("http://glas.mycel.nl/progress?id="+id+"&auth_token="+key+"");
+            $.get("http://glas.mycel.nl/progress?id="+id+"&auth_token="+key+"",function(data, status)
+            {
+                //alert(JSON.stringify(data));
+                //alert("data.status is: "+data.status);
+                $status = data.status;
+                //console.error("status = " + $status);
+            // alert("switch komt");
+             //alert("de status is:"+$status);
+                 switch($status){
+                    case 0:
+                    //niksdoen
+                    //alert("switch "+$status);
+                     break;
+                    case 1:
+                    alert("switch "+$status);
+                       // $("div#buttons").empty();
+                        //$("div#buttons").append('<a class="customButton" href="#" style="background-color: rgb(236, 236, 236); text-align:center; color: rgb(45, 138, 249); padding: 10px 20px; position:absolute; left:0px; right:0px;" id="mijnWijk">Geef een provider voorkeur</a>');
+                        //$("div#buttons").css({"margin-left" : "10px", "margin-right" : "10px", "width" : "100%", "padding-bottom" : "50px"});
+                        break;
+                    case 2:
+                   //alert("switch "+$status);
+                       $(".statusbuttons").empty();
+                        $(".statusbuttons").append('<a class="customButton" href="#" style="background-color: rgb(236, 236, 236); text-align:center; color: rgb(45, 138, 249); padding: 10px 20px;  wicth:95%; margin-left:15px" id="mijnWijk">Ik doe mee!!!</a>');
+                        
+                        break;
+                    case 3:
+                    //alert("switch "+$status);
+                        $(".statusbuttons").empty();
+                        $(".statusbuttons").append('<a class="customButton" href="#" style="background-color: rgb(236, 236, 236); text-align:center; color: rgb(45, 138, 249); padding: 10px 20px;  wicth:95%; margin-left:15px" id="mijnWijk">Geef een provider voorkeur</a>');
+                        break;
+                    case 4:
+                    //alert("switch "+$status);
+                       $(".statusbuttons").empty();
+               $(".statusbuttons").append('<a class="customButton" href="#" style="background-color: rgb(236, 236, 236); text-align:center; color: rgb(45, 138, 249); padding: 10px 20px;  wicth:95%; margin-left:15px" id="mijnWijk">Wachten op het slagen van de actie</a>');
+                        break;
+                
+                }     
+                   });
+                }        
+    }			
+				});	
 				$(document).on( "click", "#mijnWijk", function() 
 				{	
 					$("#bg").css("opacity","0"); 
 					// Go to login overlay
          			//$("#overlay_container").html($eLogin);							
 					//$("#overlay_container").show();
-					//alert($status);
-					
+					//alert("ophalen overlay"+$status);
+					//$status=0;
 					switch($status)
 					{
+					    
 					    case 0:
 							$("#overlay_container").html($eLogin); 
 							break;
@@ -245,7 +310,7 @@
 		          			$("#overlay_container").html($ePay);	
 							break;
 						case 3:
-							alert('Provider');
+							//alert('Provider');
 		          			$("#overlay_container").html($eProvider);
 							break;
 						case 4:
@@ -255,6 +320,7 @@
 					}
 					$("#overlay_container").show();
         		});
+  
 
 				$(document).on( "click", "#andereWijk", function() {	
 					$("#bg").css("opacity","0");
